@@ -27,6 +27,8 @@ const HeroSection = ({ heroBottomStyle, closeMobLogin }) => {
                     <div className="hero-text">
                         <h1>Nest Homes</h1>
                         <p>The perfect nest for every family with NestHomes</p>
+
+                        
                         <div className="getstarted" style={heroBottomStyle}>
                             <Link
                                 activeClass="active"
