@@ -1,0 +1,221 @@
+
+
+.container {
+    width: 100%;
+    translate: 0%;
+   
+
+    .mobile_overlay{
+        position:fixed;
+        background: #00000080;
+        top: 60px;
+        left:0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999;
+    }
+
+    .hero {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2px;
+        background: #0000008f;
+        color: white;
+
+        .hero-text {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+       
+
+        h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 65px;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            
+
+            @media (max-width:800px) {
+                    font-size: 47px;
+                    text-align: center;
+            }
+
+        }
+
+
+
+
+
+        p {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            font-size: 22px;
+            font-weight: 300;
+
+            @media (max-width:800px) {
+                font-size: 17px;
+                letter-spacing: '';
+                text-align: center;
+            
+            }
+          
+        }
+
+        .getstarted {
+            margin-top: 87px;
+            background: rgba(103, 198, 194, 0.4);
+            backdrop-filter: blur(8.5px);
+            -webkit-backdrop-filter: blur(8.5px);
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 10px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+            width: 150px;
+            justify-content: center;
+            border-top-right-radius: 43px;
+            border-bottom-right-radius: 43px;
+            border-top-left-radius: 43px;
+            border-bottom-left-radius: 43px;
+
+            @media (max-width:800px) {
+                width: 105px;
+                height:23px;
+            
+            }
+
+            &:hover {
+                background: white;
+                color: black;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: 900;
+
+                @media (max-width:800px) {
+
+                    font-size: 12px;
+                }
+            }
+        }
+
+    }
+
+    .herobottom {
+        border-top: 2px;
+        height: 618px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 2px;
+
+
+        @media (max-width:800px) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image {
+            position: relative;
+
+            @media (max-width:800px) {
+                height: 270px;
+            }
+
+            &:hover{
+                h3,p{
+                    display: none;
+                }
+            }
+
+            .image-details{
+                width: 80%;
+                margin: auto;
+
+                h3{
+                    position:absolute;
+                    top: 30%;
+                    color: white;
+                    font-size: 30px;
+                    font-family: 'Montserrat', sans-serif;
+                    z-index: 999;
+                    transition: 0.3s;
+
+                    @media (max-width:800px) {
+                        top: 4%;
+                        font-size: 25px;
+                    }
+                }
+    
+                p{
+                    position:absolute;
+                    top: 44%;
+                    color: white;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 600;
+                    z-index: 999;
+
+                    @media (max-width:800px) {
+                        top: 41%;
+                        font-size: 14px;
+                        font-weight:300;
+                        line-height: 18px;
+                    }
+                }
+            }
+
+           
+
+            img {
+                z-index: -999;
+                object-fit: cover;
+            }
+
+            .imageoverlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 0;
+                background: #0000008f;
+                transition: 0.3s;
+
+                &:hover{
+                    background: transparent;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -999;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        object-fit: cover;
+        padding: 0;
+    }
+}
