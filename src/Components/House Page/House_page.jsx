@@ -4,10 +4,8 @@ import './House_page.scss'
 // import {DatePicker} from '@mui/material/DatePicker'
 // import {CAccordionCollapse} from '@coreui/react'
 //import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import CDatePicker from "react-datepicker";
 import FsLightbox from "fslightbox-react";
 import "react-datepicker/dist/react-datepicker.css";
-import Select from 'react-select';
 import Navbar from '../Navabar/Navbar';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';

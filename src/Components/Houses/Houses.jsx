@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Houses.scss'
 import { Link } from 'react-router-dom'
-import { async } from 'react-cloudinary-upload-widget';
 const Houses = () => {
 
   const [isActive, setIsActive] = useState(false);
