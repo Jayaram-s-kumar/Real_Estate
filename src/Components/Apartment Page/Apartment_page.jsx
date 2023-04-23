@@ -40,7 +40,9 @@ const Apartment_page = () => {
 
   const [apartmentData, setApartmentData] = useState([])
 
-  const api_base = 'http://localhost:3001'
+  //const api_base = 'http://localhost:3001'
+  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+
 
   const fetchData = async () => {
     console.log("function called")

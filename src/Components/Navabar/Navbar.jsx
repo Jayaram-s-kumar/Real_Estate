@@ -46,7 +46,9 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
     }
   })
 
-  const api_base = 'http://127.0.0.1:3001'
+  //const api_base = 'http://127.0.0.1:3001'
+  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+
   const sendDetails = async (formData) => {
     // setPopup(false)
     console.log(route)
