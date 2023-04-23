@@ -11,9 +11,8 @@ import { FormGroup } from '@mui/material';
 import { Checkbox } from '@mui/material';
 import { FormControlLabel } from '@mui/material'
 import * as Yup from 'yup'
-import { CloudinaryContext, Image, createUploadWidget } from 'cloudinary-react'
-import { Cloudinary } from '@cloudinary/base';
-import { Widget } from "react-cloudinary-upload-widget";
+import { CloudinaryContext, Image,  } from 'cloudinary-react'
+
 
 import { ScaleLoader } from 'react-spinners'
 import { useFormik } from 'formik'
