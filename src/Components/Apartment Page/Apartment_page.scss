@@ -148,14 +148,21 @@
         .large_image {
             margin-right: 11px;
             width: 67%;
+            width: 67%;
+            height: 500px;
+
 
             @media (max-width:800px) {
                 width: 100%;  
+                height: fit-content;
+
             }
 
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
+
             }
         }
 
@@ -166,9 +173,41 @@
             align-items: center;
             justify-content: space-between;
             position: relative;
+            height: 500px;
+
+            @media (max-width:800px) {
+                height: fit-content;
+                margin-top: 4px;
+
+            }
+
+            .first {
+                width: 100%;
+                height: 50%;
+
+                @media (max-width:800px) {
+                    height: 100%;
+
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+
 
             .second{
                 position: relative;
+                width: 100%;
+                height: 50%;
+
+                @media (max-width:800px) {
+                    height: 100%;
+
+                }
                 .image_overlay {
                     position: absolute;
                     width: 100%;
@@ -390,7 +429,7 @@
                 }
 
                 div {
-                    p {
+                    a {
                         font-family: "Montserrat", sans-serif;
                         font-weight: bold;
                         font-size: 14px;
@@ -400,6 +439,9 @@
                             font-size: 12px;
                         }
                     }
+
+
+                    
 
                     img {
                         margin-right: 10px;
@@ -464,6 +506,12 @@
                 border-width: 1px;
                 border-color: rgb(128 128 128 / 17%);
 
+                @media (max-width:800px) {
+                    width: 100%;
+                    padding-right: 3%;
+
+                }
+
                 p:first-child {
                     font-family: "Lato", sans-serif;
                     font-size: 15px;
@@ -513,7 +561,7 @@
             flex-wrap: wrap;
 
             @media (max-width:800px) {
-                        width: 90%;
+                        width: 100%;
                         margin: auto;
                         margin-bottom: 40px;
                         
@@ -538,7 +586,7 @@
 
                     @media (max-width:800px) {
                         
-                        font-size: 12px;
+                        font-size: 11px;
                     }
 
                 }
@@ -548,7 +596,7 @@
                     font-size: 14px;
                     letter-spacing: 1px;
                     @media (max-width:800px) {
-                        font-size: 12px;
+                        font-size: 11px;
                         
                     }
 

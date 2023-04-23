@@ -1,116 +1,74 @@
 import React, { useEffect, useState } from 'react'
 import './Houses.scss'
 import { Link } from 'react-router-dom'
+import { async } from 'react-cloudinary-upload-widget';
 const Houses = () => {
 
   const [isActive, setIsActive] = useState(false);
+  const [houseData, setHouseData] = useState([])
 
   const handleClick = () => {
     setIsActive(!isActive);
   };
+
+  const api_base = 'http://localhost:3001'
+
+  const fetchData = async()=>{
+    console.log("function called")
+    const response = await fetch(api_base + "/first3houses");
+    const data = await response.json();
+
+    setHouseData(data);
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+  
+  
 
 
   return (
     <div className="House-container" id='houses'>
       <h1>Houses</h1>
       <div className="cards-container">
-        <Link to={'house/id'}>
+       {
+        houseData.map((obj)=>{
+          return  <Link to={`house/${obj._id}`}>
           <div className="card">
-            {/* <div className="hot">
-              Hot
-            </div> */}
             <div className="card-image">
-              <img src="/images/House1.avif" alt="" />
+              <img src={obj.image1Link} alt="" />
             </div>
             <div className="card-details">
-              <p className="place">Golden Sands Showhome, Pāpāmoa</p>
-              <p className="price"><span>Price</span>&nbsp;15600000</p>
+              <p className="place">{obj.propName}</p>
+              <p className="price"><span>Price</span>&nbsp;{obj.price}</p>
               <div className="icons">
                 <div className="bed">
                   <img src="/images/bed.png" alt="" />
-                  <p className="count">4</p>
+                  <p className="count">{obj.bedrooms}</p>
                 </div>
                 <div className="bath">
                   <img src="/images/bathtub.png" alt="" />
-                  <p className="count">2</p>
+                  <p className="count">{obj.bathrooms}</p>
                 </div>
                 <div className="area">
                   <img src="/images/measuring.png" alt="" />
-                  <p className="count">1800 sq ft</p>
+                  <p className="count">{obj.sqfeet} sq ft</p>
                 </div>
               </div>
               <div className="description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, vitae similique neque nobis et unde? Tempore, modi? Dolor sit a dolore corporis blanditiis cumque accusamus quia earum? Praesentium, maxime molestiae.</p>
+                <p>{obj.description}</p>
               </div>
             </div>
           </div>
         </Link>
 
+        })
+       }
 
-        <Link to={'house/id'}>
-          <div className="card">
-            <div className="hot">
-              Hot
-            </div>
-            <div className="card-image">
-              <img src="/images/House2.avif" alt="" />
-            </div>
-            <div className="card-details">
-              <p className="place">Lot 9 Western Ave, Omokoroa</p>
-              <p className="price"><span>Price</span> 20000000</p>
-              <div className="icons">
-                <div className="bed">
-                  <img src="/images/bed.png" alt="" />
-                  <p className="count">4</p>
-                </div>
-                <div className="bath">
-                  <img src="/images/bathtub.png" alt="" />
-                  <p className="count">2</p>
-                </div>
-                <div className="area">
-                  <img src="/images/measuring.png" alt="" />
-                  <p className="count">2000 sq ft</p>
-                </div>
-              </div>
-              <div className="description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, vitae similique neque nobis et unde? Tempore, modi? Dolor sit a dolore corporis blanditiis cumque accusamus quia earum? Praesentium, maxime molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </Link>
+       
 
-
-        <Link to={'house/id'}>
-          <div className="card">
-            {/* <div className="hot">
-            Hot
-          </div> */}
-            <div className="card-image">
-              <img src="/images/House3.avif" alt="" />
-            </div>
-            <div className="card-details">
-              <p className="place">Lot 9 Western Ave, Omokoroa</p>
-              <p className="price"><span>Price</span> 1000000</p>
-              <div className="icons">
-                <div className="bed">
-                  <img src="/images/bed.png" alt="" />
-                  <p className="count">4</p>
-                </div>
-                <div className="bath">
-                  <img src="/images/bathtub.png" alt="" />
-                  <p className="count">2</p>
-                </div>
-                <div className="area">
-                  <img src="/images/measuring.png" alt="" />
-                  <p className="count">1500 sq ft</p>
-                </div>
-              </div>
-              <div className="description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, vitae similique neque nobis et unde? Tempore, modi? Dolor sit a dolore corporis blanditiis cumque accusamus quia earum? Praesentium, maxime molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </Link>
+       
       </div>
 
       <Link to={'/allhouses'}>

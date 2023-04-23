@@ -1,47 +1,46 @@
-
-
 .mobile_navbar {
     width: 100%;
     height: 100%;
-    background:white;
+    background: white;
     position: fixed;
     top: 0%;
-    left:-100%;
+    left: -100%;
     transition: left 0.3s ease-in-out;
     z-index: 9999;
     translate: 0%;
 
-    .close_button{
+    .close_button {
         position: absolute;
         right: 0;
         margin: 15px;
-    
-       img{
-        width: 26px;
-       }
-    
+
+        img {
+            width: 26px;
+        }
+
     }
 
-    .options{
-        ul{
+    .options {
+        ul {
             margin-top: 50px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content:left;
-            li{
+            justify-content: left;
+
+            li {
                 list-style: none;
                 font-family: 'Montserrat', sans-serif;
                 letter-spacing: 2px;
                 font-size: 15px;
-                padding:22px 10px;
+                padding: 22px 10px;
                 width: 100%;
-                text-align:left;
+                text-align: left;
                 font-weight: bold;
-                
 
-                a{
+
+                a {
                     text-decoration: none;
                     color: black;
                 }
@@ -50,15 +49,15 @@
     }
 }
 
-.open{
-    left:0%;
+.open {
+    left: 0%;
 }
 
-.close{
+.close {
     left: 100%;
 }
 
-.moveright{
+.moveright {
     translate: 40%;
     transition: right 0.3s ease-in-out;
 }
@@ -66,7 +65,7 @@
 
 
 .navcontainer {
-   
+
     height: 60px;
     display: flex;
     align-items: center;
@@ -83,7 +82,7 @@
     // border-bottom-width: 2px;
 
 
-   
+
 
     .hamburger {
 
@@ -108,6 +107,10 @@
             font-weight: 600;
             letter-spacing: 2px;
             font-size: 26px;
+
+            @media (max-width:800px) {
+                display: none;
+            }
         }
     }
 
@@ -116,12 +119,15 @@
         display: flex;
         align-items: center;
         margin-right: 1%;
+        width: 100%;
 
         .options {
 
             @media (max-width:800px) {
                 display: none;
             }
+
+            justify-content: end;
 
 
 
@@ -130,26 +136,26 @@
                 align-items: center;
                 justify-content: space-around;
 
-                a{
+                a {
 
                     text-decoration: none;
-                    
+
 
                     li {
                         list-style: none;
-    
+
                         font-family: 'Montserrat', sans-serif;
                         letter-spacing: 2px;
                         font-size: 15px;
                         padding: 10px;
                         transition: 0.3s;
                         cursor: pointer;
-    
-                      
-    
-    
-    
+
                     }
+                }
+
+                a:last-child{
+                    width: 89px;
                 }
 
 
@@ -188,6 +194,7 @@
         }
     }
 
+
 }
 
 .login_open {
@@ -218,5 +225,159 @@
 
     100% {
         translate: 0px;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.571);
+    z-index: 9999;
+}
+
+.signinup {
+
+    .closebutton {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        background: #00000017;
+
+
+        img {
+            width: 20px;
+            height: 20px;
+            padding: 10px;
+        }
+    }
+
+    width: 465px;
+    height: 544px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 99999;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    @media (max-width:800px) {
+        width: 70%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .selected {
+        border-bottom-style: solid;
+    }
+
+    .signin,
+    .signup {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        p {
+            font-family: 'Lato', sans-serif;
+            font-size: 17px;
+            letter-spacing: 1px;
+
+        }
+
+    }
+
+    .signupform,
+    .signinform {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        width: 100%;
+        height: 254px;
+        margin-top: 100px;
+
+        @media (max-width:800px) {
+            width: 87%;
+            margin-top: 10px;
+        }
+
+       
+
+            label {
+                width: 54%;
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin: 0;
+
+                @media (max-width:800px) {
+                    width: 90%;
+                }
+
+            }
+
+            input {
+                width: 240px;
+                height: 35px;
+                outline: none;
+                border-color: #8080803d;
+                border-width: 1px;
+                border-radius: 6px;
+                font-family: "Lato", sans-serif;
+                font-size: 15px;
+                font-weight: 600;
+                color: rgb(0 0 0 / 49%);
+                padding-left: 10px;
+
+                @media (max-width:800px) {
+                    width: 90%;
+                    height: 30px;
+                    font-size: 12px;
+
+                }
+
+
+                &::placeholder {
+                    color: rgb(0 0 0 / 49%);
+                }
+
+            }
+
+            button {
+                color: white;
+                background: black;
+                border: none;
+                height: 38px;
+                width: 200px;
+                border-radius: 7px;
+                margin-top: 30px;
+
+
+                p {
+                    font-family: "Lato", sans-serif;
+                    letter-spacing: 1px;
+                    font-size: 15px;
+                    margin: 0;
+
+                }
+
+            }
+        
     }
 }

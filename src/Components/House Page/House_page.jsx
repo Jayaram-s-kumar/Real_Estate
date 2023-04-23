@@ -9,12 +9,36 @@ import FsLightbox from "fslightbox-react";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from 'react-select';
 import Navbar from '../Navabar/Navbar';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const House_page = () => {
 
+  const { houseID } = useParams()
 
+  function handlesubmit(){
+
+  }
+
+
+  const [houseData, setHouseData] = useState([])
+
+  const api_base = 'http://localhost:3001'
+
+  const fetchData = async () => {
+    console.log("function called")
+    const response = await fetch(api_base + `/getPropData/${houseID}`);
+    const data = await response.json();
+    console.log(data)
+    setHouseData(data);
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
 
   const date = new Date()
@@ -23,6 +47,7 @@ const House_page = () => {
   const [toggler, setToggler] = useState(false);
   const [video, setVideo] = useState(false)
   const [inperson, setInperson] = useState(false)
+
   const timeOptions = [
     { value: '10:00', label: '10:00 AM' },
     { value: '10:30', label: '10:30 AM' },
@@ -46,6 +71,8 @@ const House_page = () => {
 
 
 
+
+
   return (
 
     <>
@@ -54,18 +81,18 @@ const House_page = () => {
         <div className="topsection">
 
           <div className="address">
-            <h2>Golden Sands Showhome, Pāpāmoa</h2>
+            <h2>{houseData.propName}</h2>
             <div>
               <img src="/images/location.png" alt="" />
-              <p>380 State Rd 3075, Asheville, NC 28803, USA</p>
+              <p>{houseData.city}</p>
             </div>
           </div>
 
           <div className="details">
-            <h2><span>Price</span> 156000</h2>
+            <h2><span>Price </span>Rs {houseData.price}</h2>
             <div className="area">
               <img src="/images/measuring.png" alt="" />
-              <p>1,245 sq feet</p>
+              <p>{houseData.sqfeet} sq feet</p>
             </div>
           </div>
 
@@ -73,34 +100,34 @@ const House_page = () => {
 
         <div className="image_section">
           <div className="large_image">
-            <img src="/images/heroimage1.jpg" alt="" />
+            <img src={houseData.image1Link} alt="" />
           </div>
           <div className="two_small">
             <>
               <FsLightbox
                 toggler={toggler}
                 sources={[
-                  'https://img.staticmb.com/mbcontent//images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg',
-                  'https://media.istockphoto.com/id/1273896468/photo/modern-home-and-electric-car.jpg?s=612x612&w=0&k=20&c=eUtbHUHT3nC1al1CIJQxribAtyJGQqwHGrmNzMIZjkY=',
-                  'https://thehomechannel.co.za/wp-content/uploads/2020/12/Australias-Best-Houses-S8.jpg',
-                  'https://img.staticmb.com/mbcontent//images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg',
-                  'https://media.istockphoto.com/id/1273896468/photo/modern-home-and-electric-car.jpg?s=612x612&w=0&k=20&c=eUtbHUHT3nC1al1CIJQxribAtyJGQqwHGrmNzMIZjkY=',
+                  `${houseData.image1Link}`,
+                  `${houseData.image2Link}`,
+                  `${houseData.image3Link}`,
+                  `${houseData.image4Link}`,
+                  `${houseData.image5Link}`,
                 ]}
               />
             </>
 
 
             <div className="first">
-              <img src="/images/heroimage2.jpg" alt="" />
+              <img src={houseData.image2Link} alt="" />
             </div>
             <div className="second">
               <p onClick={() => {
                 setToggler(!toggler)
-              }}>+5 more</p>
+              }}>+2 more</p>
               <div className="image_overlay" onClick={() => {
                 setToggler(!toggler)
               }}></div>
-              <img src="/images/heroimage3.jpg" alt="" />
+              <img src={houseData.image3Link} alt="" />
             </div>
 
 
@@ -113,7 +140,7 @@ const House_page = () => {
           <div className="bedroom">
             <div className="icons">
               <img src="/images/bed.png" alt="" />
-              <p>1</p>
+              <p>{houseData.bedrooms}</p>
             </div>
             <p>Bedroom</p>
           </div>
@@ -121,17 +148,17 @@ const House_page = () => {
           <div className="bathroom">
             <div className="icons">
               <img src="/images/bathtub.png" alt="" />
-              <p>2</p>
+              <p>{houseData.bathrooms}</p>
             </div>
             <p>Bathroom</p>
           </div>
 
           <div className="garage">
             <div className="icons">
-              <img src="/images/garage.png" alt="" />
-              <p>1</p>
+              <img src="/images/area.png" alt="" />
+              <p>{houseData.lotsize} m²</p>
             </div>
-            <p>Garage</p>
+            <p>Lot Size </p>
           </div>
 
           <div className="area">
@@ -139,13 +166,13 @@ const House_page = () => {
               <img src="/images/measuring.png" alt="" />
               <p style={{ color: 'white' }}>0</p>
             </div>
-            <p>1300 sq ft</p>
+            <p>{houseData.sqfeet} sqfeet</p>
           </div>
 
           <div className="calendar">
             <div className="icons">
               <img src="/images/calendar.png" alt="" />
-              <p style={{ marginLeft: '10px' }}>2018</p>
+              <p style={{ marginLeft: '10px' }}>{houseData.year}</p>
             </div>
             <p>Year built</p>
           </div>
@@ -157,8 +184,7 @@ const House_page = () => {
         <div className="description">
 
           <h3>Description</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ipsa sunt tenetur eos magnam fuga, consequatur nam repellat accusantium laudantium natus voluptatem animi debitis veritatis dignissimos id repellendus quam est molestiae, excepturi adipisci! Quidem doloremque debitis molestias at accusamus. Earum voluptatem debitis ad amet quasi odit dolorem ullam alias odio?</p>
-
+          <p>{houseData.description}</p>
 
         </div>
 
@@ -172,7 +198,7 @@ const House_page = () => {
                 <p>Document 1</p>
               </div>
 
-              <p>Download</p>
+              <a href={houseData.doc1Link} target="_blank" rel="noopener noreferrer">Download</a>
             </div>
 
             <div>
@@ -181,16 +207,10 @@ const House_page = () => {
                 <p>Document 2</p>
               </div>
 
-              <p>Download</p>
+              <a href={houseData.doc1Link} target="_blank" rel="noopener noreferrer">Download</a>
             </div>
 
-            <div>
-              <div>
-                <img src="/images/document.png" alt="" />
-                <p>Document 3</p>
-              </div>
-              <p>Download</p>
-            </div>
+
           </div>
         </div>
 
@@ -199,44 +219,46 @@ const House_page = () => {
           <h3>Details</h3>
           <div className="container">
             <div>
-              <p>Property ID:</p>
-              <p>TY01</p>
-            </div>
-            <div>
               <p>Price:</p>
-              <p>190,000</p>
+              <p>Rs {houseData.price}</p>
             </div>
             <div>
               <p>Property Size:</p>
-              <p>1300 sq ft</p>
+              <p>{houseData.sqfeet} sq ft</p>
             </div>
             <div>
               <p>Bedroom:</p>
-              <p>1</p>
+              <p>{houseData.bedrooms}</p>
             </div>
             <div>
               <p>Bathroom:</p>
-              <p>1</p>
+              <p>{houseData.bathrooms}</p>
             </div>
             <div>
-              <p>Garage:</p>
-              <p>1</p>
-            </div>
-            <div>
-              <p>Garage size:</p>
-              <p>79 sq ft</p>
+              <p>Lot size:</p>
+              <p>{houseData.lotsize} sq ft</p>
             </div>
             <div>
               <p>Year built:</p>
-              <p>2019</p>
+              <p>{houseData.year}</p>
             </div>
             <div>
-              <p>Propert Status:</p>
-              <p>For Sale</p>
+              <p>Furnishing</p>
+              <p>{houseData.furnishType}</p>
             </div>
-
+            <div>
+              <p>Story Type</p>
+              <p>{houseData.storyType}</p>
+            </div>
+            <div>
+              <p>Owner Name</p>
+              <p>{houseData.ownName}</p>
+            </div>
+            <div>
+              <p>Contact</p>
+              <p>{houseData.phone}</p>
+            </div>
           </div>
-
         </div>
 
 
@@ -245,42 +267,51 @@ const House_page = () => {
 
           <div className="container">
             <div>
-              <p>Covered parking:</p>
-              <p>Yes</p>
+              <p>Car Porch:</p>
+              <p>{houseData.carPorch ? 'Yes' : 'No'}</p>
             </div>
 
             <div>
-              <p>Laundary:</p>
-              <p>Yes</p>
+              <p>Internet:</p>
+              <p>{houseData.internet ? 'Yes' : 'No'}</p>
             </div>
             <div>
-              <p>Wood flooring:</p>
-              <p>Yes</p>
+              <p>Laundary:</p>
+              <p>{houseData.Laundary ? 'Yes' : 'No'}</p>
             </div>
             <div>
               <p>Storage:</p>
-              <p>Yes</p>
+              <p>{houseData.storage ? 'Yes' : 'No'}</p>
             </div>
             <div>
-              <p>Washers:</p>
-              <p>Yes</p>
+              <p>Swimming Pool:</p>
+              <p>{houseData.pool ? 'Yes' : 'No'}</p>
             </div>
             <div>
-              <p>High-Speed Internet:</p>
-              <p>Yes</p>
+              <p>Cable or Satellite Tv:</p>
+              <p>{houseData.Tv ? 'Yes' : 'No'}</p>
             </div>
             <div>
-              <p>Cable or Satellite TV:</p>
-              <p>Yes</p>
+              <p>AC</p>
+              <p>{houseData.Ac ? 'Yes' : 'No'}</p>
             </div>
             <div>
-              <p></p>
-              <p></p>
+              <p>Garden</p>
+              <p>{houseData.garden ? 'Yes' : 'No'}</p>
+            </div>
+
+            <div>
+              <p>Gated Entrance:</p>
+              <p>{houseData.gate ? 'Yes' : 'No'}</p>
+            </div>
+            <div>
+              <p>Security Cameras:</p>
+              <p>{houseData.camera ? 'Yes' : 'No'}</p>
             </div>
           </div>
         </div>
 
-        <div className="tour_container">
+        {/* <div className="tour_container">
           <div className="image">
             <img src="/images/heroimage1.jpg" alt="" />
           </div>
@@ -291,13 +322,13 @@ const House_page = () => {
               placeholderText='Select a Date' />
             <h3>Tour Type</h3>
             <div className="tour_type" >
-              <div className="video_chat" style={video ? {borderWidth:'3px'} : {borderWidth:'1px'}} onClick={()=>{
+              <div className="video_chat" style={video ? { borderWidth: '3px' } : { borderWidth: '1px' }} onClick={() => {
                 setVideo(true)
                 setInperson(false)
               }}>
                 <p>Video Chat</p>
               </div>
-              <div className="inperson" style={inperson ? {borderWidth:'3px'} : {borderWidth:'1px'}} onClick={()=>{
+              <div className="inperson" style={inperson ? { borderWidth: '3px' } : { borderWidth: '1px' }} onClick={() => {
                 setVideo(false)
                 setInperson(true)
               }}>
@@ -323,7 +354,7 @@ const House_page = () => {
 
 
           </div>
-        </div>
+        </div> */}
 
         <div className="tour_container">
 
@@ -331,26 +362,30 @@ const House_page = () => {
             <h3>Request Info</h3>
             <div className="photo">
               <div>
-                <img src="https://demo22.houzez.co/wp-content/uploads/2020/03/Artboard-2team-150x150.jpg" alt="" />
               </div>
               <div className="account">
                 <img src="/images/profile.png" alt="" />
-                <p>Mary Elizabath</p>
+                <p>{houseData.ownName}</p>
               </div>
 
             </div>
-            <input type="text" placeholder='Name' />
-            <input type="text" placeholder='Phone' />
-            <input type="text" placeholder='Email' />
-            <textarea name="" id="" cols="30" rows="10" placeholder='Message' ></textarea>
-            <div className="buttons_container">
-              <button>
-                <p>Send Message</p>
-              </button>
-              <button>
-                <p>Call</p>
-              </button>
-            </div>
+            <form onSubmit={handlesubmit}>
+              <input type="text" placeholder='Name' required/>
+              <input type="text" placeholder='Phone' required/>
+              <input type="text" placeholder='Email' required/>
+              <textarea name="" id="" cols="30" rows="10" placeholder='Message' required></textarea>
+              <div className="buttons_container">
+                <button type='submit'>
+                  <p style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>Send Message</p>
+                </button>
+                <button>
+                  <a href={`tel:${houseData.phone}`} style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>
+                    Call Now
+                  </a>
+                </button>
+              </div>
+            </form>
+
           </div>
 
           <div className="image">
@@ -364,30 +399,27 @@ const House_page = () => {
           <div>
 
             <h3>Address</h3>
-            <button>
-              <p>Open on Google Maps</p>
-            </button>
-
           </div>
 
           <div className="container">
             <div>
-              <p>Address</p>
-              <p>380 State Rd 3075</p>
-            </div>
-            <div>
-              <p>Zip/Postal Code</p>
-              <p>28803</p>
+              <p>Street Adress</p>
+              <p>{houseData.streetAddress} </p>
             </div>
             <div>
               <p>City</p>
-              <p>Miami Beach</p>
+              <p>{houseData.city}</p>
+            </div>
+            <div>
+              <p>State</p>
+              <p>{houseData.state}</p>
+            </div>
+            <div>
+              <p>Postal code</p>
+              <p>{houseData.postalCode}</p>
             </div>
           </div>
 
-          <div className="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38778.5029984928!2d13.379307475289231!3d52.59390452065307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84d659919bad1%3A0x52120465b5faee0!2sBlankenburg%2C%20Berlin%2C%20Germany!5e0!3m2!1sen!2sin!4v1681565227545!5m2!1sen!2sin" loading="lazy"></iframe>
-          </div>
         </div>
 
 

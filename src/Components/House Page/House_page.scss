@@ -92,9 +92,7 @@
                     color: #000000b3;
                     margin-right: 10px;
 
-                    @media (max-width:800px) {
-                        margin-right: 0px;
-                    }
+
 
                 }
 
@@ -149,14 +147,18 @@
         .large_image {
             margin-right: 11px;
             width: 67%;
+            width: 67%;
+            height: 500px;
 
             @media (max-width:800px) {
                 width: 100%;
+                height: fit-content;
             }
 
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
             }
         }
 
@@ -167,9 +169,39 @@
             align-items: center;
             justify-content: space-between;
             position: relative;
+            height: 500px;
+
+            @media (max-width:800px) {
+                height: fit-content;
+                margin-top: 4px;
+
+            }
+
+            .first {
+                width: 100%;
+                height: 50%;
+
+                @media (max-width:800px) {
+                    height: 100%;
+
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
 
             .second {
                 position: relative;
+                width: 100%;
+                height: 50%;
+
+                @media (max-width:800px) {
+                    height: 100%;
+
+                }
 
                 .image_overlay {
                     position: absolute;
@@ -213,6 +245,7 @@
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
             }
 
 
@@ -387,6 +420,8 @@
                     font-weight: bold;
                     font-size: 14px;
                     color: grey;
+                    text-decoration: none;
+
 
                     @media (max-width:800px) {
                         font-size: 12px;
@@ -394,17 +429,32 @@
 
                 }
 
+                a {
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: grey;
+                    text-decoration: none;
+
+                    @media (max-width:800px) {
+                        font-size: 12px;
+                    }
+                }
+
+
                 div {
                     p {
                         font-family: "Montserrat", sans-serif;
                         font-weight: bold;
                         font-size: 14px;
                         color: grey;
+                        text-decoration: none;
 
                         @media (max-width:800px) {
                             font-size: 12px;
                         }
                     }
+
 
                     img {
                         margin-right: 10px;
@@ -470,6 +520,12 @@
                 border-width: 1px;
                 border-color: rgb(128 128 128 / 17%);
 
+                @media (max-width:800px) {
+                    width: 100%;
+                    padding-right: 3%;
+
+                }
+
                 p:first-child {
                     font-family: "Lato", sans-serif;
                     font-size: 15px;
@@ -519,7 +575,7 @@
             flex-wrap: wrap;
 
             @media (max-width:800px) {
-                width: 90%;
+                width: 100%;
                 margin: auto;
                 margin-bottom: 40px;
 
@@ -544,7 +600,7 @@
 
                     @media (max-width:800px) {
 
-                        font-size: 12px;
+                        font-size: 11px;
                     }
 
                 }
@@ -555,7 +611,7 @@
                     letter-spacing: 1px;
 
                     @media (max-width:800px) {
-                        font-size: 12px;
+                        font-size: 11px;
 
                     }
 
@@ -789,7 +845,7 @@
                 width: 240px;
                 margin-bottom: 20px;
 
-                div{
+                div {
                     overflow: hidden;
                     border-radius: 3px;
 
@@ -798,29 +854,30 @@
                         height: 70px;
                         object-fit: cover;
                     }
-                
+
                 }
 
-                .account{
+                .account {
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
                     min-width: 85px;
 
-                    img{
+                    img {
                         width: 20px;
                         height: 20px;
                     }
+
                     p {
                         font-family: "Lato", sans-serif;
                         font-size: 15px;
                         margin-left: 10px;
                     }
-    
-                   
+
+
                 }
 
-               
+
             }
 
             input {
@@ -856,31 +913,17 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                width:254px ;
+                width: 254px;
 
                 @media (max-width:800px) {
                     width: 94%;
-                    
+
                 }
 
                 button {
                     width: 100px;
                     margin-left: 0px;
 
-                    p{
-                        font-family: "Lato", sans-serif;
-                        letter-spacing: 1px;
-                        font-size: 12px;
-                        margin: 0;
-    
-                    }
-
-                    @media (max-width:800px) {
-                        p{
-                            font-size: 12px;
-                        }
-                    }
-    
                 }
 
             }
@@ -1005,6 +1048,7 @@
                     font-family: "Lato", sans-serif;
                     font-size: 14px;
                     letter-spacing: 1px;
+                    text-align: right;
 
                     @media (max-width:800px) {
                         font-size: 11px;

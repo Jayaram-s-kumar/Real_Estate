@@ -7,6 +7,9 @@ import Gallery from "./Pages/Gallery";
 import Apartment_page from "./Components/Apartment Page/Apartment_page";
 import AllApartments from "./Components/AllApartments/AllApartments";
 import Footer from "./Components/Footer/Footer";
+import SellNow from "./Components/SellNow/SellNow";
+import SellnowPage from "./Components/SellnowPage/SellnowPage";
+
 function App() {
   return (
     <div>
@@ -19,6 +22,7 @@ function App() {
           <Route path="/allhouses" element={<AllHouses />}></Route>
 
           <Route path="/house/:houseID" element={<House_page/>}></Route>
+          <Route path="sell/house/:houseID" element={<House_page/>}></Route>
 
 
           <Route path="/allhouses/house/:houseID" element={<House_page/>}></Route>
@@ -27,6 +31,7 @@ function App() {
 
           <Route path="/allapartments" element={<AllApartments/>}></Route>
           <Route path="/apartment/:apartmentID" element={<Apartment_page/>}></Route>
+          <Route path="sell/apartment/:apartmentID" element={<Apartment_page/>}></Route>
 
           <Route path="/allapartments/apartment/:apartmentID" element={<Apartment_page/>}></Route>
 
@@ -37,6 +42,7 @@ function App() {
           </Route>
 
           <Route path="/gallery" element={<Gallery />}></Route>
+          <Route path="/sell" element={<SellnowPage/>}></Route>
         </Routes>
       </BrowserRouter>
 

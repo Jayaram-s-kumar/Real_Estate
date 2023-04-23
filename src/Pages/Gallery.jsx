@@ -1,9 +1,22 @@
-import React from 'react'
+import React ,{useEffect} from 'react'
 import './Gallery.scss'
 import HeroSection from '../Components/HeroComp/HeroSection'
 import Navbar from '../Components/Navabar/Navbar'
+import { useNavigate } from 'react-router-dom'
 
 const Gallery = () => {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      if(!localStorage.getItem("user")){
+        navigate('/')
+      }
+    
+    }, [])
+    
+
+
     return (
         <>
             <HeroSection heroBottomStyle={{ display: 'none' }} />
