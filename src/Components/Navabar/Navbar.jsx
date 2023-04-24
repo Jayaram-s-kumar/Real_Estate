@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './Navbar.scss'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -12,6 +13,8 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
   useEffect(() => {
     setExist(false)
   }, [])
+
+  const navigate = useNavigate()
 
   const [open, setOpen] = useState(false)
   const [close, setClose] = useState(false)
@@ -65,22 +68,24 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
       })
     })).json()
 
-    if (data.message === "email already exist") {
-      setExist(true)
-    } else if (data.message === "user created") {
+    if (data.message === "signed in") {
       setPopup(false)
-    } else if (data.message === "signed in") {
-      setPopup(false)
+      window.location.reload()
       localStorage.setItem("user", JSON.stringify({
         email: data.email,
         loginID: data.loginID
       }))
       document.body.classList.remove('overlay')
+      window.location.reload()
     } else if (data.message === "password error") {
       setPassErr(true)
     } else if (data.message === "email not registerd") {
       setEmailErr(true)
-    }
+    } else if (data.message === "user created") {
+      setPopup(false)
+    } else if (data.message === "email already exist") {
+      setExist(true)
+    } 
   }
 
   useEffect(() => {
@@ -92,6 +97,8 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
     localStorage.removeItem('user');
     setUser(null);
     document.body.classList.remove('overlay')
+    navigate('/')
+    window.location.reload()
   };
 
 

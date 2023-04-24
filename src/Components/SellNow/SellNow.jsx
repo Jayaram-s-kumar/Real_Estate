@@ -10,7 +10,7 @@ const SellNow = () => {
             </div>
             <div className="right">
                 {
-                    localStorage.getItem('user') && <Link to={'/sell'}>
+                     <Link to={'/sell'}>
                         <button>
                             <p>Sell Now</p>
                         </button>

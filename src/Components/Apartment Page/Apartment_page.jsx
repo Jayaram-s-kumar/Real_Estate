@@ -12,6 +12,33 @@ const Apartment_page = () => {
 
   const { apartmentID } = useParams()
 
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  async function handlesubmit(e) {
+    e.preventDefault()
+    const form = e.target;
+    const formData = new FormData();
+    formData.name = name
+    formData.email = email
+    formData.phone = phone
+    formData.message = message
+    formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email
+    await (await fetch(api_base + "/sendinforeq", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })).json()
+    setMessage('')
+    setName('')
+    setPhone('')
+    setEmail('')
+  }
+
   const date = new Date()
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState('12:00');
@@ -372,7 +399,7 @@ const Apartment_page = () => {
           </div>
         </div>
 
-        <div className="tour_container">
+        {/* <div className="tour_container">
           <div className="image">
             <img src="/images/Apartment9.jpg" alt="" />
           </div>
@@ -415,10 +442,10 @@ const Apartment_page = () => {
 
 
           </div>
-        </div>
+        </div> */}
 
 
-        {/* <div className="tour_container">
+        { <div className="tour_container">
 
           <div className="tour">
             <h3>Request Info</h3>
@@ -431,28 +458,29 @@ const Apartment_page = () => {
               </div>
 
             </div>
-            <input type="text" placeholder='Name' />
-            <input type="text" placeholder='Phone' />
-            <input type="text" placeholder='Email' />
-            <textarea name="" id="" cols="30" rows="10" placeholder='Message' ></textarea>
-            <div className="buttons_container">
-              <button>
-                <p style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>Send Message</p>
-              </button>
-              <button>
-                <a href={`tel:${apartmentData.phone}`} style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>
-                  Call Now
-                </a>
-
-              </button>
-            </div>
+            <form onSubmit={handlesubmit}>
+              <input type="text" placeholder='Name' required name='name' value={name} onChange={(e) => setName(e.target.value)} />
+              <input type="text" placeholder='Phone' required name='phone' value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <input type="text" placeholder='Email' required name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              <textarea id="" cols="30" rows="10" placeholder='Message' required name='message' value={message} onChange={(e) => (setMessage(e.target.value))}></textarea>
+              <div className="buttons_container">
+                <button type='submit'>
+                  <p style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>Send Message</p>
+                </button>
+                <button>
+                  <a href={`tel:${apartmentData.phone}`} style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>
+                    Call Now
+                  </a>
+                </button>
+              </div>
+            </form>
           </div>
 
           <div className="image">
             <img src="/images/Apartment10.avif" alt="" />
           </div>
 
-        </div> */}
+        </div> }
 
 
         <div className="address_section">

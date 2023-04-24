@@ -17,8 +17,31 @@ const House_page = () => {
 
   const { houseID } = useParams()
 
-  function handlesubmit(){
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
 
+  async function handlesubmit(e) {
+    e.preventDefault()
+    const form = e.target;
+    const formData = new FormData();
+    formData.name = name
+    formData.email = email
+    formData.phone = phone
+    formData.message = message
+    formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email
+    await (await fetch(api_base + "/sendinforeq", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })).json()
+    setMessage('')
+    setName('')
+    setPhone('')
+    setEmail('')
   }
 
 
@@ -370,10 +393,10 @@ const House_page = () => {
 
             </div>
             <form onSubmit={handlesubmit}>
-              <input type="text" placeholder='Name' required/>
-              <input type="text" placeholder='Phone' required/>
-              <input type="text" placeholder='Email' required/>
-              <textarea name="" id="" cols="30" rows="10" placeholder='Message' required></textarea>
+              <input type="text" placeholder='Name' required name='name' value={name} onChange={(e) => setName(e.target.value)} />
+              <input type="text" placeholder='Phone' required name='phone' value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <input type="text" placeholder='Email' required name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              <textarea id="" cols="30" rows="10" placeholder='Message' required name='message' value={message} onChange={(e) => (setMessage(e.target.value))}></textarea>
               <div className="buttons_container">
                 <button type='submit'>
                   <p style={{ color: 'white', textDecoration: 'none', fontFamily: '"Lato", sans-serif', fontSize: '12px' }}>Send Message</p>
