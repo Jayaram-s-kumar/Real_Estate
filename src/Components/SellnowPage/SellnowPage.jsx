@@ -11,7 +11,7 @@ import { FormGroup } from '@mui/material';
 import { Checkbox } from '@mui/material';
 import { FormControlLabel } from '@mui/material'
 import * as Yup from 'yup'
-import { CloudinaryContext, Image,  } from 'cloudinary-react'
+import { CloudinaryContext, Image, } from 'cloudinary-react'
 
 
 import { ScaleLoader } from 'react-spinners'
@@ -23,8 +23,8 @@ const SellnowPage = () => {
 
     const navigate = useNavigate()
 
-   
-    
+
+
 
     //const api_base = 'http://localhost:3001'
 
@@ -305,11 +305,11 @@ const SellnowPage = () => {
 
         console.log(data)
 
-       if(apartment){
+        if (apartment) {
             navigate(`apartment/${data._id}`)
-       }else{
-        navigate(`house/${data._id}`)
-       }
+        } else {
+            navigate(`house/${data._id}`)
+        }
 
     }
 
@@ -529,98 +529,122 @@ const SellnowPage = () => {
                     }
 
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>High Speed Internet</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" value={values.internet} onChange={handleChange} name='internet' />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup >
+                                <FormControlLabel control={<Checkbox />} label="Yes" value={values.internet} onChange={handleChange} name='internet' />
+                            </FormGroup>
+                        </div>
                     </div>
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Swimming pool</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" value={values.pool} onChange={handleChange} name='pool' />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" value={values.pool} onChange={handleChange} name='pool' />
+                            </FormGroup>
+                        </div>
                     </div>
 
                     {
-                        apartment && <div className="suboptions">
+                        apartment && <div className="suboptions makeitrow">
                             <p>Sea view</p>
-                            <FormGroup>
-                                <FormControlLabel control={<Checkbox />} label="Yes" name='seaview' onChange={handleChange} value={values.seaview} />
-                            </FormGroup>
+                            <div className="checking">
+                                <FormGroup>
+                                    <FormControlLabel control={<Checkbox />} label="Yes" name='seaview' onChange={handleChange} value={values.seaview} />
+                                </FormGroup>
+                            </div>
                         </div>
 
                     }
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Car porch</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='carPorch' value={values.carPorch} onChange={handleChange} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='carPorch' value={values.carPorch} onChange={handleChange} />
+                            </FormGroup>
+                        </div>
                     </div>
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Garden</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='garden' onChange={handleChange} value={values.garden} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='garden' onChange={handleChange} value={values.garden} />
+                            </FormGroup>
+                        </div>
                     </div>
 
 
                     {
-                        apartment && <div className="suboptions">
+                        apartment && <div className="suboptions makeitrow">
                             <p>Fitness center</p>
-                            <FormGroup>
-                                <FormControlLabel control={<Checkbox />} label="Yes" name='fitness' onChange={handleChange} value={values.fitness} />
-                            </FormGroup>
+                            <div className="checking">
+                                <FormGroup>
+                                    <FormControlLabel control={<Checkbox />} label="Yes" name='fitness' onChange={handleChange} value={values.fitness} />
+                                </FormGroup>
+                            </div>
                         </div>
 
                     }
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>AC</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='Ac' onChange={handleChange} value={values.Ac} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='Ac' onChange={handleChange} value={values.Ac} />
+                            </FormGroup>
+                        </div>
                     </div>
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Laundary</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='Laundary' onChange={handleChange} value={values.Laundary} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='Laundary' onChange={handleChange} value={values.Laundary} />
+                            </FormGroup>
+                        </div>
                     </div>
 
 
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Cable or Satellite TV</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='Tv' onChange={handleChange} value={values.Tv} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='Tv' onChange={handleChange} value={values.Tv} />
+                            </FormGroup>
+                        </div>
                     </div>
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Storage</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='storage' onChange={handleChange} value={values.storage} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='storage' onChange={handleChange} value={values.storage} />
+                            </FormGroup>
+                        </div>
                     </div>
 
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Gated Entrance</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='gate' onChange={handleChange} value={values.gate} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='gate' onChange={handleChange} value={values.gate} />
+                            </FormGroup>
+                        </div>
                     </div>
 
-                    <div className="suboptions">
+                    <div className="suboptions makeitrow">
                         <p>Security Cameras</p>
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label="Yes" name='camera' onChange={handleChange} value={values.camera} />
-                        </FormGroup>
+                        <div className="checking">
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox />} label="Yes" name='camera' onChange={handleChange} value={values.camera} />
+                            </FormGroup>
+                        </div>
                     </div>
 
 
@@ -631,121 +655,144 @@ const SellnowPage = () => {
                     <h3>Upload images</h3>
 
 
-                    <input type="file" id='file1' name='image1Link' onChange={(event) => {
-                        setFieldValue('image1Link', event.currentTarget.files[0])
-                        handleImage1Upload()
-                        uploadimage(event, 1)
+                    <div className='inputbox'>
+                        <input type="file" id='file1' name='image1Link' onChange={(event) => {
+                            setFieldValue('image1Link', event.currentTarget.files[0])
+                            handleImage1Upload()
+                            uploadimage(event, 1)
 
-                    }} />
-                    {image1IsLoading && !image1Link ? <ScaleLoader
-                        color="hsla(323, 67%, 42%, 1)"
-                        height={13}
-                        loading
-                        width={6}
-                    /> : null}
-                    <p className='error'>{errors.image1Link && touched.image1Link ? errors.image1Link : null}</p>
-                    <div className="uploadedimage">
-                        <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                <Image publicId={image1Link} />
-                            </div>
-                        </CloudinaryContext>
+                        }} className='inputfile' />
+
+                        <p className='error'>{errors.image1Link && touched.image1Link ? errors.image1Link : null}</p>
+                        <div className="uploadedimage">
+                            {image1IsLoading && !image1Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            {image1Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                    <Image publicId={image1Link} />
+                                </div>
+                            </CloudinaryContext>}
+                        </div>
+
                     </div>
 
 
 
+                    <div className='inputbox'>
+                        <input type="file" id='file1' name='image2Link' onChange={(event) => {
+                            setFieldValue('image2Link', event.currentTarget.files[0])
+                            handleImage2Upload()
+                            uploadimage(event, 2)
 
-                    <input type="file" id='file1' name='image2Link' onChange={(event) => {
-                        setFieldValue('image2Link', event.currentTarget.files[0])
-                        handleImage2Upload()
-                        uploadimage(event, 2)
+                        }} className='inputfile' />
 
-                    }} />
-                    {image2IsLoading && !image2Link ? <ScaleLoader
-                        color="hsla(323, 67%, 42%, 1)"
-                        height={13}
-                        loading
-                        width={6}
-                    /> : null}
-                    <p className='error'>{errors.image2Link && touched.image2Link ? errors.image2Link : null}</p>
-                    <div className="uploadedimage">
-                        <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                <Image publicId={image2Link} />
-                            </div>
-                        </CloudinaryContext>
+                        <p className='error'>{errors.image2Link && touched.image2Link ? errors.image2Link : null}</p>
+                        <div className="uploadedimage">
+                            {image2IsLoading && !image2Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            {
+                                image2Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                        <Image publicId={image2Link} />
+                                    </div>
+                                </CloudinaryContext>
+                            }
+                        </div>
+
+
                     </div>
 
 
+                    <div className='inputbox'>
+                        <input type="file" id='file1' name='image3Link' onChange={(event) => {
+                            setFieldValue('image3Link', event.currentTarget.files[0])
+                            handleImage3Upload()
+                            uploadimage(event, 3)
 
+                        }} className='inputfile' />
 
-                    <input type="file" id='file1' name='image3Link' onChange={(event) => {
-                        setFieldValue('image3Link', event.currentTarget.files[0])
-                        handleImage3Upload()
-                        uploadimage(event, 3)
+                        <p className='error'>{errors.image3Link && touched.image3Link ? errors.image3Link : null}</p>
+                        <div className="uploadedimage">
+                            {image3IsLoading && !image3Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            {
+                                image3Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                        <Image publicId={image3Link} />
+                                    </div>
+                                </CloudinaryContext>
+                            }
+                        </div>
 
-                    }} />
-                    {image3IsLoading && !image3Link ? <ScaleLoader
-                        color="hsla(323, 67%, 42%, 1)"
-                        height={13}
-                        loading
-                        width={6}
-                    /> : null}
-                    <p className='error'>{errors.image3Link && touched.image3Link ? errors.image3Link : null}</p>
-                    <div className="uploadedimage">
-                        <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                <Image publicId={image3Link} />
-                            </div>
-                        </CloudinaryContext>
                     </div>
 
 
+                    <div className='inputbox'>
+                        <input type="file" id='file1' name='image4Link' onChange={(event) => {
+                            setFieldValue('image4Link', event.currentTarget.files[0])
+                            handleImage4Upload()
+                            uploadimage(event, 4)
 
-                    <input type="file" id='file1' name='image4Link' onChange={(event) => {
-                        setFieldValue('image4Link', event.currentTarget.files[0])
-                        handleImage4Upload()
-                        uploadimage(event, 4)
+                        }} className='inputfile' />
 
-                    }} />
-                    {image4IsLoading && !image4Link ? <ScaleLoader
-                        color="hsla(323, 67%, 42%, 1)"
-                        height={13}
-                        loading
-                        width={6}
-                    /> : null}
-                    <p className='error'>{errors.image4Link && touched.image4Link ? errors.image4Link : null}</p>
-                    <div className="uploadedimage">
-                        <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                <Image publicId={image4Link} />
-                            </div>
-                        </CloudinaryContext>
+                        <p className='error'>{errors.image4Link && touched.image4Link ? errors.image4Link : null}</p>
+                        <div className="uploadedimage">
+                            {image4IsLoading && !image4Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            {
+                                image4Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                        <Image publicId={image4Link} />
+                                    </div>
+                                </CloudinaryContext>
+                            }
+                        </div>
+
                     </div>
 
 
+                    <div className='inputbox'>
+                        <input type="file" id='file1' name='image5Link' onChange={(event) => {
+                            setFieldValue('image5Link', event.currentTarget.files[0])
+                            handleImage5Upload()
+                            uploadimage(event, 5)
 
-                    <input type="file" id='file1' name='image5Link' onChange={(event) => {
-                        setFieldValue('image5Link', event.currentTarget.files[0])
-                        handleImage5Upload()
-                        uploadimage(event, 5)
+                        }} className='inputfile' />
 
-                    }} />
-                    {image5IsLoading && !image5Link ? <ScaleLoader
-                        color="hsla(323, 67%, 42%, 1)"
-                        height={13}
-                        loading
-                        width={6}
-                    /> : null}
-                    <p className='error'>{errors.image5Link && touched.image5Link ? errors.image5Link : null}</p>
-                    <div className="uploadedimage">
-                        <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                <Image publicId={image5Link} />
-                            </div>
-                        </CloudinaryContext>
+                        <p className='error'>{errors.image5Link && touched.image5Link ? errors.image5Link : null}</p>
+                        <div className="uploadedimage">
+                            {image5IsLoading && !image5Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            {
+                                image5Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                        <Image publicId={image5Link} />
+                                    </div>
+                                </CloudinaryContext>
+                            }
+                        </div>
+
                     </div>
-
                     <h3>Upload documents</h3>
 
 
@@ -756,10 +803,10 @@ const SellnowPage = () => {
                             uploadimage(event, 6)
                         }} />
                         {doc1IsLoading && !doc1Link ? <ScaleLoader
-                            color="hsla(323, 67%, 42%, 1)"
-                            height={13}
+                            color="#80808087"
+                            height={20}
                             loading
-                            width={6}
+                            width={10}
                         /> : null}
                         <p className='error'>{errors.doc1Link && touched.doc1Link ? errors.doc1Link : null}</p>
 
@@ -771,20 +818,20 @@ const SellnowPage = () => {
                         uploadimage(event, 7)
                     }} onBlur={handleBlur} />
                     {doc2IsLoading && !doc2Link ? <ScaleLoader
-                        color="hsla(323, 67%, 42%, 1)"
-                        height={13}
+                        color="#80808087"
+                        height={20}
                         loading
-                        width={6}
+                        width={10}
                     /> : null}
                     <p className='error'>{errors.doc2Link && touched.doc2Link ? errors.doc2Link : null}</p>
 
 
                     <div className="button_div">
-                       
-                            <button type='submit'>
-                                <p>UPLOAD</p>
-                            </button>
-                       
+
+                        <button type='submit'>
+                            <p>UPLOAD</p>
+                        </button>
+
                     </div>
 
                 </form>
