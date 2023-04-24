@@ -23,13 +23,14 @@ const House_page = () => {
   const [message, setMessage] = useState('')
 
   async function handlesubmit(e) {
-    e.preventDefault()
+    //e.preventDefault()
     const form = e.target;
     const formData = new FormData();
     formData.name = name
     formData.email = email
     formData.phone = phone
     formData.message = message
+    formData.propName = houseData.propName
     formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email
     await (await fetch(api_base + "/sendinforeq", {
       method: 'POST',
@@ -221,7 +222,7 @@ const House_page = () => {
                 <p>Document 1</p>
               </div>
 
-              <a href={houseData.doc1Link} target="_blank" rel="noopener noreferrer">Download</a>
+              <a href={houseData.doc1Link}  rel="noopener noreferrer">Download</a>
             </div>
 
             <div>
@@ -230,7 +231,7 @@ const House_page = () => {
                 <p>Document 2</p>
               </div>
 
-              <a href={houseData.doc1Link} target="_blank" rel="noopener noreferrer">Download</a>
+              <a href={houseData.doc1Link}  rel="noopener noreferrer">Download</a>
             </div>
 
 

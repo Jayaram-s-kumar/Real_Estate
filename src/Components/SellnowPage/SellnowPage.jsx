@@ -26,7 +26,7 @@ const SellnowPage = () => {
 
 
 
-    //const api_base = 'http://localhost:3001'
+   // const api_base = 'http://localhost:3001'
 
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
