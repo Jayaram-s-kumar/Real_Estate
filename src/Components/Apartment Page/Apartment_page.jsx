@@ -282,7 +282,7 @@ const Apartment_page = () => {
                 <p>Document 1</p>
               </div>
 
-              <a href={apartmentData.doc1Link}  rel="noopener noreferrer"><p>Download</p></a>
+              <a href={apartmentData.doc1Link} ><p>Download</p></a>
             </div>
 
             <div>
@@ -291,7 +291,7 @@ const Apartment_page = () => {
                 <p>Document 2</p>
               </div>
 
-              <a href={apartmentData.doc2Link}  rel="noopener noreferrer"><p>Download</p></a>
+              <a href={apartmentData.doc2Link} ><p>Download</p></a>
             </div>
 
 

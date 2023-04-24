@@ -222,7 +222,7 @@ const House_page = () => {
                 <p>Document 1</p>
               </div>
 
-              <a href={houseData.doc1Link}  rel="noopener noreferrer">Download</a>
+              <a href={houseData.doc1Link} target='_blank'>Download</a>
             </div>
 
             <div>
@@ -231,7 +231,7 @@ const House_page = () => {
                 <p>Document 2</p>
               </div>
 
-              <a href={houseData.doc1Link}  rel="noopener noreferrer">Download</a>
+              <a href={houseData.doc1Link}  target='_blank'>Download</a>
             </div>
 
 

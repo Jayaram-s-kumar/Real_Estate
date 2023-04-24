@@ -49,8 +49,8 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
     }
   })
 
-  const api_base = 'http://127.0.0.1:3001'
-  //const api_base = 'https://real-estate-backend-yuae.onrender.com'
+  //const api_base = 'http://127.0.0.1:3001'
+  const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
   const sendDetails = async (formData) => {
     // setPopup(false)
@@ -200,7 +200,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
       </div>
 
-      <div className={open ? 'mobile_navbar open' : close ? 'mobile_navbar close' : 'mobile_navbar'}>
+      <div className={open ? 'mobile_navbar open' : close ? 'mobile_navbar close' : 'mobile_navbar'} style={open ? {display:'block'} : {display:'none'}}>
         <div className="close_button">
           <img src="/images/close.png" alt="" onClick={() => {
             setOpen(!open)
@@ -307,6 +307,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
       <div className="overlay" style={popup ? { display: 'block' } : { display: 'none' }} onClick={() => {
         setPopup(false)
+        document.body.classList.remove('overlay')
       }}></div>
 
       {
