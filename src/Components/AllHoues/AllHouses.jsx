@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './AllHouses.scss'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navabar/Navbar'
+import SellNow from '../SellNow/SellNow'
+import { useNavigate } from 'react-router-dom'
 
 const AllHouses = () => {
 
   //const api_base = 'http://localhost:3001'
    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+
+   const navigate = useNavigate()
 
 
     const [houseData, setHouseData] = useState([])
@@ -23,6 +27,15 @@ const AllHouses = () => {
     useEffect(() => {
         fetchData()
     }, [])
+
+    useEffect(() => {
+     
+      if(!localStorage.getItem('user')){
+        navigate('/signinup')
+      }
+     
+    }, [])
+    
 
     return (
         <>
@@ -69,6 +82,8 @@ const AllHouses = () => {
 
                 </div>
             </div>
+
+            <SellNow/>
         </>
 
     )

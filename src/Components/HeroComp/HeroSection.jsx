@@ -55,11 +55,11 @@ const HeroSection = ({ heroBottomStyle, closeMobLogin }) => {
 
 
                     <div className="image">
-                        <img src="/images/Hero2.avif" alt="" />
+                        <img src="/images/car.jpeg" alt="" />
                         <div className="imageoverlay"></div>
                         <div className="image-details">
-                            <h3>Artistry</h3>
-                            <p>Elevate your living space with our award-winning <br /> interior designs</p>
+                            <h3>Cars</h3>
+                            <p>Find your dream ride with our selection of cars</p>
                         </div>
                     </div>
                     <div className="image">

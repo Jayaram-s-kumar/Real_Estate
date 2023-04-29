@@ -5,8 +5,7 @@ import { Link, Navigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
-
-
+//import {Link} from 'react-scroll'
 
 const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
@@ -70,13 +69,13 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
     if (data.message === "signed in") {
       setPopup(false)
-      window.location.reload()
+     // window.location.reload()
       localStorage.setItem("user", JSON.stringify({
         email: data.email,
         loginID: data.loginID
       }))
       document.body.classList.remove('overlay')
-      window.location.reload()
+     // window.location.reload()
     } else if (data.message === "password error") {
       setPassErr(true)
     } else if (data.message === "email not registerd") {
@@ -85,7 +84,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
       setPopup(false)
     } else if (data.message === "email already exist") {
       setExist(true)
-    } 
+    }
   }
 
   useEffect(() => {
@@ -116,6 +115,14 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
             }
           }} />
         </div>
+        {
+          localStorage.getItem('user') && <div className="profile">
+            <Link to={'/myaccount'}>
+              <img src={txtCol === 'white' ? '/images/user_white.png' : '/images/user_black.png'} alt="" />
+            </Link>
+
+          </div>
+        }
         <div className="logo">
           <h2 style={{ color: txtCol }}>Nest Homes</h2>
         </div>
@@ -123,30 +130,43 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
           <div className="options">
             <ul>
 
-              <Link to={'/'} style={{ color: txtCol }}>
+              <Link style={{ color: txtCol }} to={'/'}>
                 <li style={{ color: txtCol }} className={hoverClass}>
                   HOME
                 </li>
               </Link>
 
               {
-                user && <Link to={'/sell'} style={{ color: txtCol }}>
+                user && <Link style={{ color: txtCol }} to={'/sellnow'}>
                   <li style={{ color: txtCol }} className={hoverClass}>
                     SELL
                   </li>
                 </Link>
               }
-              <Link to={'/allhouses'} style={{ color: txtCol }}>
+              <Link style={{ color: txtCol }} to={'/allhouses'}>
                 <li style={{ color: txtCol }} className={hoverClass}>
                   HOUSES
                 </li>
               </Link>
 
-              <Link to={'/allapartments'} style={{ color: txtCol }}>
+              <Link style={{ color: txtCol }} to={'/allapartments'}>
                 <li style={{ color: txtCol }} className={hoverClass}>
                   APARTMENTS
                 </li>
               </Link>
+
+              <Link style={{ color: txtCol }} to={'/allcars'}>
+                <li style={{ color: txtCol }} className={hoverClass}>
+                  CARS
+                </li>
+              </Link>
+
+              <Link style={{ color: txtCol }} to={'/gallery'}>
+                <li style={{ color: txtCol }} className={hoverClass}>
+                  GALLERY
+                </li>
+              </Link>
+
 
 
 
@@ -169,27 +189,12 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
                 user
                 &&
 
-                <Link to={'/'} style={{ color: txtCol }}>
+                <Link to={'/myaccount'} style={{ color: txtCol }}>
                   <li style={{ color: txtCol }} className={hoverClass}>
-                    {user.email}
+                    PROFILE
                   </li>
                 </Link>
               }
-
-              {
-                user
-                &&
-
-                <Link to={'/'} style={{ color: txtCol }}>
-                  <li style={{ color: txtCol }} className={hoverClass} onClick={() => {
-                    handleLogout()
-                    document.body.classList.remove('overlay')
-                  }}>
-                    LOGOUT
-                  </li>
-                </Link>
-              }
-
 
 
 
@@ -200,7 +205,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
       </div>
 
-      <div className={open ? 'mobile_navbar open' : close ? 'mobile_navbar close' : 'mobile_navbar'} style={open ? {display:'block'} : {display:'none'}}>
+      <div className={open ? 'mobile_navbar open' : close ? 'mobile_navbar close' : 'mobile_navbar'} style={open ? { display: 'block' } : { display: 'none' }}>
         <div className="close_button">
           <img src="/images/close.png" alt="" onClick={() => {
             setOpen(!open)
@@ -226,14 +231,13 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
             }
 
-
-
             <li onClick={() => {
               setOpen(!open)
               setClose(false)
               document.body.style.overflow = 'unset'
+              navigate('/')
             }}>
-              <Link to={'/'}>HOME</Link >
+              <Link>HOME</Link >
             </li>
 
             <li onClick={() => {
@@ -267,7 +271,17 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
                 setClose(false)
                 document.body.style.overflow = 'unset'
               }}>
-                <Link to={'/sell'}>SELL</Link >
+                <Link to={'/sell'}>SELL PROPERTIES</Link >
+              </li>
+            }
+
+            {
+              user && <li onClick={() => {
+                setOpen(!open)
+                setClose(false)
+                document.body.style.overflow = 'unset'
+              }}>
+                <Link to={'/uploadcar'}>SELL CARS</Link >
               </li>
             }
 
@@ -278,11 +292,11 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
               user && <li style={{ color: txtCol }} className={hoverClass} onClick={() => {
                 setOpen(!open)
                 setClose(false)
-                document.body.classList.add('overlay')
+                //  document.body.classList.add('overlay')
                 document.body.style.overflow = 'unset'
 
               }}>
-                <Link to={'/'}>{user.email}</Link>
+                <Link to={'/myaccount'}>PROFILE</Link>
               </li>
             }
 
@@ -372,6 +386,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
                 <button onClick={() => {
                   setRoute('/signin')
+
                 }}>
                   <p>Sign In</p>
                 </button>

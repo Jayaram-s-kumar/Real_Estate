@@ -15,6 +15,16 @@ import { useNavigate } from 'react-router-dom';
 
 const House_page = () => {
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+     
+    if(!localStorage.getItem('user')){
+      navigate('/signinup')
+    }
+   
+  }, [])
+
   const { houseID } = useParams()
 
   const [name, setName] = useState('')
@@ -156,6 +166,21 @@ const House_page = () => {
 
 
 
+          </div>
+
+          <div className="mobileimages">
+            <div>
+              <img src={houseData.image2Link} alt="" />
+            </div>
+            <div>
+              <img src={houseData.image3Link} alt="" />
+            </div>
+            <div>
+              <img src={houseData.image4Link} alt="" />
+            </div>
+            <div>
+              <img src={houseData.image5Link} alt="" />
+            </div>
           </div>
         </div>
 

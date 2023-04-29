@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './Houses.scss'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 const Houses = () => {
+
+  const navigate = useNavigate()
 
   const [isActive, setIsActive] = useState(false);
   const [houseData, setHouseData] = useState([])
@@ -9,6 +12,8 @@ const Houses = () => {
   const handleClick = () => {
     setIsActive(!isActive);
   };
+
+
 
   //const api_base = 'http://localhost:3001'
   const api_base = 'https://real-estate-backend-yuae.onrender.com'

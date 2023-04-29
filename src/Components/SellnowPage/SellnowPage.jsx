@@ -24,6 +24,15 @@ const SellnowPage = () => {
     const navigate = useNavigate()
 
 
+    useEffect(() => {
+     
+        if(!localStorage.getItem('user')){
+          navigate('/signinup')
+        }
+       
+      }, [])
+
+
 
 
    // const api_base = 'http://localhost:3001'

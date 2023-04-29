@@ -2,10 +2,22 @@ import React,{useState,useEffect} from 'react'
 import './AllApartments.scss'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navabar/Navbar'
+import SellNow from '../SellNow/SellNow'
+import { useNavigate } from 'react-router-dom'
 
 const AllApartments = () => {
 
     const [apartmentsdata, setApartmentsdata] = useState([])
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+     
+        if(!localStorage.getItem('user')){
+          navigate('/signinup')
+        }
+       
+      }, [])
 
     //const api_base = 'http://localhost:3001'
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
@@ -170,6 +182,8 @@ const AllApartments = () => {
 
                 </div>
             </div>
+
+            <SellNow/>
         </>
     )
 }

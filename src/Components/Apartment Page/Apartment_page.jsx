@@ -7,8 +7,20 @@ import Select from 'react-select';
 import Navbar from '../Navabar/Navbar';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Apartment_page = () => {
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+
+    if (!localStorage.getItem('user')) {
+      navigate('/signinup')
+    }
+
+  }, [])
 
   const { apartmentID } = useParams()
 
@@ -137,6 +149,10 @@ const Apartment_page = () => {
             </>
 
 
+
+
+
+
             <div className="first">
               <img src={apartmentData.image2Link} alt="" />
             </div>
@@ -152,6 +168,21 @@ const Apartment_page = () => {
 
 
 
+          </div>
+
+          <div className="mobileimages">
+            <div>
+              <img src={apartmentData.image2Link} alt="" />
+            </div>
+            <div>
+              <img src={apartmentData.image3Link} alt="" />
+            </div>
+            <div>
+              <img src={apartmentData.image4Link} alt="" />
+            </div>
+            <div>
+              <img src={apartmentData.image5Link} alt="" />
+            </div>
           </div>
         </div>
 
@@ -446,7 +477,7 @@ const Apartment_page = () => {
         </div> */}
 
 
-        { <div className="tour_container">
+        {<div className="tour_container">
 
           <div className="tour">
             <h3>Request Info</h3>
@@ -481,7 +512,7 @@ const Apartment_page = () => {
             <img src="/images/Apartment10.avif" alt="" />
           </div>
 
-        </div> }
+        </div>}
 
 
         <div className="address_section">

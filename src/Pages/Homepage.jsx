@@ -4,7 +4,7 @@ import Houses from '../Components/Houses/Houses'
 import About from '../Components/About/About'
 import Apartments from '../Components/Apartments/Apartments'
 import SellNow from '../Components/SellNow/SellNow'
-
+import Cars from '../Components/Cars/Cars'
 
 const Homepage = () => {
   return (
@@ -14,6 +14,7 @@ const Homepage = () => {
         <SellNow/>
         <Houses/>
         <Apartments/>
+        <Cars/>
     </div>
   )
 }

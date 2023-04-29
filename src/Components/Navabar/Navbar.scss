@@ -98,6 +98,24 @@
         }
     }
 
+    .profile {
+
+
+        @media (min-width:800px) {
+            display: none;
+        }
+
+        position: absolute;
+        top: 16px;
+        margin-left: 90%;
+        width: fit-content;
+       
+
+        img {
+            width: 33px;
+        }
+    }
+
 
     .logo {
         h2 {
@@ -154,7 +172,7 @@
                     }
                 }
 
-                a:last-child{
+                a:last-child {
                     width: 102px;
                 }
 
@@ -318,67 +336,67 @@
             margin-bottom: 50px;
         }
 
-       
 
-            label {
-                width: 54%;
+
+        label {
+            width: 54%;
+            font-family: "Lato", sans-serif;
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin: 0;
+
+            @media (max-width:800px) {
+                width: 90%;
+            }
+
+        }
+
+        input {
+            width: 240px;
+            height: 35px;
+            outline: none;
+            border-color: #8080803d;
+            border-width: 1px;
+            border-radius: 6px;
+            font-family: "Lato", sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgb(0 0 0 / 49%);
+            padding-left: 10px;
+
+            @media (max-width:800px) {
+                width: 90%;
+                height: 30px;
+                font-size: 12px;
+
+            }
+
+
+            &::placeholder {
+                color: rgb(0 0 0 / 49%);
+            }
+
+        }
+
+        button {
+            color: white;
+            background: black;
+            border: none;
+            height: 38px;
+            width: 200px;
+            border-radius: 7px;
+            margin-top: 30px;
+
+
+            p {
                 font-family: "Lato", sans-serif;
                 letter-spacing: 1px;
                 font-size: 15px;
                 margin: 0;
 
-                @media (max-width:800px) {
-                    width: 90%;
-                }
-
             }
 
-            input {
-                width: 240px;
-                height: 35px;
-                outline: none;
-                border-color: #8080803d;
-                border-width: 1px;
-                border-radius: 6px;
-                font-family: "Lato", sans-serif;
-                font-size: 15px;
-                font-weight: 600;
-                color: rgb(0 0 0 / 49%);
-                padding-left: 10px;
+        }
 
-                @media (max-width:800px) {
-                    width: 90%;
-                    height: 30px;
-                    font-size: 12px;
-
-                }
-
-
-                &::placeholder {
-                    color: rgb(0 0 0 / 49%);
-                }
-
-            }
-
-            button {
-                color: white;
-                background: black;
-                border: none;
-                height: 38px;
-                width: 200px;
-                border-radius: 7px;
-                margin-top: 30px;
-
-
-                p {
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    font-size: 15px;
-                    margin: 0;
-
-                }
-
-            }
-        
     }
 }

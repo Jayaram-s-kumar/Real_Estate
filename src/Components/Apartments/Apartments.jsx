@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './Apartments.scss'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Apartments = () => {
     const [apartmentsdata, setApartmentsdata] = useState([])
+
+    const navigate = useNavigate()
+
+ 
 
     //const api_base = 'http://localhost:3001'
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
@@ -25,7 +30,7 @@ const Apartments = () => {
 
 
     return (
-        <div className="Apartment_container">
+        <div className="Apartment_container" id='apartments'>
             <h1>Apartments</h1>
             <div className="cards-container">
 

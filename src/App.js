@@ -9,6 +9,11 @@ import AllApartments from "./Components/AllApartments/AllApartments";
 import Footer from "./Components/Footer/Footer";
 import SellnowPage from "./Components/SellnowPage/SellnowPage";
 import Signinup from "./Components/Signinup/Signinup";
+import UploadCar from "./Components/UploadCar/UploadCar"
+import Carpage from "./Components/Car_page/Carpage";
+import Allcars from "./Components/Allcars/Allcars";
+import SellNow from "./Components/SellNow/SellNow";
+import MyAccount from "./Components/MyAccount/MyAccount";
 
 import { useEffect, useState } from "react";
 
@@ -16,15 +21,19 @@ function App() {
 
 
 
-  const [isAuthenticated, setisAuthenticated] = useState(false);
+
+  const isAuthenticated = ()=>{
+    const user = (JSON.parse(localStorage.getItem('user'))) ? true : false;
+    console.log(user)
+    if (user) {
+     return true
+    } else {
+      return false
+    }
+  }
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      setisAuthenticated(true);
-    } else {
-      setisAuthenticated(false);
-    }
+   
   }, []);
 
 
@@ -38,30 +47,43 @@ function App() {
 
           <Route path="/signinup" element={<Signinup />}></Route>
 
-          <Route path="/allhouses" element={isAuthenticated ? <AllHouses /> : <Signinup />}></Route>
+          <Route path="/allhouses" element={ <AllHouses /> }></Route>
 
-          <Route path="/house/:houseID" element={isAuthenticated ? <House_page /> : <Signinup />}></Route>
-          <Route path="sell/house/:houseID" element={isAuthenticated ? <House_page /> : <Signinup />}></Route>
-
-
-          <Route path="/allhouses/house/:houseID" element={isAuthenticated ? <House_page /> : <Signinup />}></Route>
+          <Route path="/house/:houseID" element={ <House_page /> }></Route>
+          <Route path="sell/house/:houseID" element={ <House_page /> }></Route>
 
 
+          <Route path="/allhouses/house/:houseID" element={ <House_page /> }></Route>
+          <Route path="/myaccount/house/:houseID" element={ <House_page /> }></Route>
 
-          <Route path="/allapartments" element={isAuthenticated ? <AllApartments /> : <Signinup />}></Route>
-          <Route path="/apartment/:apartmentID" element={isAuthenticated ? <Apartment_page /> : <Signinup />}></Route>
-          <Route path="sell/apartment/:apartmentID" element={isAuthenticated ? <Apartment_page /> : <Signinup />}></Route>
 
-          <Route path="/allapartments/apartment/:apartmentID" element={isAuthenticated ? <Apartment_page /> : <Signinup />}></Route>
+
+          <Route path="/allapartments" element={ <AllApartments /> }></Route>
+          <Route path="/apartment/:apartmentID" element={ <Apartment_page /> }></Route>
+          <Route path="sell/apartment/:apartmentID" element={ <Apartment_page /> }></Route>
+ 
+          <Route path="/allapartments/apartment/:apartmentID" element={ <Apartment_page /> }></Route>
+          <Route path="/myaccount/apartment/:apartmentID" element={ <Apartment_page /> }></Route>
 
 
 
           <Route path="apartment">
-            <Route path=":apartmentID" element={isAuthenticated ? <Apartment_page /> : <Signinup />}></Route>
+            <Route path=":apartmentID" element={ <Apartment_page /> }></Route>
           </Route>
 
           <Route path="/gallery" element={<Gallery />}></Route>
-          <Route path="/sell" element={isAuthenticated ? <SellnowPage /> : <Signinup />}></Route>
+          <Route path="/sell" element={ <SellnowPage /> }></Route>
+
+          <Route path="/uploadcar" element={<UploadCar/>}></Route>
+
+          <Route path="/allcars" element={ <Allcars/>  } ></Route>
+          <Route path="/car/:carID" element={ <Carpage/> } ></Route>
+          <Route path="uploadcar/car/:carID" element={ <Carpage/> } ></Route>
+          <Route path="allcars/car/:carID" element={ <Carpage/> } ></Route>
+
+          <Route path="/sellnow" element={ <SellNow/> }></Route>
+
+          <Route path="/myaccount"  element={ <MyAccount/> }></Route>
         </Routes>
       </BrowserRouter>
 

@@ -1,0 +1,258 @@
+.myaccount_container {
+    margin-top: 70px;
+
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+      
+
+
+        button {
+
+            @media (max-width:800px) {
+                margin-left: 70%;
+            }
+
+            color: white;
+            background: rgb(140, 4, 4);
+            border: none;
+            height: 29px;
+            width: 100px;
+
+            border-radius: 7px;
+            margin-top: 30px;
+            margin-left: 30px;
+
+            @media (max-width:800px) {
+                height: 22px;
+                width: 80px;
+            }
+
+            p {
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                font-size: 10px;
+                margin: 0;
+
+                @media (max-width:800px) {
+                    font-size: 8px;
+                }
+
+            }
+        }
+
+        h3 {
+            font-size: 19px;
+            color: rgb(75, 72, 72);
+            margin-bottom: 50px;
+            font-family: "Lato", sans-serif;
+
+            @media (max-width:800px) {
+                margin:0px;
+            }
+
+        }
+
+        @media (max-width:800px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    .myproperties {
+
+        h3 {
+            font-size: 17px;
+            color: rgb(75, 72, 72);
+            margin-bottom: 50px;
+            font-family: "Lato", sans-serif;
+
+        }
+
+
+        .details {
+
+            p {
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin: 0;
+                color: gray;
+                text-align: center;
+                margin-bottom: 100px;
+
+                @media (max-width:800px) {
+                    font-size: 13px;
+                }
+
+            }
+
+            .name {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                padding: 3%;
+                background: aliceblue;
+
+                p {
+                    font-family: "Lato", sans-serif;
+                    letter-spacing: 1px;
+                    font-size: 15px;
+                    margin: 0;
+
+                    @media (max-width:800px) {
+                        font-size: 13px;
+                    }
+
+                }
+            }
+
+            .buttondiv {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 100%;
+                margin-bottom: 30px;
+                margin-top: 10px;
+
+                @media (max-width:800px) {
+                    margin-top: 0px;
+
+
+                }
+
+                button {
+                    color: white;
+                    background: black;
+                    border: none;
+                    height: 29px;
+                    width: 100px;
+
+                    border-radius: 7px;
+                    margin-top: 30px;
+                    margin-left: 30px;
+
+                    @media (max-width:800px) {
+                        height: 22px;
+                        width: 80px;
+                    }
+
+                    p {
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        font-size: 10px;
+                        margin: 0;
+                        color: white;
+
+                        @media (max-width:800px) {
+                            font-size: 8px;
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
+
+    .mycars {
+
+        h3 {
+            font-size: 17px;
+            color: rgb(75, 72, 72);
+            margin-bottom: 50px;
+            font-family: "Lato", sans-serif;
+
+        }
+
+        .details {
+
+            p {
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin: 0;
+                color: gray;
+                text-align: center;
+                margin-bottom: 100px;
+
+                @media (max-width:800px) {
+                    font-size: 13px;
+                }
+
+            }
+
+
+            .name {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                padding: 3%;
+                background: aliceblue;
+
+
+
+                p {
+                    font-family: "Lato", sans-serif;
+                    letter-spacing: 1px;
+                    font-size: 15px;
+                    margin: 0;
+
+                    @media (max-width:800px) {
+                        font-size: 13px;
+                    }
+
+                }
+
+
+            }
+
+            .buttondiv {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 100%;
+                margin-bottom: 30px;
+                margin-top: 10px;
+
+                button {
+                    color: white;
+                    background: black;
+                    border: none;
+                    height: 29px;
+                    width: 100px;
+                    border-radius: 7px;
+                    margin-top: 30px;
+                    margin-left: 30px;
+
+                    @media (max-width:800px) {
+                        height: 22px;
+                        width: 80px;
+                    }
+
+                    p {
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        font-size: 10px;
+                        margin: 0;
+                        color: white;
+
+                        @media (max-width:800px) {
+                            font-size: 8px;
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
+}
