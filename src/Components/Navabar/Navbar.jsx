@@ -264,6 +264,14 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
               <Link to={'/allapartments'}>APARTMENTS</Link >
             </li>
 
+            <li onClick={() => {
+              setOpen(!open)
+              setClose(false)
+              document.body.style.overflow = 'unset'
+            }}>
+              <Link to={'/allcars'}>CARS</Link >
+            </li>
+
 
             {
               user && <li onClick={() => {
