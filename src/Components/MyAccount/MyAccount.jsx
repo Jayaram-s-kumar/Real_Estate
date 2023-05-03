@@ -17,17 +17,19 @@ const MyAccount = () => {
 
     useEffect(() => {
         fetchData()
-    }, [])
+    }, [cardata,propertyData])
 
     useEffect(() => {
-     
-        if(!localStorage.getItem('user')){
-          navigate('/signinup')
+
+        if (!localStorage.getItem('user')) {
+            navigate('/signinup')
         }
-       
-      }, [])
+
+    }, [])
 
     const fetchData = async () => {
+
+        console.log("fetchdata called")
         const response = await fetch(api_base + `/getmyproperties/${(JSON.parse(localStorage.getItem('user'))).loginID}`);
         const data = await response.json();
         setPropertyData(data);
@@ -36,25 +38,31 @@ const MyAccount = () => {
         const data1 = await response1.json();
         setCardata(data1)
 
+        console.log("housedata is",propertyData)
+        console.log("cardata is",cardata)
+
+
+
     }
 
     const handleLogout = () => {
         localStorage.removeItem('user');
         navigate('/')
-       
+
     };
 
     const deleteProp = async (ID) => {
         await fetch(api_base + `/deleteprop/${ID}`)
-        window.location.reload()
-        this.forceUpdate()
+        fetchData()
+       
+       
     }
 
 
     const deleteCar = async (ID) => {
         await fetch(api_base + `/deletecar/${ID}`)
-        window.location.reload()
-        this.forceUpdate()
+        fetchData()
+       
     }
 
     return (
@@ -72,6 +80,10 @@ const MyAccount = () => {
                     <h3>My properties</h3>
                     <div className="details">
                         {
+                            console.log(propertyData)
+                        }
+                        {
+                            
                             propertyData.length === 0 ?
                                 <p>No properties</p>
                                 :
@@ -85,7 +97,7 @@ const MyAccount = () => {
                                         <div className="buttondiv">
                                             <button onClick={() => {
                                                 deleteProp(obj._id)
-                                                window.location.reload()
+                                               
                                             }}>
                                                 <p>DELETE POST</p>
                                             </button>
@@ -102,6 +114,9 @@ const MyAccount = () => {
                     <h3>My cars</h3>
                     <div className="details">
                         {
+                            console.log(cardata)
+                        }
+                        {
                             cardata.length === 0 ?
                                 <p>No cars</p>
                                 :
@@ -113,7 +128,6 @@ const MyAccount = () => {
                                         <div className="buttondiv">
                                             <button onClick={() => {
                                                 deleteCar(obj._id)
-                                                window.location.reload()
                                             }}>
                                                 <p>DELETE POST</p>
                                             </button>
@@ -127,7 +141,7 @@ const MyAccount = () => {
                 </div>
             </div>
 
-            <SellNow/>
+            <SellNow />
         </>
     )
 }

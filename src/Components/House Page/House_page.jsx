@@ -440,7 +440,7 @@ const House_page = () => {
           </div>
 
           <div className="image">
-            <img src="/images/hotel.webp" alt="" />
+            <img src="https://res.cloudinary.com/dfs1badkm/image/upload/v1683129118/jqntpcodmwobeo2m2gje.webp" alt="" />
           </div>
 
         </div>
