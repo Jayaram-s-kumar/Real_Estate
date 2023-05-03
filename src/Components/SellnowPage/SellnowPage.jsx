@@ -241,8 +241,7 @@ const SellnowPage = () => {
         validationSchema: addPropSchema,
         onSubmit: (values, actions) => {
             sendDetails(values)
-            console.log("ONSUBMIT")
-            console.log(values)
+   
             actions.resetForm()
         }
     })
@@ -279,10 +278,10 @@ const SellnowPage = () => {
                     setDoc2Link(data.url)
                 }
 
-                console.log(data.url)
+               
             })
             .catch((err) => {
-                console.log(err)
+               
             })
 
     }
@@ -301,9 +300,7 @@ const SellnowPage = () => {
         formData.doc2Link = doc2Link
 
 
-        console.log(formData)
-        console.log("hello")
-        console.log(formData)
+       
         let data = await (await fetch(api_base + "/uploadProp", {
             method: 'POST',
             headers: {
@@ -312,7 +309,7 @@ const SellnowPage = () => {
             body: JSON.stringify(formData)
         })).json()
 
-        console.log(data)
+       
 
         if (apartment) {
             navigate(`apartment/${data._id}`)
@@ -333,9 +330,7 @@ const SellnowPage = () => {
             <div className="sellNowContainer">
                 <form onSubmit={(val) => {
                     handleSubmit(val)
-                    console.log("form submitted")
-                    console.log(val)
-                    console.log(errors)
+            
                 }}>
                     <h3>Upload Your Property Details</h3>
                     <Box sx={{}} style={{ width: '100%' }}>
@@ -838,7 +833,7 @@ const SellnowPage = () => {
                     <div className="button_div">
 
                         <button type='submit'>
-                            <p>UPLOAD</p>
+                            <p>POST</p>
                         </button>
 
                     </div>

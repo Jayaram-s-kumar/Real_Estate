@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import Navbar from '../Navabar/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Signinup = () => {
 
@@ -20,6 +21,9 @@ const Signinup = () => {
 
     //const api_base = 'http://127.0.0.1:3001'
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
+
+    
+    
 
 
     const [emailErr, setEmailErr] = useState(false)
@@ -49,7 +53,6 @@ const Signinup = () => {
 
     const sendDetails = async (formData) => {
         // setPopup(false)
-        console.log(route)
         let data = await (await fetch(`${api_base}${route}`, {
             method: 'POST',
             headers: {
@@ -60,7 +63,7 @@ const Signinup = () => {
                 email: formData.email,
                 password: formData.password
 
-            })
+            }) 
         })).json()
 
         if (data.message === "email already exist") {
@@ -107,12 +110,12 @@ const Signinup = () => {
                                 <input type="email" name='email' value={values.email} onChange={handleChange} onBlur={handleBlur} onClick={() => {
                                     setExist(false)
                                 }} autoComplete='off' />
-                                <p>{exist && 'email already exist'}</p>
-                                <p>{errors.email && touched.email ? errors.email : null}</p><br /><br />
+                                <p className='error'>{exist && 'email already exist'}</p>
+                                <p  className='error'>{errors.email && touched.email ? errors.email : null}</p><br /><br />
 
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name='password' value={values.password} onChange={handleChange} onBlur={handleBlur} autoComplete='off' />
-                                <p> {errors.password && touched.password ? errors.password : null}</p><br /><br />
+                                <p  className='error'> {errors.password && touched.password ? errors.password : null}</p><br /><br />
 
 
                                 <button onClick={() => {
@@ -132,15 +135,15 @@ const Signinup = () => {
                                     setExist(false)
                                     setEmailErr(false)
                                 }} autoComplete='off' />
-                                <p>{emailErr && 'Email not Registerd'}</p>
-                                <p>{errors.email && touched.email ? errors.email : null}</p><br /><br />
+                                <p  className='error'>{emailErr && 'Email not Registerd'}</p>
+                                <p  className='error'>{errors.email && touched.email ? errors.email : null}</p><br /><br />
 
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name='password' value={values.password} onChange={handleChange} onBlur={handleBlur} autoComplete='off' onClick={() => {
                                     setPassErr(false)
                                 }} />
-                                <p>{passErr && 'Password error'}</p>
-                                <p> {errors.password && touched.password ? errors.password : null}</p><br /><br />
+                                <p  className='error'>{passErr && 'Password error'}</p>
+                                <p  className='error'> {errors.password && touched.password ? errors.password : null}</p><br /><br />
 
 
                                 <button onClick={() => {
@@ -148,6 +151,9 @@ const Signinup = () => {
                                 }}>
                                     <p>Sign In</p>
                                 </button>
+
+                                <Link to={'/sendRegEmail'}> <p>Forget password?</p></Link>
+
                             </form>
                         </div>
                     }

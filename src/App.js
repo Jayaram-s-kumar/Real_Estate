@@ -14,7 +14,9 @@ import Carpage from "./Components/Car_page/Carpage";
 import Allcars from "./Components/Allcars/Allcars";
 import SellNow from "./Components/SellNow/SellNow";
 import MyAccount from "./Components/MyAccount/MyAccount";
-
+import SendRegEmail from "./Components/sendRegEmail/SendRegEmail";
+import SendOtp from "./Components/SendOtp/SendOtp";
+import PassReset from "./Components/PassReset/PassReset";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -83,7 +85,13 @@ function App() {
 
           <Route path="/sellnow" element={ <SellNow/> }></Route>
 
+          <Route path="/sendRegEmail" element={<SendRegEmail/>}></Route>
+
           <Route path="/myaccount"  element={ <MyAccount/> }></Route>
+
+          <Route path="/otppage/:email" element={<SendOtp/>}></Route>
+
+          <Route path="/otppage/:email/newpass/:email" element={<PassReset/>}></Route>
         </Routes>
       </BrowserRouter>
 

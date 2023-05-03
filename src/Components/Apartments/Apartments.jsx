@@ -15,7 +15,6 @@ const Apartments = () => {
 
 
     const fetchData = async () => {
-        console.log("function called")
         const response = await fetch(api_base + "/first3apartments");
         const data = await response.json();
         setApartmentsdata(data);
@@ -44,9 +43,8 @@ const Apartments = () => {
                             .map(([key, _]) => key)
                             .slice(0, 3);
 
-                        console.log(trueFeatures);
 
-                        return <Link to={`apartment/${obj._id}`}>
+                        return <Link to={`apartment/${obj._id}`} key={obj._id}>
 
 
                             <div className="card">

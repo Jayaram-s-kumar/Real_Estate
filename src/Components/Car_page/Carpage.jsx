@@ -39,7 +39,6 @@ function Carpage() {
 
         setData(data)
 
-        console.log(data)
 
     }
 

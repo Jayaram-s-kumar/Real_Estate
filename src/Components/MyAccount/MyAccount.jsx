@@ -28,18 +28,13 @@ const MyAccount = () => {
       }, [])
 
     const fetchData = async () => {
-        console.log("function called")
         const response = await fetch(api_base + `/getmyproperties/${(JSON.parse(localStorage.getItem('user'))).loginID}`);
         const data = await response.json();
         setPropertyData(data);
-        console.log('data is', data)
-        console.log(propertyData)
 
         const response1 = await fetch(api_base + `/getmycars/${(JSON.parse(localStorage.getItem('user'))).loginID}`);
         const data1 = await response1.json();
         setCardata(data1)
-        console.log('data is', data1)
-        console.log(data1)
 
     }
 

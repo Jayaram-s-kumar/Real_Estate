@@ -1,0 +1,49 @@
+.passcontainer{
+    margin-top: 120px;
+    height: 230px;
+
+    width: 80%;
+    margin: auto;
+
+    form{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-evenly;
+
+        label{
+            font-family: "Lato", sans-serif;
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin: 0;
+            display: block;
+            margin-bottom: 15px;
+            margin-top: 100px;
+        }
+
+        input{
+            margin-bottom: 30px;
+            height: 30px;
+            width: 200px;
+            outline: none;
+            border-color: #8080803d;
+            border-width: 1px;
+            border-radius: 6px;
+            font-family: "Lato", sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgb(0 0 0 / 49%);
+            padding-left: 10px;
+
+            &::placeholder {
+                color: rgb(0 0 0 / 49%);
+            }
+        }
+
+
+        button{
+            margin-bottom: 10px;
+        }
+    }
+}

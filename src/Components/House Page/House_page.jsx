@@ -9,23 +9,24 @@ import "react-datepicker/dist/react-datepicker.css";
 import Navbar from '../Navabar/Navbar';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 
 
 
 const House_page = () => {
 
   const navigate = useNavigate()
+  const location = useLocation()
+  
+  const { houseID } = useParams()
 
   useEffect(() => {
-     
-    if(!localStorage.getItem('user')){
+    if (!localStorage.getItem("user")) {
       navigate('/signinup')
     }
-   
-  }, [])
+  }, []);
 
-  const { houseID } = useParams()
+ 
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -41,7 +42,7 @@ const House_page = () => {
     formData.phone = phone
     formData.message = message
     formData.propName = houseData.propName
-    formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email
+    formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email ?  JSON.parse(localStorage.getItem('user')).email : ''
     await (await fetch(api_base + "/sendinforeq", {
       method: 'POST',
       headers: {
@@ -63,10 +64,8 @@ const House_page = () => {
 
 
   const fetchData = async () => {
-    console.log("function called")
     const response = await fetch(api_base + `/getPropData/${houseID}`);
     const data = await response.json();
-    console.log(data)
     setHouseData(data);
   }
 

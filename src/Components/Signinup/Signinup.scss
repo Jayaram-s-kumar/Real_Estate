@@ -29,6 +29,7 @@
             align-items: center;
             justify-content: space-around;
             width: 100%;
+            margin-bottom: 30px;
         }
     
         .selected {
@@ -130,6 +131,18 @@
     
                     }
     
+                }
+
+                a {
+
+                    text-decoration: none;
+                    p {
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        font-size: 12px;
+                        color: #0000008c;
+                        font-weight: bold;
+                    }
                 }
             
         }

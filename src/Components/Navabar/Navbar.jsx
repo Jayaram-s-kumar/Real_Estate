@@ -53,7 +53,6 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
   const sendDetails = async (formData) => {
     // setPopup(false)
-    console.log(route)
     let data = await (await fetch(`${api_base}${route}`, {
       method: 'POST',
       headers: {
@@ -69,13 +68,13 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
     if (data.message === "signed in") {
       setPopup(false)
-     // window.location.reload()
+      // window.location.reload()
       localStorage.setItem("user", JSON.stringify({
         email: data.email,
         loginID: data.loginID
       }))
       document.body.classList.remove('overlay')
-     // window.location.reload()
+      // window.location.reload()
     } else if (data.message === "password error") {
       setPassErr(true)
     } else if (data.message === "email not registerd") {
@@ -356,12 +355,12 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
                 <input type="email" name='email' value={values.email} onChange={handleChange} onBlur={handleBlur} onClick={() => {
                   setExist(false)
                 }} autoComplete='off' />
-                <p>{exist && 'email already exist'}</p>
-                <p>{errors.email && touched.email ? errors.email : null}</p><br /><br />
+                <p className='error'>{exist && 'email already exist'}</p>
+                <p className='error'>{errors.email && touched.email ? errors.email : null}</p><br /><br />
 
                 <label htmlFor="password">Password</label>
                 <input type="password" name='password' value={values.password} onChange={handleChange} onBlur={handleBlur} autoComplete='off' />
-                <p> {errors.password && touched.password ? errors.password : null}</p><br /><br />
+                <p className='error'> {errors.password && touched.password ? errors.password : null}</p><br /><br />
 
 
                 <button onClick={() => {
@@ -381,15 +380,15 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
                   setExist(false)
                   setEmailErr(false)
                 }} autoComplete='off' />
-                <p>{emailErr && 'Email not Registerd'}</p>
-                <p>{errors.email && touched.email ? errors.email : null}</p><br /><br />
+                <p className='error'>{emailErr && 'Email not Registerd'}</p>
+                <p className='error'>{errors.email && touched.email ? errors.email : null}</p><br /><br />
 
                 <label htmlFor="password">Password</label>
                 <input type="password" name='password' value={values.password} onChange={handleChange} onBlur={handleBlur} autoComplete='off' onClick={() => {
                   setPassErr(false)
                 }} />
-                <p>{passErr && 'Password error'}</p>
-                <p> {errors.password && touched.password ? errors.password : null}</p><br /><br />
+                <p className='error'>{passErr && 'Password error'}</p>
+                <p className='error'> {errors.password && touched.password ? errors.password : null}</p><br /><br />
 
 
                 <button onClick={() => {
@@ -398,6 +397,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
                 }}>
                   <p>Sign In</p>
                 </button>
+                <Link to={'/sendRegEmail'}> <p>Forget password?</p></Link>
               </form>
             </div>
           }

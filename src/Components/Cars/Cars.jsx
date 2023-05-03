@@ -19,12 +19,9 @@ const Cars = () => {
     }, [])
 
     const fetchData = async () => {
-        console.log("function called")
         const response = await fetch(api_base + "/first3cars");
         const data = await response.json();
         setBackendData(data);
-        console.log('data is', data)
-        console.log(backendData)
 
     }
 
@@ -36,7 +33,7 @@ const Cars = () => {
 
                 {
                     backendData.map((obj) => {
-                        return <Link to={`car/${obj._id}`}>
+                        return <Link to={`car/${obj._id}`} key={obj._id}>
                             <div className="card">
                                 <div className="cardimage">
                                     <img src={obj.image1Link} alt="" />

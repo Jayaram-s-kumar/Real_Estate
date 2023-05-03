@@ -85,10 +85,8 @@ const Apartment_page = () => {
 
 
   const fetchData = async () => {
-    console.log("function called")
     const response = await fetch(api_base + `/getPropData/${apartmentID}`);
     const data = await response.json();
-    console.log(data)
     setApartmentData(data);
   }
 
@@ -103,7 +101,6 @@ const Apartment_page = () => {
     .map(([key, _]) => key)
     .slice(0, 8);
 
-  console.log(trueFeatures)
 
   return (
 

@@ -20,7 +20,6 @@ const Houses = () => {
 
 
   const fetchData = async()=>{
-    console.log("function called")
     const response = await fetch(api_base + "/first3houses");
     const data = await response.json();
 
@@ -40,7 +39,7 @@ const Houses = () => {
       <div className="cards-container">
        {
         houseData.map((obj)=>{
-          return  <Link to={`house/${obj._id}`}>
+          return  <Link to={`house/${obj._id}`} key={obj._id}>
           <div className="card">
             <div className="card-image">
               <img src={obj.image1Link} alt="" />

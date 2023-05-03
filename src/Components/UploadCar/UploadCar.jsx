@@ -93,10 +93,8 @@ const UploadCar = () => {
                     setImage5Link(data.url)
                 }
 
-                console.log(data.url)
             })
             .catch((err) => {
-                console.log(err)
             })
 
     }
@@ -132,9 +130,7 @@ const UploadCar = () => {
         formData.image5Link = image5Link
 
 
-        console.log(formData)
-        console.log("hello")
-        console.log(formData)
+       
         let data = await (await fetch(api_base + "/uploadCar", {
             method: 'POST',
             headers: {
@@ -143,7 +139,6 @@ const UploadCar = () => {
             body: JSON.stringify(formData)
         })).json()
 
-        console.log(data)
 
 
         navigate(`car/${data._id}`)
@@ -214,8 +209,7 @@ const UploadCar = () => {
         validationSchema: uploadCarSchema,
         onSubmit: (values, actions) => {
             sendDetails(values)
-            console.log("ONSUBMIT")
-            console.log(values)
+          
             actions.resetForm()
         }
     })
