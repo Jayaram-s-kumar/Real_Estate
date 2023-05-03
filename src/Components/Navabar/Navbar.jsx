@@ -397,7 +397,9 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
                 }}>
                   <p>Sign In</p>
                 </button>
-                <Link to={'/sendRegEmail'}> <p>Forget password?</p></Link>
+                <Link to={'/sendRegEmail'} onClick={()=>{
+                   document.body.classList.remove('overlay')
+                }}> <p>Forget password?</p></Link>
               </form>
             </div>
           }

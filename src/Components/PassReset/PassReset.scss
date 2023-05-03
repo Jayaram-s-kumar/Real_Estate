@@ -1,6 +1,6 @@
 .passcontainer{
-    margin-top: 120px;
-    height: 230px;
+    margin-top: 60px;
+    height: 260px;
 
     width: 80%;
     margin: auto;
@@ -44,6 +44,33 @@
 
         button{
             margin-bottom: 10px;
+            color: white;
+            background: green;
+            border: none;
+            height: 38px;
+            width: 200px;
+            border-radius: 7px;
+           
+           
+    
+            @media (max-width:800px) {
+                margin-top: 20px;
+                width: 130px;
+                height: 30px;
+            }
+    
+            p {
+                color: white;
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin: 0;
+    
+                @media (max-width:800px) {
+                    font-size: 13px;
+                }
+    
+            }
         }
     }
 }

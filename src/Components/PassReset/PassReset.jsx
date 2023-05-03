@@ -29,7 +29,7 @@ const PassReset = () => {
 
             })
         })
-        navigate('/')
+        navigate('/signinup')
     }
 
     return (
@@ -47,7 +47,7 @@ const PassReset = () => {
 
                     }} value={pass} />
 
-                    <button>Update</button>
+                    <button><p>Update</p></button>
                 </form>
             </div>
         </>
