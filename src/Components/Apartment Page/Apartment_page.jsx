@@ -30,7 +30,7 @@ const Apartment_page = () => {
   const [message, setMessage] = useState('')
 
   async function handlesubmit(e) {
-    //e.preventDefault()
+    e.preventDefault()
     const form = e.target;
     const formData = new FormData();
     formData.name = name
@@ -46,10 +46,7 @@ const Apartment_page = () => {
       },
       body: JSON.stringify(formData)
     })).json()
-    setMessage('')
-    setName('')
-    setPhone('')
-    setEmail('')
+    
   }
 
   const date = new Date()
@@ -487,7 +484,13 @@ const Apartment_page = () => {
               </div>
 
             </div>
-            <form onSubmit={handlesubmit}>
+            <form onSubmit={(e) => {
+              handlesubmit(e)
+              setMessage('')
+              setName('')
+              setPhone('')
+              setEmail('')
+            }}>
               <input type="text" placeholder='Name' required name='name' value={name} onChange={(e) => setName(e.target.value)} />
               <input type="text" placeholder='Phone' required name='phone' value={phone} onChange={(e) => setPhone(e.target.value)} />
               <input type="text" placeholder='Email' required name='email' value={email} onChange={(e) => setEmail(e.target.value)} />

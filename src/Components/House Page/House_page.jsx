@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Navbar from '../Navabar/Navbar';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 
@@ -17,7 +17,7 @@ const House_page = () => {
 
   const navigate = useNavigate()
   const location = useLocation()
-  
+
   const { houseID } = useParams()
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const House_page = () => {
     }
   }, []);
 
- 
+
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -34,7 +34,7 @@ const House_page = () => {
   const [message, setMessage] = useState('')
 
   async function handlesubmit(e) {
-    //e.preventDefault()
+    e.preventDefault()
     const form = e.target;
     const formData = new FormData();
     formData.name = name
@@ -42,7 +42,7 @@ const House_page = () => {
     formData.phone = phone
     formData.message = message
     formData.propName = houseData.propName
-    formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email ?  JSON.parse(localStorage.getItem('user')).email : ''
+    formData.ownerEmail = JSON.parse(localStorage.getItem('user')).email ? JSON.parse(localStorage.getItem('user')).email : ''
     await (await fetch(api_base + "/sendinforeq", {
       method: 'POST',
       headers: {
@@ -50,10 +50,7 @@ const House_page = () => {
       },
       body: JSON.stringify(formData)
     })).json()
-    setMessage('')
-    setName('')
-    setPhone('')
-    setEmail('')
+
   }
 
 
@@ -255,7 +252,7 @@ const House_page = () => {
                 <p>Document 2</p>
               </div>
 
-              <a href={houseData.doc1Link}  target='_blank'>Download</a>
+              <a href={houseData.doc1Link} target='_blank'>Download</a>
             </div>
 
 
@@ -417,7 +414,13 @@ const House_page = () => {
               </div>
 
             </div>
-            <form onSubmit={handlesubmit}>
+            <form onSubmit={(e) => {
+              handlesubmit(e)
+              setMessage('')
+              setName('')
+              setPhone('')
+              setEmail('')
+            }}>
               <input type="text" placeholder='Name' required name='name' value={name} onChange={(e) => setName(e.target.value)} />
               <input type="text" placeholder='Phone' required name='phone' value={phone} onChange={(e) => setPhone(e.target.value)} />
               <input type="text" placeholder='Email' required name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
