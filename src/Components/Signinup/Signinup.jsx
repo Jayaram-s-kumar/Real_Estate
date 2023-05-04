@@ -6,6 +6,7 @@ import Navbar from '../Navabar/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { ClipLoader } from 'react-spinners'
 
 const Signinup = () => {
 
@@ -16,6 +17,7 @@ const Signinup = () => {
     const [popup, setPopup] = useState(false)
     const [exist, setExist] = useState(false)
     const [route, setRoute] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -46,6 +48,7 @@ const Signinup = () => {
         initialValues: initialValues,
         validationSchema: signUpSchema,
         onSubmit: (values, action) => {
+            setLoading(true)
             sendDetails(values)
             action.resetForm()
         }
@@ -68,9 +71,12 @@ const Signinup = () => {
 
         if (data.message === "email already exist") {
             setExist(true)
+            setLoading(false)
         } else if (data.message === "user created") {
+            setLoading(false)
             navigate('/')
         } else if (data.message === "signed in") {
+            setLoading(false)
             navigate('/')
             localStorage.setItem("user", JSON.stringify({
                 email: data.email,
@@ -79,8 +85,10 @@ const Signinup = () => {
             document.body.classList.remove('overlay')
         } else if (data.message === "password error") {
             setPassErr(true)
+            setLoading(false)
         } else if (data.message === "email not registerd") {
             setEmailErr(true)
+            setLoading(false)
         }
     }
     return (
@@ -120,8 +128,8 @@ const Signinup = () => {
 
                                 <button onClick={() => {
                                     setRoute('/signup')
-                                }}>
-                                    <p>Sign up</p>
+                                }} disabled={loading}>
+                                    <p>Sign up</p><ClipLoader color="#ffffff" size={15} loading={loading} />
                                 </button>
                             </form>
                         </div>
@@ -148,8 +156,8 @@ const Signinup = () => {
 
                                 <button onClick={() => {
                                     setRoute('/signin')
-                                }}>
-                                    <p>Sign In</p>
+                                }} disabled={loading}>
+                                    <p>Sign In</p><ClipLoader color="#ffffff" size={15} loading={loading} />
                                 </button>
 
                                 <Link to={'/sendRegEmail'}> <p>Forget password?</p></Link>

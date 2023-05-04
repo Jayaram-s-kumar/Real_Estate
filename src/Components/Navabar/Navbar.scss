@@ -344,13 +344,14 @@
 
         label {
 
-            &:first-child{
+            &:first-child {
                 margin-top: 20px;
             }
 
 
             width: 54%;
-            font-family: "Lato", sans-serif;
+            font-family: "Lato",
+            sans-serif;
             letter-spacing: 1px;
             font-size: 15px;
             margin-right: 15px;
@@ -398,6 +399,19 @@
             width: 200px;
             border-radius: 7px;
             margin-top: 30px;
+            position: relative;
+
+            &:disabled {
+                color: #ffffffa8;
+                background: #000000a6;
+                cursor: not-allowed;
+            }
+
+            span{
+                position: absolute;
+                top: 25%;
+                left: 70%;
+            }
 
 
             p {
@@ -408,12 +422,15 @@
 
             }
 
-            
+           
+
+
         }
 
         a {
 
             text-decoration: none;
+
             p {
                 font-family: "Lato", sans-serif;
                 letter-spacing: 1px;
@@ -427,7 +444,7 @@
     }
 }
 
-.error{
+.error {
     color: red;
     font-size: 12px;
 }

@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 //import {Link} from 'react-scroll'
+import { ClipLoader } from 'react-spinners'
 
 const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
@@ -14,6 +15,8 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
   }, [])
 
   const navigate = useNavigate()
+
+  const [loading, setLoading] = useState(false)
 
   const [open, setOpen] = useState(false)
   const [close, setClose] = useState(false)
@@ -43,8 +46,10 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
     initialValues: initialValues,
     validationSchema: signUpSchema,
     onSubmit: (values, action) => {
+      setLoading(true)
       sendDetails(values)
       action.resetForm()
+      
     }
   })
 
@@ -53,6 +58,7 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
   const sendDetails = async (formData) => {
     // setPopup(false)
+    console.log("Enterd into sendDetails")
     let data = await (await fetch(`${api_base}${route}`, {
       method: 'POST',
       headers: {
@@ -73,17 +79,24 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
         email: data.email,
         loginID: data.loginID
       }))
+      setLoading(false)
       document.body.classList.remove('overlay')
       // window.location.reload()
     } else if (data.message === "password error") {
       setPassErr(true)
+      setLoading(false)
     } else if (data.message === "email not registerd") {
       setEmailErr(true)
+      setLoading(false)
     } else if (data.message === "user created") {
       setPopup(false)
+      setLoading(false)
     } else if (data.message === "email already exist") {
       setExist(true)
+      setLoading(false)
     }
+
+    console.log(data.message)
   }
 
   useEffect(() => {
@@ -365,8 +378,8 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
                 <button onClick={() => {
                   setRoute('/signup')
-                }}>
-                  <p>Sign up</p>
+                }} disabled={loading}>
+                  <p>Sign up</p><ClipLoader color="#ffffff" size={15} loading={loading} />
                 </button>
               </form>
             </div>
@@ -393,9 +406,10 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
 
                 <button onClick={() => {
                   setRoute('/signin')
-
-                }}>
-                  <p>Sign In</p>
+                
+                  
+                }} disabled={loading} >
+                  <p>Sign In</p><ClipLoader color="#ffffff" size={15} loading={loading} />
                 </button>
                 <Link to={'/sendRegEmail'} onClick={()=>{
                    document.body.classList.remove('overlay')
