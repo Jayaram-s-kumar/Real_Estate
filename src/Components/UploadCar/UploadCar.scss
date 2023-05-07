@@ -87,11 +87,164 @@
         display: flex;
         flex-direction: column;
 
-        .carbrand {
+        .carbrandcontainer {
             display: flex;
-            flex-direction: column;
-            width: 300px;
-            margin: -40px 0px;
+            flex-wrap: wrap;
+            width: 40%;
+            border-style: solid;
+            padding: 40px;
+            border-color: #0000004f;
+            border-width: 4px;
+            border-radius: 30px;
+            margin-top: 31px;
+
+            @media (max-width:800px) {
+                width: fit-content;
+                padding: 17px;
+                border-width: 1px;
+            }
+
+            .carbrandsearch {
+                margin-bottom: 40px;
+                width: 100%;
+                position: relative;
+
+                img {
+                    width: 20px;
+                    position: absolute;
+                    top: 12px;
+                    left: 11px;
+
+                    @media (max-width:800px) {
+                        width: 16px;
+                        top: 9px;
+                    }
+                }
+
+
+                input {
+                    width: 91%;
+                    padding-left: 40px;
+
+                    @media (max-width:800px) {
+                        width: 81%;
+                    }
+                }
+            }
+
+            .allcarbrands {
+
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                height: 400px;
+                overflow: scroll;
+                overflow-x: hidden;
+                margin-bottom: 13px;
+
+                @media (max-width:800px) {
+                    height: 250px;
+
+
+                }
+
+                /* Set the width and height of the scrollbar */
+                &::-webkit-scrollbar {
+                    width: 5px;
+                    height: 10px;
+
+                    @media (max-width:800px) {
+                        width: 3px;
+                    }
+                }
+
+                /* Style the track (the background) of the scrollbar */
+                &::-webkit-scrollbar-track {
+                    background-color: #f1f1f1;
+                }
+
+                /* Style the thumb (the draggable handle) of the scrollbar */
+                &::-webkit-scrollbar-thumb {
+                    background-color: #88888871;
+                    border-radius: 5px;
+                }
+
+                /* Style the thumb when hovering over it */
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #5555558f;
+                }
+
+
+                .carbranddiv {
+
+                    p {
+                        margin: 0;
+                    }
+
+                    padding: 7px 14px;
+                    margin: 7px 14px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-radius: 4px;
+                    height: fit-content;
+                    border-style: solid;
+                    border-color: #8080803d;
+                    border-width: 1px;
+                    border-radius: 6px;
+
+                    @media (max-width:800px) {
+                        padding: 4px 10px;
+                        margin: 7px 4px;
+
+                        p {
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+
+
+
+        .nextbuttonpart1 {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            margin-bottom: 50px;
+
+            @media (max-width:800px) {
+                width: 90%;
+            }
+
+            button {
+                width: 100px;
+                height: 30px;
+                border: none;
+                background: #686953;
+                color: white;
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                border-radius: 4px;
+                font-weight: 600;
+
+                @media (max-width:800px) {
+                    height: 27px;
+                    width: 73px;
+                    font-weight: 300;
+                    font-size: 12px;
+
+                }
+
+                &:disabled {
+                    background: #6869538f;
+                    color: #ffffffc4;
+                    cursor: not-allowed;
+                }
+            }
         }
 
         .year {
@@ -195,7 +348,75 @@
                 }
             }
 
+            
+             
+            
 
+
+        }
+
+        .controlbuttons {
+            display: flex;
+            width: 40%;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+
+            @media (max-width:800px) {
+                width: 90%;
+
+            }
+
+            .prevbutton {
+                button {
+                    width: 100px;
+                    height: 30px;
+                    border: none;
+                    background: #dd8746;
+                    color: white;
+                    font-family: "Lato", sans-serif;
+                    letter-spacing: 1px;
+                    border-radius: 4px;
+                    font-weight: 600;
+
+                    @media (max-width:800px) {
+                        height: 27px;
+                        width: 73px;
+                        font-weight: 300;
+                        font-size: 12px;
+
+                    }
+                }
+            }
+
+            .nextbutton {
+
+                button {
+                    width: 100px;
+                    height: 30px;
+                    border: none;
+                    background: #686953;
+                    color: white;
+                    font-family: "Lato", sans-serif;
+                    letter-spacing: 1px;
+                    border-radius: 4px;
+                    font-weight: 600;
+
+                    @media (max-width:800px) {
+                        height: 27px;
+                        width: 73px;
+                        font-weight: 300;
+                        font-size: 12px;
+
+                    }
+
+                    &:disabled {
+                        background: #6869538f;
+                        color: #ffffffc4;
+                        cursor: not-allowed;
+                    }
+                }
+            }
         }
 
         .title {
@@ -237,12 +458,92 @@
             }
         }
 
+        .partThree {
+            .controlbuttons {
+                display: flex;
+                width: 70%;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 50px;
+
+                .prevbutton {
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        border: none;
+                        background: #dd8746;
+                        color: white;
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        border-radius: 4px;
+                        font-weight: 600;
+
+                        @media (max-width:800px) {
+                            height: 27px;
+                            width: 73px;
+                            font-weight: 300;
+                            font-size: 12px;
+
+                        }
+                    }
+                }
+
+                .nextbutton {
+
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        border: none;
+                        background: #686953;
+                        color: white;
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        border-radius: 4px;
+                        font-weight: 600;
+
+                        @media (max-width:800px) {
+                            height: 27px;
+                            width: 73px;
+                            font-weight: 300;
+                            font-size: 12px;
+
+                        }
+
+                        &:disabled {
+                            background: #6869538f;
+                            color: #ffffffc4;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+
+                @media (max-width:800px) {
+                    width: 90%;
+
+                }
+            }
+        }
+
         .car_image_upload_container {
             display: flex;
             flex-wrap: wrap;
             margin-top: 50px;
 
             .carimage {
+
+                input[type='file'] {
+                    display: none;
+                }
+
+
+
+
+
+
+
+
+
+
 
                 @media (min-width:800px) {
                     margin-left: 30px;
@@ -275,12 +576,41 @@
                         width: 90%;
                     }
 
+                    label {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+
                     span {
                         display: flex !important;
                         align-items: center;
                         justify-content: center;
                         width: 100%;
                         height: 100%;
+                    }
+
+                    .deleteimage {
+                        position: absolute;
+                        top: 9px;
+                        left: 7px;
+                        background: white;
+                        padding: 3px;
+                        border-radius: 4px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: #00000066;
+
+                        img {
+
+                            width: 25px;
+                        }
+
                     }
 
                     div {
@@ -306,13 +636,19 @@
 
             button {
                 color: white;
-                background: green;
+                background: #e16d37;
                 border: none;
                 height: 38px;
                 width: 200px;
                 border-radius: 7px;
                 margin-top: 60px;
                 margin-left: 30px;
+
+                &:disabled {
+                    color: #ffffff69;
+                    background: #e16d37a6;
+                    cursor: not-allowed;
+                }
 
                 @media (max-width:800px) {
                     margin-top: 20px;

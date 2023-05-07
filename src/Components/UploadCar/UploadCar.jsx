@@ -1,6 +1,6 @@
 import React from 'react'
 import './UploadCar.scss'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { ScaleLoader } from 'react-spinners'
 import { CloudinaryContext, Image, } from 'cloudinary-react'
 import * as Yup from 'yup'
@@ -19,12 +19,12 @@ const UploadCar = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-     
-        if(!localStorage.getItem('user')){
-          navigate('/signinup')
+
+        if (!localStorage.getItem('user')) {
+            navigate('/signinup')
         }
-       
-      }, [])
+
+    }, [])
 
 
     const [fueltype, setFueltype] = useState('')
@@ -80,17 +80,22 @@ const UploadCar = () => {
             .then(data => {
                 if (num === 1) {
                     setImage1Link(data.url)
+                    setImage1IsLoading(false)
                 } else if (num === 2) {
                     setImage2Link(data.url)
+                    setImage2IsLoading(false)
                 }
                 else if (num === 3) {
                     setImage3Link(data.url)
+                    setImage3IsLoading(false)
                 }
                 else if (num === 4) {
                     setImage4Link(data.url)
+                    setImage4IsLoading(false)
                 }
                 else if (num === 5) {
                     setImage5Link(data.url)
+                    setImage5IsLoading(false)
                 }
 
             })
@@ -130,7 +135,7 @@ const UploadCar = () => {
         formData.image5Link = image5Link
 
 
-       
+
         let data = await (await fetch(api_base + "/uploadCar", {
             method: 'POST',
             headers: {
@@ -209,10 +214,35 @@ const UploadCar = () => {
         validationSchema: uploadCarSchema,
         onSubmit: (values, actions) => {
             sendDetails(values)
-          
+
             actions.resetForm()
         }
     })
+
+
+    const [part1, setPart1] = useState(false)
+    const [part2, setPart2] = useState(false)
+    const [part3, setPart3] = useState(false)
+    const [part4, setPart4] = useState(true)
+
+    const carBrandArray = ["Maruti Suzuki", "Hyundai", "Tata", "Mahindra", "Kia", "Toyota", "Honda", "Ford", "Volkswagen", "Renault", "Nissan",
+        "Skoda", "MG", "Jeep", "BMW", "Mercedes-Benz", "Audi", "Volvo", "Ashok Leyland", "Aston Martin", "Bentley", "Bugatti", "CITROEN", "CRYSLER", "Daewoo", "Datsun",
+        "DC", "EICHER", "Ferrari", "Force Motors", "Hindustan Motors", "ICML", "ISUZU", "Jaguar", "KIA", "Lamborghini", "Landrover", "Mahindra Renault", "Maserati",
+        "Maybach", "MG", "Mitsubishi", "Opel", "Peugot", "Porsche", "Premier", "Rolls Royce", "ROVAR", "San", "SMPIL", "Ssangyong", "Subaru", "BAJAJ",
+        "WILLYS", "CADILLAC", "HUMMER"]
+
+
+
+    const [searchValue, setSearchValue] = useState("");
+    const [filteredBrands, setFilteredBrands] = useState([]);
+
+    useEffect(() => {
+        const filtered = carBrandArray.filter((brand) =>
+            brand.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setFilteredBrands(filtered);
+    }, [searchValue]);
+
 
 
 
@@ -225,318 +255,594 @@ const UploadCar = () => {
 
 
                 <form onSubmit={handleSubmit}>
-                    <div className="carbrand">
-                        <label htmlFor="carbrand">Select your brand</label>
-                        <select onChange={handleChange} onBlur={handleBlur} value={values.carbrand} name='carbrand'>
-                            <option value="">Select a car brand</option>
-                            <option value="Maruti Suzuki">Maruti Suzuki</option>
-                            <option value="Hyundai">Hyundai</option>
-                            <option value="Tata">Tata</option>
-                            <option value="Mahindra">Mahindra</option>
-                            <option value="Kia">Kia</option>
-                            <option value="Toyota">Toyota</option>
-                            <option value="Honda">Honda</option>
-                            <option value="Ford">Ford</option>
-                            <option value="Volkswagen">Volkswagen</option>
-                            <option value="Renault">Renault</option>
-                            <option value="Nissan">Nissan</option>
-                            <option value="Skoda">Skoda</option>
-                            <option value="MG">MG</option>
-                            <option value="Jeep">Jeep</option>
-                            <option value="BMW">BMW</option>
-                            <option value="Mercedes-Benz">Mercedes-Benz</option>
-                            <option value="Audi">Audi</option>
-                            <option value="Volvo">Volvo</option>
-                        </select>
-                        <p className='error'>{errors.carbrand && touched.carbrand ? errors.carbrand : null}</p>
-                    </div>
 
-                    <div className="year">
-                        <label htmlFor="year">Year</label>
-                        <input type="number" name='year' onChange={handleChange} onBlur={handleBlur} value={values.year} />
-                        <p className='error'>{errors.year && touched.year ? errors.year : null}</p>
+                    {
+                        part1 && <div className="partOne">
+                            <label htmlFor="carbrand">Select your brand</label>
+                            <div className="carbrandcontainer">
 
-                    </div>
 
-                    <div className="fueltype">
-                        <p>Fuel Type</p>
-                        <div className="allfuels">
-                            <div className="cnghybrids" style={fueltype == 'cnghybrids' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setFueltype('cnghybrids')
-                                setFieldValue('fueltype', 'cnghybrids')
-                            }}>
-                                <p>CNG & Hybrids</p>
-                            </div>
-                            <div className="diesel" style={fueltype == 'diesel' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setFueltype('diesel')
-                                setFieldValue('fueltype', 'diesel')
-                            }}>
-                                <p>Diesel</p>
-                            </div>
-                            <div className="electric" style={fueltype == 'electric' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setFueltype('electric')
-                                setFieldValue('fueltype', 'electric')
-                            }}>
-                                <p>Electric</p>
-                            </div>
-                            <div className="LPG" style={fueltype == 'LPG' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setFueltype('LPG')
-                                setFieldValue('fueltype', 'LPG')
-                            }}>
-                                <p>LPG</p>
-                            </div>
-                            <div className="petrol" style={fueltype == 'petrol' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setFueltype('petrol')
-                                setFieldValue('fueltype', 'petrol')
-                            }}>
-                                <p>Petrol</p>
-                            </div>
-                        </div>
-                        <p className='error'>{errors.fueltype && touched.fueltype ? errors.fueltype : null}</p>
+                                <div className="carbrandsearch">
+                                    <input type="text" placeholder='Search car brands' onChange={(e) => { setSearchValue(e.target.value) }} />
+                                    <img src="/images/search.png" alt="" />
+                                </div>
 
-                    </div>
-
-                    <div className="transmission">
-                        <p>Transmission</p>
-                        <div className="types">
-                            <div className="automatic" style={transmission == 'automatic' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setTransmission('automatic')
-                                setFieldValue('transmission', 'automatic')
-                            }}>
-                                <p>Automatic</p>
+                                <div className="allcarbrands">
+                                    {
+                                        filteredBrands.map((obj) => {
+                                            return (
+                                                <div className="carbranddiv" style={values.carbrand == obj ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                                    setFieldValue('carbrand', obj)
+                                                }}>
+                                                    <p>{obj}</p>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <p className='error'>{errors.carbrand && touched.carbrand ? errors.carbrand : null}</p>
                             </div>
-                            <div className="manual" style={transmission == 'manual' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setTransmission('manual')
-                                setFieldValue('transmission', 'manual')
-                            }}>
-                                <p>Manual</p>
-                            </div>
-                        </div>
-                        <p className='error'>{errors.transmission && touched.transmission ? errors.transmission : null}</p>
-
-                    </div>
-
-                    <div className="kmdriven">
-                        <label htmlFor="kmdriven">kmdriven</label>
-                        <input type="number" name='kmdriven' onChange={handleChange} onBlur={handleBlur} value={values.kmdriven} />
-                        <p className='error'>{errors.kmdriven && touched.kmdriven ? errors.kmdriven : null}</p>
-
-                    </div>
-
-                    <div className="owners">
-                        <p>No of owners</p>
-                        <div className="number">
-                            <div style={noofowners == '1st' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setNoofowners('1st')
-                                setFieldValue('noofowners', '1st')
-                            }}>
-                                <p>1</p>
-                            </div>
-                            <div style={noofowners == '2nd' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setNoofowners('2nd')
-                                setFieldValue('noofowners', '2nd')
-                            }}>
-                                <p>2</p>
-                            </div>
-                            <div style={noofowners == '3rd' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setNoofowners('3rd')
-                                setFieldValue('noofowners', '3rd')
-                            }}>
-                                <p>3</p>
-                            </div>
-                            <div style={noofowners == '3+' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                setNoofowners('3+')
-                                setFieldValue('noofowneres', '3+')
-                            }}>
-                                <p>3 +</p>
+                            <br /><br />
+                            <div className="nextbuttonpart1">
+                                <button disabled={values.carbrand == "" ? true : false} onClick={() => {
+                                    setPart1(false)
+                                    setPart2(true)
+                                    setPart3(false)
+                                    setPart4(false)
+                                }} >Next</button>
                             </div>
 
                         </div>
-                        <p className='error'>{errors.noofowners && touched.noofowners ? errors.noofowners : null}</p>
 
-                    </div>
-
-                    <div className="title">
-                        <label htmlFor="title">Title</label>
-                        <input type="text" name='title' onChange={handleChange} onBlur={handleBlur} value={values.title} />
-                        <p className='error'>{errors.title && touched.title ? errors.title : null}</p>
-
-                    </div>
-
-                    <div className="price">
-                        <label htmlFor="price">Price</label>
-                        <input type="number" name='price' onChange={handleChange} onBlur={handleBlur} value={values.price} />
-                        <p className='error'>{errors.price && touched.price ? errors.price : null}</p>
-
-                    </div>
-
-                    <div className="price">
-                        <label htmlFor="phone">Place</label>
-                        <input type="text" name='location' onChange={handleChange} onBlur={handleBlur} value={values.location} />
-                        <p className='error'>{errors.location && touched.location ? errors.location : null}</p>
-
-                    </div>
-
-                    <div className="price">
-                        <label htmlFor="price">Address</label>
-                        <input type="text" name='address' onChange={handleChange} onBlur={handleBlur} value={values.address} />
-                        <p className='error'>{errors.address && touched.address ? errors.address : null}</p>
-
-                    </div>
-
-                    <div className="price">
-                        <label htmlFor="phone">Phone</label>
-                        <input type="number" name='phone' onChange={handleChange} onBlur={handleBlur} value={values.phone} />
-                        <p className='error'>{errors.phone && touched.phone ? errors.phone : null}</p>
-
-                    </div>
+                    }
 
 
 
-
-                    <div className="description">
-                        <label htmlFor="description">Description</label>
-                        <textarea name="description" id="" cols="30" rows="10" onChange={handleChange} onBlur={handleBlur} value={values.description}></textarea>
-                        <p className='error'>{errors.description && touched.description ? errors.description : null}</p>
-
-                    </div>
+                    {/* ############################################################################################## */}
 
 
 
+                    {
+                        part2 && <div className="partTwo">
 
-                    <div className="car_image_upload_container">
-                        <div className="carimage">
-                            <input type="file" id='file1' name='image1Link' onChange={(event) => {
-                                setFieldValue('image1Link', event.currentTarget.files[0])
-                                handleImage1Upload()
-                                uploadimage(event, 1)
+                            <div className="year">
+                                <label htmlFor="year">Year</label>
+                                <input type="number" name='year' onChange={handleChange} onBlur={handleBlur} value={values.year} />
+                                <p className='error'>{errors.year && touched.year ? errors.year : null}</p>
 
-                            }} className='inputfile' />
+                            </div>
 
-                            <p className='error'>{errors.image1Link && touched.image1Link ? errors.image1Link : null}</p>
-                            <div className="uploadedimage">
-                                {image1IsLoading && !image1Link ? <ScaleLoader
-                                    color="#80808087"
-                                    height={20}
-                                    loading
-                                    width={10}
-                                /> : null}
-                                {image1Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                        <Image publicId={image1Link} />
+                            <div className="fueltype">
+                                <p>Fuel Type</p>
+                                <div className="allfuels">
+                                    <div className="cnghybrids" style={fueltype == 'cnghybrids' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setFueltype('cnghybrids')
+                                        setFieldValue('fueltype', 'cnghybrids')
+                                    }}>
+                                        <p>CNG & Hybrids</p>
                                     </div>
-                                </CloudinaryContext>}
-                            </div>
-                        </div>
-
-                        <div className="carimage">
-                            <input type="file" id='file1' name='image2Link' onChange={(event) => {
-                                setFieldValue('image2Link', event.currentTarget.files[0])
-                                handleImage2Upload()
-                                uploadimage(event, 2)
-
-                            }} className='inputfile' />
-
-                            <p className='error'>{errors.image2Link && touched.image2Link ? errors.image2Link : null}</p>
-                            <div className="uploadedimage">
-                                {image2IsLoading && !image2Link ? <ScaleLoader
-                                    color="#80808087"
-                                    height={20}
-                                    loading
-                                    width={10}
-                                /> : null}
-                                {image2Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                        <Image publicId={image2Link} />
+                                    <div className="diesel" style={fueltype == 'diesel' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setFueltype('diesel')
+                                        setFieldValue('fueltype', 'diesel')
+                                    }}>
+                                        <p>Diesel</p>
                                     </div>
-                                </CloudinaryContext>}
-                            </div>
-                        </div>
-
-                        <div className="carimage">
-                            <input type="file" id='file1' name='image3Link' onChange={(event) => {
-                                setFieldValue('image3Link', event.currentTarget.files[0])
-                                handleImage3Upload()
-                                uploadimage(event, 3)
-
-                            }} className='inputfile' />
-
-                            <p className='error'>{errors.image3Link && touched.image3Link ? errors.image3Link : null}</p>
-                            <div className="uploadedimage">
-                                {image3IsLoading && !image3Link ? <ScaleLoader
-                                    color="#80808087"
-                                    height={20}
-                                    loading
-                                    width={10}
-                                /> : null}
-                                {image3Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                        <Image publicId={image3Link} />
+                                    <div className="electric" style={fueltype == 'electric' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setFueltype('electric')
+                                        setFieldValue('fueltype', 'electric')
+                                    }}>
+                                        <p>Electric</p>
                                     </div>
-                                </CloudinaryContext>}
-                            </div>
-                        </div>
-
-                        <div className="carimage">
-                            <input type="file" id='file1' name='image4Link' onChange={(event) => {
-                                setFieldValue('image4Link', event.currentTarget.files[0])
-                                handleImage4Upload()
-                                uploadimage(event, 4)
-
-                            }} className='inputfile' />
-
-                            <p className='error'>{errors.image4Link && touched.image4Link ? errors.image4Link : null}</p>
-                            <div className="uploadedimage">
-                                {image4IsLoading && !image4Link ? <ScaleLoader
-                                    color="#80808087"
-                                    height={20}
-                                    loading
-                                    width={10}
-                                /> : null}
-                                {image4Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                        <Image publicId={image4Link} />
+                                    <div className="LPG" style={fueltype == 'LPG' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setFueltype('LPG')
+                                        setFieldValue('fueltype', 'LPG')
+                                    }}>
+                                        <p>LPG</p>
                                     </div>
-                                </CloudinaryContext>}
-                            </div>
-                        </div>
-
-                        <div className="carimage">
-                            <input type="file" id='file5' name='image5Link' onChange={(event) => {
-                                setFieldValue('image5Link', event.currentTarget.files[0])
-                                handleImage5Upload()
-                                uploadimage(event, 5)
-
-                            }} className='inputfile' />
-
-                            <p className='error'>{errors.image5Link && touched.image5Link ? errors.image5Link : null}</p>
-                            <div className="uploadedimage">
-                                {image5IsLoading && !image5Link ? <ScaleLoader
-                                    color="#80808087"
-                                    height={20}
-                                    loading
-                                    width={10}
-                                /> : null}
-                                {image5Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
-                                    <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
-                                        <Image publicId={image5Link} />
+                                    <div className="petrol" style={fueltype == 'petrol' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setFueltype('petrol')
+                                        setFieldValue('fueltype', 'petrol')
+                                    }}>
+                                        <p>Petrol</p>
                                     </div>
-                                </CloudinaryContext>}
+                                </div>
+                                <p className='error'>{errors.fueltype && touched.fueltype ? errors.fueltype : null}</p>
+
                             </div>
+
+                            <div className="transmission">
+                                <p>Transmission</p>
+                                <div className="types">
+                                    <div className="automatic" style={transmission == 'automatic' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setTransmission('automatic')
+                                        setFieldValue('transmission', 'automatic')
+                                    }}>
+                                        <p>Automatic</p>
+                                    </div>
+                                    <div className="manual" style={transmission == 'manual' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setTransmission('manual')
+                                        setFieldValue('transmission', 'manual')
+                                    }}>
+                                        <p>Manual</p>
+                                    </div>
+                                </div>
+                                <p className='error'>{errors.transmission && touched.transmission ? errors.transmission : null}</p>
+
+                            </div>
+
+                            <div className="kmdriven">
+                                <label htmlFor="kmdriven">kmdriven</label>
+                                <input type="number" name='kmdriven' onChange={handleChange} onBlur={handleBlur} value={values.kmdriven} />
+                                <p className='error'>{errors.kmdriven && touched.kmdriven ? errors.kmdriven : null}</p>
+
+                            </div>
+
+                            <div className="owners">
+                                <p>No of owners</p>
+                                <div className="number">
+                                    <div style={noofowners == '1st' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setNoofowners('1st')
+                                        setFieldValue('noofowners', '1st')
+                                    }}>
+                                        <p>1</p>
+                                    </div>
+                                    <div style={noofowners == '2nd' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setNoofowners('2nd')
+                                        setFieldValue('noofowners', '2nd')
+                                    }}>
+                                        <p>2</p>
+                                    </div>
+                                    <div style={noofowners == '3rd' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setNoofowners('3rd')
+                                        setFieldValue('noofowners', '3rd')
+                                    }}>
+                                        <p>3</p>
+                                    </div>
+                                    <div style={noofowners == '3+' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                        setNoofowners('3+')
+                                        setFieldValue('noofowneres', '3+')
+                                    }}>
+                                        <p>3 +</p>
+                                    </div>
+
+                                </div>
+                                <p className='error'>{errors.noofowners && touched.noofowners ? errors.noofowners : null}</p>
+
+                            </div>
+
+
+                            <br /><br />
+                            <div className="controlbuttons">
+                                <div className="prevbutton">
+                                    <button onClick={() => {
+                                        setPart1(true)
+                                        setPart2(false)
+                                        setPart3(false)
+                                        setPart4(false)
+                                    }}>Previous</button>
+                                </div>
+                                <div className="nextbutton">
+                                    <button disabled={
+                                        (values.year == "" ||
+                                            errors.year ||
+
+                                            values.fueltype == "" ||
+                                            errors.fueltype ||
+
+                                            values.transmission == "" ||
+                                            errors.transmission ||
+
+                                            values.kmdriven == "" ||
+                                            errors.kmdriven ||
+
+                                            values.noofowners == "" ||
+                                            errors.noofowners
+                                        )
+
+                                            ? true : false} onClick={() => {
+                                                setPart1(false)
+                                                setPart2(false)
+                                                setPart3(true)
+                                                setPart4(false)
+                                            }} >Next</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+
+
+                    {/* ############################################################################################## */}
+
+
+
+                    {
+                        part3 && <div className="partThree">
+
+                            <div className="title">
+                                <label htmlFor="title">Title</label>
+                                <input type="text" name='title' onChange={handleChange} onBlur={handleBlur} value={values.title} />
+                                <p className='error'>{errors.title && touched.title ? errors.title : null}</p>
+
+                            </div>
+
+                            <div className="price">
+                                <label htmlFor="price">Price</label>
+                                <input type="number" name='price' onChange={handleChange} onBlur={handleBlur} value={values.price} />
+                                <p className='error'>{errors.price && touched.price ? errors.price : null}</p>
+
+                            </div>
+
+                            <div className="price">
+                                <label htmlFor="phone">Place</label>
+                                <input type="text" name='location' onChange={handleChange} onBlur={handleBlur} value={values.location} />
+                                <p className='error'>{errors.location && touched.location ? errors.location : null}</p>
+
+                            </div>
+
+                            <div className="price">
+                                <label htmlFor="price">Address</label>
+                                <input type="text" name='address' onChange={handleChange} onBlur={handleBlur} value={values.address} />
+                                <p className='error'>{errors.address && touched.address ? errors.address : null}</p>
+
+                            </div>
+
+                            <div className="price">
+                                <label htmlFor="phone">Phone</label>
+                                <input type="number" name='phone' onChange={handleChange} onBlur={handleBlur} value={values.phone} />
+                                <p className='error'>{errors.phone && touched.phone ? errors.phone : null}</p>
+
+                            </div>
+
+
+
+
+                            <div className="description">
+                                <label htmlFor="description">Description</label>
+                                <textarea name="description" id="" cols="30" rows="10" onChange={handleChange} onBlur={handleBlur} value={values.description}></textarea>
+                                <p className='error'>{errors.description && touched.description ? errors.description : null}</p>
+
+                            </div>
+
+                            <br /><br />
+                            <div className="controlbuttons">
+
+                                <div className="prevbutton">
+                                    <button onClick={() => {
+                                        setPart1(false)
+                                        setPart2(true)
+                                        setPart3(false)
+                                        setPart4(false)
+                                    }}>Previous</button>
+                                </div>
+                                <div className="nextbutton">
+                                    <button disabled={
+                                        (values.title == "" ||
+                                            errors.title ||
+
+                                            values.price == "" ||
+                                            errors.price ||
+
+                                            values.location == "" ||
+                                            errors.location ||
+
+                                            values.address == "" ||
+                                            errors.address ||
+
+                                            values.phone == "" ||
+                                            errors.phone ||
+
+                                            values.description == "" ||
+                                            errors.description
+                                        )
+
+                                            ? true : false} onClick={() => {
+                                                setPart1(false)
+                                                setPart2(false)
+                                                setPart3(false)
+                                                setPart4(true)
+                                            }} >Next</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+
+
+
+                {/* ############################################################################################## */}
+
+
+
+
+
+                    {
+                        part4 && <div className="partFour">
+                            <div className="car_image_upload_container">
+                                <div className="carimage">
+
+
+
+                                    <input type="file" id='file1' name='image1Link' onChange={(event) => {
+                                        setFieldValue('image1Link', event.currentTarget.files[0])
+                                        handleImage1Upload()
+                                        uploadimage(event, 1)
+
+                                    }} className='inputfile' />
+
+
+                                    <p className='error'>&nbsp;{errors.image1Link && touched.image1Link ? errors.image1Link : null}</p>
+                                    <div className="uploadedimage">
+                                        {image1IsLoading && !image1Link ? <ScaleLoader
+                                            color="#80808087"
+                                            height={20}
+                                            loading
+                                            width={10}
+                                        /> : null}
+                                        {image1Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                                <Image publicId={image1Link} />
+                                            </div>
+                                        </CloudinaryContext>}
+                                        {
+                                            !image1Link && !image1IsLoading && <label htmlFor="file1">
+                                                <img src="/images/upload.png" alt="" />
+                                                <p>Upload</p>
+                                            </label>
+                                        }
+
+                                        {
+                                            image1Link && <div className='deleteimage' onClick={() => {
+                                                setImage1Link('')
+                                                document.getElementById("file1").value = '';
+                                                setFieldValue('image1Link','')
+
+
+
+                                            }}>
+                                                <img src="/images/delete.png" alt="" />
+                                            </div>
+
+                                        }
+
+
+
+
+
+                                    </div>
+                                </div>
+
+                                <div className="carimage">
+                                    <input type="file" id='file2' name='image2Link' onChange={(event) => {
+                                        setFieldValue('image2Link', event.currentTarget.files[0])
+                                        handleImage2Upload()
+                                        uploadimage(event, 2)
+
+                                    }} className='inputfile' />
+
+                                    <p className='error'>&nbsp;{errors.image2Link && touched.image2Link ? errors.image2Link : null}</p>
+                                    <div className="uploadedimage">
+                                        {image2IsLoading && !image2Link ? <ScaleLoader
+                                            color="#80808087"
+                                            height={20}
+                                            loading
+                                            width={10}
+                                        /> : null}
+                                        {image2Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                                <Image publicId={image2Link} />
+                                            </div>
+                                        </CloudinaryContext>}
+                                        {
+                                            !image2Link && !image2IsLoading && <label htmlFor="file2">
+                                                <img src="/images/upload.png" alt="" />
+                                                <p>Upload</p>
+                                            </label>
+                                        }
+
+                                        {
+                                            image2Link && <div className='deleteimage' onClick={() => {
+                                                setImage2Link('')
+                                                document.getElementById("file2").value = '';
+                                                setFieldValue('image2Link','')
+
+
+
+                                            }}>
+                                                <img src="/images/delete.png" alt="" />
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <div className="carimage">
+                                    <input type="file" id='file3' name='image3Link' onChange={(event) => {
+                                        setFieldValue('image3Link', event.currentTarget.files[0])
+                                        handleImage3Upload()
+                                        uploadimage(event, 3)
+
+                                    }} className='inputfile' />
+
+                                    <p className='error'>&nbsp;{errors.image3Link && touched.image3Link ? errors.image3Link : null}</p>
+                                    <div className="uploadedimage">
+                                        {image3IsLoading && !image3Link ? <ScaleLoader
+                                            color="#80808087"
+                                            height={20}
+                                            loading
+                                            width={10}
+                                        /> : null}
+                                        {image3Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                                <Image publicId={image3Link} />
+                                            </div>
+                                        </CloudinaryContext>}
+                                        {
+                                            !image3Link && !image3IsLoading && <label htmlFor="file3">
+                                                <img src="/images/upload.png" alt="" />
+                                                <p>Upload</p>
+                                            </label>
+                                        }
+
+                                        {
+                                            image3Link && <div className='deleteimage' onClick={() => {
+                                                setImage3Link('')
+                                                document.getElementById("file3").value = '';
+                                                setFieldValue('image3Link','')
+
+
+
+                                            }}>
+                                                <img src="/images/delete.png" alt="" />
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <div className="carimage">
+                                    <input type="file" id='file4' name='image4Link' onChange={(event) => {
+                                        setFieldValue('image4Link', event.currentTarget.files[0])
+                                        handleImage4Upload()
+                                        uploadimage(event, 4)
+
+                                    }} className='inputfile' />
+
+                                    <p className='error'>&nbsp;{errors.image4Link && touched.image4Link ? errors.image4Link : null}</p>
+                                    <div className="uploadedimage">
+                                        {image4IsLoading && !image4Link ? <ScaleLoader
+                                            color="#80808087"
+                                            height={20}
+                                            loading
+                                            width={10}
+                                        /> : null}
+                                        {image4Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                                <Image publicId={image4Link} />
+                                            </div>
+                                        </CloudinaryContext>}
+                                        {
+                                            !image4Link && !image4IsLoading && <label htmlFor="file4">
+                                                <img src="/images/upload.png" alt="" />
+                                                <p>Upload</p>
+                                            </label>
+                                        }
+
+                                        {
+                                            image4Link && <div className='deleteimage' onClick={() => {
+                                                setImage4Link('')
+                                                document.getElementById("file4").value = '';
+                                                setFieldValue('image4Link','')
+
+
+
+                                            }}>
+                                                <img src="/images/delete.png" alt="" />
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <div className="carimage">
+                                    <input type="file" id='file5' name='image5Link' onChange={(event) => {
+                                       setFieldValue('image5Link', event.currentTarget.files[0])
+                                        handleImage5Upload()
+                                        uploadimage(event, 5)
+
+                                    }} className='inputfile' />
+
+                                    <p className='error'>&nbsp;{errors.image5Link && touched.image5Link ? errors.image5Link : null}</p>
+                                    <div className="uploadedimage">
+                                        {image5IsLoading && !image5Link ? <ScaleLoader
+                                            color="#80808087"
+                                            height={20}
+                                            loading
+                                            width={10}
+                                        /> : null}
+                                        {image5Link && <CloudinaryContext cloudName={cloudName} apiKey={apiKey}>
+                                            <div style={{ width: "300px", height: "300px", overflow: "hidden" }}>
+                                                <Image publicId={image5Link} />
+                                            </div>
+                                        </CloudinaryContext>}
+                                        {
+                                            !image5Link && !image5IsLoading && <label htmlFor="file5">
+                                                <img src="/images/upload.png" alt="" />
+                                                <p>Upload</p>
+                                            </label>
+                                        }
+
+                                        {
+                                            image5Link && <div className='deleteimage' onClick={() => {
+                                                setImage5Link('')
+                                                document.getElementById("file5").value = '';
+                                                setFieldValue('image5Link','')
+
+
+                                            }}>
+                                                <img src="/images/delete.png" alt="" />
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <br /><br />
+                            <div className="controlbuttons">
+                                <div className="prevbutton">
+                                    <button onClick={() => {
+                                        setPart1(false)
+                                        setPart2(false)
+                                        setPart3(true)
+                                        setPart4(false)
+                                    }}>Previous</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    }
+
+                    {
+                        part4 && <div className="button_div">
+
+                            <button type='submit' disabled={
+                                (
+                                    values.image1Link == "" ||
+                                    errors.image1Link ||
+
+                                    values.image2Link == "" ||
+                                    errors.image2Link ||
+
+                                    values.image3Link == "" ||
+                                    errors.image3Link ||
+
+                                    values.image4Link == "" ||
+                                    errors.image4Link ||
+
+                                    values.image5Link == "" ||
+                                    errors.image5Link
+
+                                )
+                                    ? true : false}>
+                                <p>POST</p>
+                            </button>
+
                         </div>
 
-
-                    </div>
-
-
-                    <div className="button_div">
-
-                        <button type='submit'>
-                            <p>POST</p>
-                        </button>
-
-                    </div>
-
+                    }
 
 
                 </form>
