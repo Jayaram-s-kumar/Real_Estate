@@ -1,13 +1,18 @@
 .carupload_container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     margin-top: 98px;
 
     h3 {
-        font-size: 26px;
+        font-size: 36px;
         color: rgb(75, 72, 72);
         margin-bottom: 50px;
         font-family: "Lato", sans-serif;
+        padding-left: 7%;
+
+        @media (max-width:800px) {
+            font-size: 26px;
+        }
 
     }
 
@@ -68,9 +73,13 @@
 
         .partOne {
 
-            // background-image: url('https://ymimg1.b8cdn.com/resized/article/7557/pictures/6637451/listing_main_sell_d-c920d0be76978f17ab297c76af8ce324cb2b93b0f842afd0248f26ddbba74de3.jpg');
-            // background-repeat: no-repeat;
-            // background-size: cover;
+            background-image: url('https://img.freepik.com/free-photo/stylish-elegant-woman-car-salon_1157-21198.jpg?w=1380&t=st=1683626472~exp=1683627072~hmac=4c4c130f52d914bf1c899057f0680a4955f54707e38d1ad17733bf302329bedd');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            @media (min-width:800px) {
+                padding-left: 6%;
+            }
 
 
 
@@ -102,7 +111,7 @@
             }
 
             label {
-                margin-bottom: 10px;
+                margin-bottom: 20px;
                 font-family: "Lato", sans-serif;
                 font-size: 15px;
                 color: gray;
@@ -139,159 +148,183 @@
                 border-width: 4px;
                 border-radius: 30px;
                 margin-top: 31px;
-
-                @media (max-width:800px) {
-                    width: fit-content;
-                    padding: 17px;
-                    border-width: 1px;
-                }
-
-                .carbrandsearch {
-                    margin-bottom: 40px;
-                    width: 100%;
-                    position: relative;
-
-                    img {
-                        width: 20px;
-                        position: absolute;
-                        top: 12px;
-                        left: 11px;
-
-                        @media (max-width:800px) {
-                            width: 16px;
-                            top: 9px;
-                        }
-                    }
-
-
-                    input {
-                        width: 91%;
-                        padding-left: 40px;
-
-                        @media (max-width:800px) {
-                            width: 81%;
-                        }
-                    }
-                }
-
-                .allcarbrands {
-
-                    width: 100%;
-                    display: flex;
-                    flex-wrap: wrap;
-                    height: 400px;
-                    overflow: scroll;
-                    overflow-x: hidden;
-                    margin-bottom: 13px;
-
-                    @media (max-width:800px) {
-                        height: 250px;
-
-
-                    }
-
-                    /* Set the width and height of the scrollbar */
-                    &::-webkit-scrollbar {
-                        width: 5px;
-                        height: 10px;
-
-                        @media (max-width:800px) {
-                            width: 3px;
-                        }
-                    }
-
-                    /* Style the track (the background) of the scrollbar */
-                    &::-webkit-scrollbar-track {
-                        background-color: #f1f1f1;
-                    }
-
-                    /* Style the thumb (the draggable handle) of the scrollbar */
-                    &::-webkit-scrollbar-thumb {
-                        background-color: #88888871;
-                        border-radius: 5px;
-                    }
-
-                    /* Style the thumb when hovering over it */
-                    &::-webkit-scrollbar-thumb:hover {
-                        background-color: #5555558f;
-                    }
-
-
-                    .carbranddiv {
-
-                        p {
-                            margin: 0;
-                        }
-
-                        padding: 7px 14px;
-                        margin: 7px 14px;
-                        border-style: solid;
-                        border-width: 1px;
-                        border-radius: 4px;
-                        height: fit-content;
-                        border-style: solid;
-                        border-color: #8080803d;
-                        border-width: 1px;
-                        border-radius: 6px;
-
-                        @media (max-width:800px) {
-                            padding: 4px 10px;
-                            margin: 7px 4px;
-
-                            p {
-                                font-size: 11px;
-                            }
-                        }
-                    }
-                }
-
-
-
-            }
-
-
-
-            .nextbuttonpart1 {
-                width: 40%;
-                display: flex;
-                align-items: center;
-                justify-content: end;
+                background: rgb(255, 255, 255);
+                max-width: 490px;
                 margin-bottom: 50px;
 
-                @media (max-width:800px) {
-                    width: 90%;
-                }
+                width: 81%;       
+               
+            
 
-                button {
-                    width: 100px;
-                    height: 30px;
-                    border: none;
-                    background: #686953;
-                    color: white;
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    border-radius: 4px;
-                    font-weight: 600;
+            @media (max-width:800px) {
+                padding: 17px;
+                padding-top: 10%;
+                border-width: 1px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .carbrandsearch {
+                margin-bottom: 40px;
+                width: 100%;
+                position: relative;
+
+                img {
+                    width: 20px;
+                    position: absolute;
+                    top: 12px;
+                    left: 11px;
 
                     @media (max-width:800px) {
-                        height: 27px;
-                        width: 73px;
-                        font-weight: 300;
-                        font-size: 12px;
-
+                        width: 16px;
+                        top: 9px;
                     }
+                }
 
-                    &:disabled {
-                        background: #6869538f;
-                        color: #ffffffc4;
-                        cursor: not-allowed;
+
+                input {
+                    width: 91%;
+                    padding-left: 40px;
+
+                    @media (max-width:800px) {
+                        width: 81%;
                     }
                 }
             }
+
+            .allcarbrands {
+
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                height: 400px;
+                overflow: scroll;
+                overflow-x: hidden;
+                margin-bottom: 13px;
+
+                @media (max-width:800px) {
+                    height: 250px;
+
+
+                }
+
+                /* Set the width and height of the scrollbar */
+                &::-webkit-scrollbar {
+                    width: 5px;
+                    height: 10px;
+
+                    @media (max-width:800px) {
+                        width: 3px;
+                    }
+                }
+
+                /* Style the track (the background) of the scrollbar */
+                &::-webkit-scrollbar-track {
+                    background-color: #f1f1f1;
+                }
+
+                /* Style the thumb (the draggable handle) of the scrollbar */
+                &::-webkit-scrollbar-thumb {
+                    background-color: #88888871;
+                    border-radius: 5px;
+                }
+
+                /* Style the thumb when hovering over it */
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #5555558f;
+                }
+
+
+                .carbranddiv {
+
+                    p {
+                        margin: 0;
+                    }
+
+                    padding: 7px 14px;
+                    margin: 7px 14px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-radius: 4px;
+                    height: fit-content;
+                    border-style: solid;
+                    border-color: #8080803d;
+                    border-width: 1px;
+                    border-radius: 6px;
+
+                    @media (max-width:800px) {
+                        padding: 4px 10px;
+                        margin: 7px 4px;
+
+                        p {
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+
+
 
         }
 
-        .partTwo {
+
+
+        .nextbuttonpart1 {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            margin-bottom: 6px;
+            margin-top: 30px;
+
+            @media (max-width:800px) {
+                width: 90%;
+            }
+
+            button {
+                width: 100px;
+                height: 30px;
+                border: none;
+                background: #686953;
+                color: white;
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                border-radius: 4px;
+                font-weight: 600;
+
+                @media (max-width:800px) {
+                    height: 27px;
+                    width: 73px;
+                    font-weight: 300;
+                    font-size: 12px;
+
+                }
+
+                &:disabled {
+                    background: #6869538f;
+                    color: #ffffffc4;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+    }
+
+    .partTwo {
+
+        background-image: url('https://img.freepik.com/free-photo/stylish-elegant-woman-car-salon_1157-21198.jpg?w=1380&t=st=1683626472~exp=1683627072~hmac=4c4c130f52d914bf1c899057f0680a4955f54707e38d1ad17733bf302329bedd');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-bottom: 50px;
+        padding-top: 31px;
+
+        @media (min-width:800px) {
+            padding-left: 6%;
+        }
+
+
+
+        .partTwobox {
 
             width: 40%;
             border-style: solid;
@@ -300,7 +333,15 @@
             border-width: 4px;
             border-radius: 30px;
             margin-top: 31px;
+            background: rgb(255, 255, 255);
+            max-width: 490px;
             margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 5%;
+
+        
 
             @media (max-width:800px) {
                 width: fit-content;
@@ -310,8 +351,11 @@
 
                 width: 80%;
                 padding: 17px;
+                padding-top: 10%;
 
             }
+
+
 
 
             .year {
@@ -465,78 +509,93 @@
 
 
             }
-        }
-
-        .controlbuttons {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 50px;
-            padding: 0px 40px;
-            width: 40%;
 
 
-            @media (max-width:800px) {
-                width: 90%;
-                padding: 0px 0px;
-                margin-left: auto;
-                margin-right: auto;
+            .controlbuttons {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 50px;
 
-            }
+                width: 100%;
 
-            .prevbutton {
-                button {
-                    width: 100px;
-                    height: 30px;
-                    border: none;
-                    background: #dd8746;
-                    color: white;
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    border-radius: 4px;
-                    font-weight: 600;
 
-                    @media (max-width:800px) {
-                        height: 27px;
-                        width: 73px;
-                        font-weight: 300;
-                        font-size: 12px;
+                @media (max-width:800px) {
+                    width: 90%;
+                    padding: 0px 0px;
+                    margin-left: auto;
+                    margin-right: auto;
 
+                }
+
+                .prevbutton {
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        border: none;
+                        background: #dd8746;
+                        color: white;
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        border-radius: 4px;
+                        font-weight: 600;
+
+                        @media (max-width:800px) {
+                            height: 27px;
+                            width: 73px;
+                            font-weight: 300;
+                            font-size: 12px;
+
+                        }
+                    }
+                }
+
+                .nextbutton {
+
+                    button {
+                        width: 100px;
+                        height: 30px;
+                        border: none;
+                        background: #686953;
+                        color: white;
+                        font-family: "Lato", sans-serif;
+                        letter-spacing: 1px;
+                        border-radius: 4px;
+                        font-weight: 600;
+
+                        @media (max-width:800px) {
+                            height: 27px;
+                            width: 73px;
+                            font-weight: 300;
+                            font-size: 12px;
+
+                        }
+
+                        &:disabled {
+                            background: #6869538f;
+                            color: #ffffffc4;
+                            cursor: not-allowed;
+                        }
                     }
                 }
             }
+        }
+    }
 
-            .nextbutton {
+    .partThree {
 
-                button {
-                    width: 100px;
-                    height: 30px;
-                    border: none;
-                    background: #686953;
-                    color: white;
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    border-radius: 4px;
-                    font-weight: 600;
+        background-image: url('https://img.freepik.com/free-photo/stylish-elegant-woman-car-salon_1157-21198.jpg?w=1380&t=st=1683626472~exp=1683627072~hmac=4c4c130f52d914bf1c899057f0680a4955f54707e38d1ad17733bf302329bedd');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-bottom: 50px;
+        padding-top: 31px;
 
-                    @media (max-width:800px) {
-                        height: 27px;
-                        width: 73px;
-                        font-weight: 300;
-                        font-size: 12px;
-
-                    }
-
-                    &:disabled {
-                        background: #6869538f;
-                        color: #ffffffc4;
-                        cursor: not-allowed;
-                    }
-                }
-            }
+        @media (min-width:800px) {
+            padding-left: 6%;
         }
 
-        .partThree {
+
+        .partThreebox {
 
 
             width: 40%;
@@ -547,6 +606,14 @@
             border-radius: 30px;
             margin-top: 31px;
             margin-bottom: 50px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 6%;
+            padding-top: 6%;
+            max-width: 497px;
+
 
 
 
@@ -556,8 +623,8 @@
                 margin-right: auto;
                 border-width: 1px;
 
-                width: 80%;
-                padding: 17px;
+                width: 75%;
+
 
             }
 
@@ -581,8 +648,13 @@
             .description {
                 display: flex;
                 flex-direction: column;
+                width: 97%;
 
-                @media (max-width:800px) {}
+                @media (max-width:400px) {
+                    width: 106%;
+                }
+
+
 
                 textarea {
                     resize: none;
@@ -597,16 +669,21 @@
                     padding-left: 10px;
                     padding-top: 5px;
 
-                    @media (max-width:800px) {}
+
                 }
             }
 
             .controlbuttons {
                 display: flex;
-                width: 70%;
+                width: 97%;
+
                 align-items: center;
                 justify-content: space-between;
                 margin-bottom: 50px;
+
+                @media (max-width:400px) {
+                    width: 106%;
+                }
 
                 .prevbutton {
                     button {
@@ -659,165 +736,201 @@
                     }
                 }
 
-                @media (max-width:800px) {
-                    width: 90%;
 
-                }
             }
         }
 
-        .car_image_upload_container {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 50px;
+    }
+
+    .car_image_upload_container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        width: 90%;
+        margin: auto;
 
 
-            .carimage {
+        .carimage {
 
-                input[type='file'] {
-                    display: none;
-                }
+            input[type='file'] {
+                display: none;
+            }
+
+            @media (min-width:800px) {
+                margin-left: 30px;
+
+
+            }
+
+            @media (max-width:800px) {
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+            .inputfile {
+
+                margin-left: 100px;
+                margin-bottom: 30px;
 
                 @media (min-width:800px) {
                     margin-left: 30px;
-
-
                 }
+            }
+
+            .uploadedimage {
+                margin-bottom: 40px;
+                min-width: 300px;
+                min-height: 300px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: rgba(128, 128, 128, 0.411);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
 
                 @media (max-width:800px) {
-                    margin-left: auto;
-                    margin-right: auto;
-
+                    width: 90%;
                 }
 
-                .inputfile {
-
-                    margin-left: 100px;
-                    margin-bottom: 30px;
-
-                    @media (min-width:800px) {
-                        margin-left: 30px;
-                    }
-                }
-
-                .uploadedimage {
-                    margin-bottom: 40px;
-                    min-width: 300px;
-                    min-height: 300px;
-                    border-style: solid;
-                    border-width: 1px;
-                    border-color: rgba(128, 128, 128, 0.411);
-                    position: relative;
+                label {
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    width: fit-content;
 
-                    @media (max-width:800px) {
-                        width: 90%;
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                span {
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .deleteimage {
+                    position: absolute;
+                    top: 9px;
+                    left: 7px;
+                    background: white;
+                    padding: 3px;
+                    border-radius: 4px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color: #00000066;
+
+                    img {
+
+                        width: 25px;
                     }
 
-                    label {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
+                }
 
-                        p {
-                            margin: 0;
-                        }
-                    }
-
-                    span {
-                        display: flex !important;
-                        align-items: center;
-                        justify-content: center;
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    .deleteimage {
-                        position: absolute;
-                        top: 9px;
-                        left: 7px;
-                        background: white;
-                        padding: 3px;
-                        border-radius: 4px;
-                        border-style: solid;
-                        border-width: 1px;
-                        border-color: #00000066;
-
-                        img {
-
-                            width: 25px;
-                        }
-
-                    }
-
+                div {
                     div {
-                        div {
-                            img {
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                            }
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
                         }
                     }
                 }
             }
         }
+    }
 
-        .button_div {
-            margin-top: 37px;
-            margin-bottom: 45px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    .controlbuttons {
+      
+        width: 86%;
+        margin: auto;
 
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+
+        .prevbutton {
             button {
-                color: white;
-                background: #e16d37;
+                width: 100px;
+                height: 30px;
                 border: none;
-                height: 38px;
-                width: 200px;
-                border-radius: 7px;
-                margin-top: 60px;
-                margin-left: 30px;
-
-                &:disabled {
-                    color: #ffffff69;
-                    background: #e16d37a6;
-                    cursor: not-allowed;
-                }
+                background: #dd8746;
+                color: white;
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                border-radius: 4px;
+                font-weight: 600;
 
                 @media (max-width:800px) {
-                    margin-top: 20px;
-                    width: 130px;
-                    height: 30px;
-                }
-
-                p {
-                    color: white;
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    font-size: 15px;
-                    margin: 0;
-
-                    @media (max-width:800px) {
-                        font-size: 13px;
-                    }
+                    height: 27px;
+                    width: 73px;
+                    font-weight: 300;
+                    font-size: 12px;
 
                 }
             }
         }
 
-        .error {
-            font-family: "Lato", sans-serif;
-            font-size: 13px;
-            color: red;
-        }
 
 
     }
+
+    .button_div {
+        margin-top: 37px;
+        margin-bottom: 45px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            color: white;
+            background: #e16d37;
+            border: none;
+            height: 38px;
+            width: 200px;
+            border-radius: 7px;
+            margin-top: 60px;
+            margin-left: 30px;
+
+            &:disabled {
+                color: #ffffff69;
+                background: #e16d37a6;
+                cursor: not-allowed;
+            }
+
+            @media (max-width:800px) {
+                margin-top: 20px;
+                width: 130px;
+                height: 30px;
+            }
+
+            p {
+                color: white;
+                font-family: "Lato", sans-serif;
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin: 0;
+
+                @media (max-width:800px) {
+                    font-size: 13px;
+                }
+
+            }
+        }
+    }
+
+    .error {
+        font-family: "Lato", sans-serif;
+        font-size: 13px;
+        color: red;
+    }
+
+
+}
 }

@@ -39,10 +39,32 @@ const Cars = () => {
                                     <img src={obj.image1Link} alt="" />
                                 </div>
                                 <div className="details">
+                                    <p className="title">{obj.title}</p>
                                     <p className="price">Rs {obj.price}</p>
                                     <p className="year">{obj.year} model , {obj.kmdriven} km</p>
 
+                                </div>
+                            </div>
+                        </Link>
+
+
+                    })
+
+
+                }
+
+                {
+                    backendData.map((obj) => {
+                        return <Link to={`car/${obj._id}`} key={obj._id}>
+                            <div className="card">
+                                <div className="cardimage">
+                                    <img src={obj.image1Link} alt="" />
+                                </div>
+                                <div className="details">
                                     <p className="title">{obj.title}</p>
+                                    <p className="price">Rs {obj.price}</p>
+                                    <p className="year">{obj.year} model , {obj.kmdriven} km</p>
+
                                 </div>
                             </div>
                         </Link>
@@ -51,15 +73,22 @@ const Cars = () => {
                     })
                 }
 
+                {
+
+                    <Link to={'/allcars'}>
+                        <div className="viewall">
+                            <img src="/images/right.png" alt="" />
+                            <p>More</p>
+                        </div>
+                    </Link>
+                }
+
+
 
 
             </div>
 
-            <Link to={'/allcars'}>
-                <button className="loadmore">
-                    <p>Load More</p>
-                </button>
-            </Link>
+
 
 
         </div>

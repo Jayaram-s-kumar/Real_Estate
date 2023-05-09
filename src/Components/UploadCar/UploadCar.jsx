@@ -258,44 +258,43 @@ const UploadCar = () => {
 
                     {
                         part1 && <div className="partOne">
-                           <>
-                           <label htmlFor="carbrand">Select your brand</label>
-                            <div className="carbrandcontainer">
+                            <>
+                                <div className="carbrandcontainer">
+                                    <label htmlFor="carbrand">Select your brand</label>
 
 
-                                <div className="carbrandsearch">
-                                    <input type="text" placeholder='Search car brands' onChange={(e) => { setSearchValue(e.target.value) }} />
-                                    <img src="/images/search.png" alt="" />
+                                    <div className="carbrandsearch">
+                                        <input type="text" placeholder='Search car brands' onChange={(e) => { setSearchValue(e.target.value) }} />
+                                        <img src="/images/search.png" alt="" />
+                                    </div>
+
+                                    <div className="allcarbrands">
+                                        {
+                                            filteredBrands.map((obj) => {
+                                                return (
+                                                    <div className="carbranddiv" style={values.carbrand == obj ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
+                                                        setFieldValue('carbrand', obj)
+                                                    }}>
+                                                        <p>{obj}</p>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <p className='error'>{errors.carbrand && touched.carbrand ? errors.carbrand : null}</p>
+                                    <br /><br />
+                                    <div className="nextbuttonpart1">
+                                        <button disabled={values.carbrand == "" ? true : false} onClick={() => {
+                                            setPart1(false)
+                                            setPart2(true)
+                                            setPart3(false)
+                                            setPart4(false)
+                                        }}  >Next</button>
+                                    </div>
                                 </div>
 
-                                <div className="allcarbrands">
-                                    {
-                                        filteredBrands.map((obj) => {
-                                            return (
-                                                <div className="carbranddiv" style={values.carbrand == obj ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
-                                                    setFieldValue('carbrand', obj)
-                                                }}>
-                                                    <p>{obj}</p>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <p className='error'>{errors.carbrand && touched.carbrand ? errors.carbrand : null}</p>
-                            </div>
-                            <br /><br />
-                            <div className="nextbuttonpart1">
-                                <button  disabled={values.carbrand == "" ? true : false} onClick={() => {
-                                    setPart1(false)
-                                    setPart2(true)
-                                    setPart3(false)
-                                    setPart4(false)
-                                }}  >Next</button>
-                            </div>
+                            </>
 
-                           </>
-                           <>
-                           </>
                         </div>
 
                     }
@@ -307,8 +306,11 @@ const UploadCar = () => {
 
 
                     {
-                        part2 && <>
-                            <div className="partTwo">
+                        part2 &&
+                        <div className="partTwo">
+
+                            <div className="partTwobox">
+
 
                                 <div className="year">
                                     <label htmlFor="year">Year</label>
@@ -418,45 +420,46 @@ const UploadCar = () => {
 
 
 
-                            </div>
 
-                            <br /><br />
-                            <div className="controlbuttons">
-                                <div className="prevbutton">
-                                    <button onClick={() => {
-                                        setPart1(true)
-                                        setPart2(false)
-                                        setPart3(false)
-                                        setPart4(false)
-                                    }}>Previous</button>
-                                </div>
-                                <div className="nextbutton">
-                                    <button  disabled={
-            (values.year == "" ||
-                errors.year ||
-
-                values.fueltype == "" ||
-                errors.fueltype ||
-
-                values.transmission == "" ||
-                errors.transmission ||
-
-                values.kmdriven == "" ||
-                errors.kmdriven ||
-
-                values.noofowners == "" ||
-                errors.noofowners
-            )
-
-                ? true : false}  onClick={() => {
-                                            setPart1(false)
+                                <br /><br />
+                                <div className="controlbuttons">
+                                    <div className="prevbutton">
+                                        <button onClick={() => {
+                                            setPart1(true)
                                             setPart2(false)
-                                            setPart3(true)
+                                            setPart3(false)
                                             setPart4(false)
-                                        }} >Next</button>
+                                        }}>Previous</button>
+                                    </div>
+                                    <div className="nextbutton">
+                                        <button disabled={
+                                            (values.year == "" ||
+                                                errors.year ||
+
+                                                values.fueltype == "" ||
+                                                errors.fueltype ||
+
+                                                values.transmission == "" ||
+                                                errors.transmission ||
+
+                                                values.kmdriven == "" ||
+                                                errors.kmdriven ||
+
+                                                values.noofowners == "" ||
+                                                errors.noofowners
+                                            )
+
+                                                ? true : false} onClick={() => {
+                                                    setPart1(false)
+                                                    setPart2(false)
+                                                    setPart3(true)
+                                                    setPart4(false)
+                                                }} >Next</button>
+                                    </div>
                                 </div>
                             </div>
-                        </>
+                        </div>
+
 
                     }
 
@@ -468,8 +471,9 @@ const UploadCar = () => {
 
                     {
                         part3 &&
-                        <>
-                            <div className="partThree">
+
+                        <div className="partThree">
+                            <div className="partThreebox">
 
                                 <div className="title">
                                     <label htmlFor="title">Title</label>
@@ -518,50 +522,51 @@ const UploadCar = () => {
 
 
 
-                            </div>
 
-                            <br /><br />
-                            <div className="controlbuttons">
+                                <br /><br />
+                                <div className="controlbuttons">
 
-                                <div className="prevbutton">
-                                    <button onClick={() => {
-                                        setPart1(false)
-                                        setPart2(true)
-                                        setPart3(false)
-                                        setPart4(false)
-                                    }}>Previous</button>
-                                </div>
-                                <div className="nextbutton">
-                                    <button  disabled={
-            (values.title == "" ||
-                errors.title ||
-
-                values.price == "" ||
-                errors.price ||
-
-                values.location == "" ||
-                errors.location ||
-
-                values.address == "" ||
-                errors.address ||
-
-                values.phone == "" ||
-                errors.phone ||
-
-                values.description == "" ||
-                errors.description
-            )
-
-                ? true : false}  onClick={() => {
+                                    <div className="prevbutton">
+                                        <button onClick={() => {
                                             setPart1(false)
-                                            setPart2(false)
+                                            setPart2(true)
                                             setPart3(false)
-                                            setPart4(true)
-                                        }} >Next</button>
-                                </div>
+                                            setPart4(false)
+                                        }}>Previous</button>
+                                    </div>
+                                    <div className="nextbutton">
+                                        <button disabled={
+                                            (values.title == "" ||
+                                                errors.title ||
 
+                                                values.price == "" ||
+                                                errors.price ||
+
+                                                values.location == "" ||
+                                                errors.location ||
+
+                                                values.address == "" ||
+                                                errors.address ||
+
+                                                values.phone == "" ||
+                                                errors.phone ||
+
+                                                values.description == "" ||
+                                                errors.description
+                                            )
+
+                                                ? true : false} onClick={() => {
+                                                    setPart1(false)
+                                                    setPart2(false)
+                                                    setPart3(false)
+                                                    setPart4(true)
+                                                }} >Next</button>
+                                    </div>
+
+                                </div>
                             </div>
-                        </>
+                        </div>
+
                     }
 
 
@@ -812,7 +817,6 @@ const UploadCar = () => {
 
                             </div>
 
-
                             <br /><br />
                             <div className="controlbuttons">
                                 <div className="prevbutton">
@@ -824,7 +828,6 @@ const UploadCar = () => {
                                     }}>Previous</button>
                                 </div>
                             </div>
-
 
                         </div>
                     }

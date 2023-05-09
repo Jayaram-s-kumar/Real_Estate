@@ -66,7 +66,7 @@ const Apartments = () => {
                                                     {
                                                         feature === 'internet' && <div className="bed">
                                                             <img src="/images/wifi.png" alt="" />
-                                                            <p className="count">free wifi</p>
+                                                            <p className="count">wifi</p>
                                                         </div>
                                                     }
 
