@@ -258,7 +258,8 @@ const UploadCar = () => {
 
                     {
                         part1 && <div className="partOne">
-                            <label htmlFor="carbrand">Select your brand</label>
+                           <>
+                           <label htmlFor="carbrand">Select your brand</label>
                             <div className="carbrandcontainer">
 
 
@@ -292,6 +293,9 @@ const UploadCar = () => {
                                 }}  >Next</button>
                             </div>
 
+                           </>
+                           <>
+                           </>
                         </div>
 
                     }

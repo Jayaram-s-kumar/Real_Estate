@@ -161,7 +161,7 @@ const Apartments = () => {
 
                                     </div>
                                     <div className="description">
-                                        <p>{obj.description}</p>
+                                        <p></p>
 
                                     </div>
                                 </div>

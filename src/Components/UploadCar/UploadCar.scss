@@ -13,25 +13,6 @@
 
     form {
 
-        select {
-            height: 35px;
-            outline: none;
-            border-color: #8080803d;
-            border-width: 1px;
-            border-radius: 6px;
-            font-family: "Lato", sans-serif;
-            font-size: 15px;
-            font-weight: 300;
-            padding-left: 10px;
-
-            option {
-                font-family: "Lato", sans-serif;
-            }
-
-        }
-
-
-
         input {
             height: 35px;
             outline: none;
@@ -83,167 +64,231 @@
 
         }
 
-        display: flex;
-        flex-direction: column;
 
-        .carbrandcontainer {
-            display: flex;
-            flex-wrap: wrap;
-            width: 40%;
-            border-style: solid;
-            padding: 40px;
-            border-color: #0000004f;
-            border-width: 4px;
-            border-radius: 30px;
-            margin-top: 31px;
 
-            @media (max-width:800px) {
-                width: fit-content;
-                padding: 17px;
+        .partOne {
+
+            // background-image: url('https://ymimg1.b8cdn.com/resized/article/7557/pictures/6637451/listing_main_sell_d-c920d0be76978f17ab297c76af8ce324cb2b93b0f842afd0248f26ddbba74de3.jpg');
+            // background-repeat: no-repeat;
+            // background-size: cover;
+
+
+
+
+            input {
+                height: 35px;
+                outline: none;
+                border-color: #8080803d;
                 border-width: 1px;
-            }
-
-            .carbrandsearch {
-                margin-bottom: 40px;
-                width: 100%;
-                position: relative;
-
-                img {
-                    width: 20px;
-                    position: absolute;
-                    top: 12px;
-                    left: 11px;
-
-                    @media (max-width:800px) {
-                        width: 16px;
-                        top: 9px;
-                    }
-                }
-
-
-                input {
-                    width: 91%;
-                    padding-left: 40px;
-
-                    @media (max-width:800px) {
-                        width: 81%;
-                    }
-                }
-            }
-
-            .allcarbrands {
-
-                width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-                height: 400px;
-                overflow: scroll;
-                overflow-x: hidden;
-                margin-bottom: 13px;
-
-                @media (max-width:800px) {
-                    height: 250px;
-
-
-                }
-
-                /* Set the width and height of the scrollbar */
-                &::-webkit-scrollbar {
-                    width: 5px;
-                    height: 10px;
-
-                    @media (max-width:800px) {
-                        width: 3px;
-                    }
-                }
-
-                /* Style the track (the background) of the scrollbar */
-                &::-webkit-scrollbar-track {
-                    background-color: #f1f1f1;
-                }
-
-                /* Style the thumb (the draggable handle) of the scrollbar */
-                &::-webkit-scrollbar-thumb {
-                    background-color: #88888871;
-                    border-radius: 5px;
-                }
-
-                /* Style the thumb when hovering over it */
-                &::-webkit-scrollbar-thumb:hover {
-                    background-color: #5555558f;
-                }
-
-
-                .carbranddiv {
-
-                    p {
-                        margin: 0;
-                    }
-
-                    padding: 7px 14px;
-                    margin: 7px 14px;
-                    border-style: solid;
-                    border-width: 1px;
-                    border-radius: 4px;
-                    height: fit-content;
-                    border-style: solid;
-                    border-color: #8080803d;
-                    border-width: 1px;
-                    border-radius: 6px;
-
-                    @media (max-width:800px) {
-                        padding: 4px 10px;
-                        margin: 7px 4px;
-
-                        p {
-                            font-size: 11px;
-                        }
-                    }
-                }
-            }
-
-
-
-        }
-
-
-
-        .nextbuttonpart1 {
-            width: 40%;
-            display: flex;
-            align-items: center;
-            justify-content: end;
-            margin-bottom: 50px;
-
-            @media (max-width:800px) {
-                width: 90%;
-            }
-
-            button {
-                width: 100px;
-                height: 30px;
-                border: none;
-                background: #686953;
-                color: white;
+                border-radius: 6px;
                 font-family: "Lato", sans-serif;
-                letter-spacing: 1px;
-                border-radius: 4px;
+                font-size: 15px;
                 font-weight: 600;
+                color: rgb(0 0 0 / 49%);
+                padding-left: 10px;
 
                 @media (max-width:800px) {
-                    height: 27px;
-                    width: 73px;
-                    font-weight: 300;
+                    width: 70%;
+                    height: 25px;
                     font-size: 12px;
 
                 }
 
-                &:disabled {
-                    background: #6869538f;
-                    color: #ffffffc4;
-                    cursor: not-allowed;
+
+                &::placeholder {
+                    color: rgb(0 0 0 / 49%);
+                }
+
+            }
+
+            label {
+                margin-bottom: 10px;
+                font-family: "Lato", sans-serif;
+                font-size: 15px;
+                color: gray;
+
+                @media (max-width:800px) {
+
+                    font-size: 14px;
+                }
+
+            }
+
+            p {
+                font-family: "Lato", sans-serif;
+                font-size: 15px;
+                color: gray;
+
+                @media (max-width:800px) {
+
+                    font-size: 14px;
+                }
+
+            }
+
+            display: flex;
+            flex-direction: column;
+
+            .carbrandcontainer {
+                display: flex;
+                flex-wrap: wrap;
+                width: 40%;
+                border-style: solid;
+                padding: 40px;
+                border-color: #0000004f;
+                border-width: 4px;
+                border-radius: 30px;
+                margin-top: 31px;
+
+                @media (max-width:800px) {
+                    width: fit-content;
+                    padding: 17px;
+                    border-width: 1px;
+                }
+
+                .carbrandsearch {
+                    margin-bottom: 40px;
+                    width: 100%;
+                    position: relative;
+
+                    img {
+                        width: 20px;
+                        position: absolute;
+                        top: 12px;
+                        left: 11px;
+
+                        @media (max-width:800px) {
+                            width: 16px;
+                            top: 9px;
+                        }
+                    }
+
+
+                    input {
+                        width: 91%;
+                        padding-left: 40px;
+
+                        @media (max-width:800px) {
+                            width: 81%;
+                        }
+                    }
+                }
+
+                .allcarbrands {
+
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    height: 400px;
+                    overflow: scroll;
+                    overflow-x: hidden;
+                    margin-bottom: 13px;
+
+                    @media (max-width:800px) {
+                        height: 250px;
+
+
+                    }
+
+                    /* Set the width and height of the scrollbar */
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                        height: 10px;
+
+                        @media (max-width:800px) {
+                            width: 3px;
+                        }
+                    }
+
+                    /* Style the track (the background) of the scrollbar */
+                    &::-webkit-scrollbar-track {
+                        background-color: #f1f1f1;
+                    }
+
+                    /* Style the thumb (the draggable handle) of the scrollbar */
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #88888871;
+                        border-radius: 5px;
+                    }
+
+                    /* Style the thumb when hovering over it */
+                    &::-webkit-scrollbar-thumb:hover {
+                        background-color: #5555558f;
+                    }
+
+
+                    .carbranddiv {
+
+                        p {
+                            margin: 0;
+                        }
+
+                        padding: 7px 14px;
+                        margin: 7px 14px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-radius: 4px;
+                        height: fit-content;
+                        border-style: solid;
+                        border-color: #8080803d;
+                        border-width: 1px;
+                        border-radius: 6px;
+
+                        @media (max-width:800px) {
+                            padding: 4px 10px;
+                            margin: 7px 4px;
+
+                            p {
+                                font-size: 11px;
+                            }
+                        }
+                    }
+                }
+
+
+
+            }
+
+
+
+            .nextbuttonpart1 {
+                width: 40%;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                margin-bottom: 50px;
+
+                @media (max-width:800px) {
+                    width: 90%;
+                }
+
+                button {
+                    width: 100px;
+                    height: 30px;
+                    border: none;
+                    background: #686953;
+                    color: white;
+                    font-family: "Lato", sans-serif;
+                    letter-spacing: 1px;
+                    border-radius: 4px;
+                    font-weight: 600;
+
+                    @media (max-width:800px) {
+                        height: 27px;
+                        width: 73px;
+                        font-weight: 300;
+                        font-size: 12px;
+
+                    }
+
+                    &:disabled {
+                        background: #6869538f;
+                        color: #ffffffc4;
+                        cursor: not-allowed;
+                    }
                 }
             }
+
         }
 
         .partTwo {
@@ -305,7 +350,7 @@
                             padding: 4px 10px;
                             margin: 7px 4px;
 
-                            p{
+                            p {
                                 font-size: 12px;
                             }
                         }
@@ -347,7 +392,7 @@
                             padding: 4px 10px;
                             margin: 7px 4px;
 
-                            p{
+                            p {
                                 font-size: 12px;
                             }
                         }
@@ -403,7 +448,7 @@
                             padding: 4px 10px;
                             margin: 7px 4px;
 
-                            p{
+                            p {
                                 font-size: 12px;
                             }
                         }
@@ -503,7 +548,7 @@
             margin-top: 31px;
             margin-bottom: 50px;
 
-           
+
 
             @media (max-width:800px) {
                 width: fit-content;
@@ -536,10 +581,8 @@
             .description {
                 display: flex;
                 flex-direction: column;
-                
-                @media (max-width:800px) {
-                    
-                }
+
+                @media (max-width:800px) {}
 
                 textarea {
                     resize: none;
@@ -554,8 +597,7 @@
                     padding-left: 10px;
                     padding-top: 5px;
 
-                    @media (max-width:800px) {
-                    }
+                    @media (max-width:800px) {}
                 }
             }
 
