@@ -49,10 +49,10 @@ const Allcars = () => {
                                         <img src={obj.image1Link} alt="" />
                                     </div>
                                     <div className="details">
+                                        <p className="title">{obj.title}</p>
                                         <p className="price">Rs {obj.price}</p>
                                         <p className="year">{obj.year} model , {obj.kmdriven} km</p>
 
-                                        <p className="title">{obj.title}</p>
                                     </div>
                                 </div>
                             </Link>

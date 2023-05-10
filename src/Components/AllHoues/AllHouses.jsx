@@ -68,9 +68,7 @@ const AllHouses = () => {
                                     <p className="count">{obj.sqfeet} sq ft</p>
                                   </div>
                                 </div>
-                                <div className="description">
-                                  <p>{obj.description}</p>
-                                </div>
+                               
                               </div>
                             </div>
                           </Link>

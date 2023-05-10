@@ -168,10 +168,7 @@ const AllApartments = () => {
 
 
                                         </div>
-                                        <div className="description">
-                                            <p>{obj.description}</p>
-
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </Link>
