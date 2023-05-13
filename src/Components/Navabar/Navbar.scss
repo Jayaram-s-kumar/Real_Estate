@@ -167,6 +167,7 @@
                         font-size: 15px;
                         padding: 10px;
                         transition: 0.3s;
+                        font-weight: bold;
                         cursor: pointer;
 
                     }
@@ -181,7 +182,7 @@
                 .DarkHover {
                     &:hover {
                         font-weight: 600;
-                        background: #ffffff4b;
+                        background: #221baa;
                         border-radius: 30px;
                         font-size: 14px;
 
