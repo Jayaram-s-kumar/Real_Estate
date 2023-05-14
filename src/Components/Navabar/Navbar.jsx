@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 //import {Link} from 'react-scroll'
 import { ClipLoader } from 'react-spinners'
 
-const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
+const Navbar = ({ bg, bs, txtCol,selected, hoverClass,display }) => {
 
   useEffect(() => {
     setExist(false)
@@ -112,110 +112,114 @@ const Navbar = ({ bg, bs, txtCol, hoverClass }) => {
     window.location.reload()
   };
 
+  const selectedStyle={ color: 'white',background:'#ff0000cc',borderStyle:'solid',borderWidth:'1px',borderRadius:'30px' ,margin:'0px 10px',borderColor:'black' }
+
 
   return (
     <>
 
-      <div className={'navcontainer'} style={{ boxShadow: bs, background: bg }}>
-        <div className="hamburger">
-          <img src={txtCol === 'white' ? '/images/hamburger_white.png' : '/images/hamburger_black.png'} alt="" onClick={() => {
-            setOpen(!open)
-            document.body.style.overflow = 'hidden'
-            document.body.style.background = 'ash'
-            if (open) {
-              setClose(true)
-            }
-          }} />
+     
+        <div className={'navcontainer'} style={{ boxShadow: bs, background: bg }}>
+      <div className="hamburger">
+        <img src={txtCol === 'white' ? '/images/hamburger_white.png' : '/images/hamburger_black.png'} alt="" onClick={() => {
+          setOpen(!open)
+          document.body.style.overflow = 'hidden'
+          document.body.style.background = 'ash'
+          if (open) {
+            setClose(true)
+          }
+        }} />
+      </div>
+      {
+        localStorage.getItem('user') && <div className="profile">
+          <Link to={'/myaccount'}>
+            <img src={txtCol === 'white' ? '/images/user_white.png' : '/images/user_black.png'} alt="" />
+          </Link>
+
         </div>
-        {
-          localStorage.getItem('user') && <div className="profile">
-            <Link to={'/myaccount'}>
-              <img src={txtCol === 'white' ? '/images/user_white.png' : '/images/user_black.png'} alt="" />
+      }
+      <div className="logo">
+        <h2 >W<span>&</span>W</h2>
+      </div>
+      <div>
+        <div className="options">
+          <ul>
+
+            <Link  to={'/'}>
+              <li style={selected=="home" ? selectedStyle : null}  className={hoverClass}>
+                HOME
+              </li>
             </Link>
 
-          </div>
-        }
-        <div className="logo">
-          <h2 style={{ color: txtCol }}>Nest Homes</h2>
-        </div>
-        <div>
-          <div className="options">
-            <ul>
-
-              <Link style={{ color: txtCol }} to={'/'}>
-                <li style={{ color: txtCol }} className={hoverClass}>
-                  HOME
+            {
+              user && <Link  to={'/sellnow'}>
+                <li style={selected=="sell" ? selectedStyle : null} className={hoverClass}>
+                  SELL
                 </li>
               </Link>
+            }
+            <Link  to={'/allhouses'}>
+              <li style={selected=="houses" ? selectedStyle : null}  className={hoverClass}>
+                HOUSES
+              </li>
+            </Link>
 
-              {
-                user && <Link style={{ color: txtCol }} to={'/sellnow'}>
-                  <li style={{ color: txtCol }} className={hoverClass}>
-                    SELL
-                  </li>
-                </Link>
-              }
-              <Link style={{ color: txtCol }} to={'/allhouses'}>
-                <li style={{ color: txtCol }} className={hoverClass}>
-                  HOUSES
+            <Link  to={'/allapartments'}>
+              <li style={selected=="apartments" ? selectedStyle : null} className={hoverClass}>
+                APARTMENTS
+              </li>
+            </Link>
+
+            <Link  to={'/allcars'}>
+              <li style={selected=="cars" ? selectedStyle : null} className={hoverClass}>
+                CARS
+              </li>
+            </Link>
+
+            <Link  to={'/gallery'}>
+              <li style={selected=="gallery" ? selectedStyle : null} className={hoverClass}>
+                GALLERY
+              </li>
+            </Link>
+
+
+
+
+
+            {
+              !user
+              &&
+
+              <Link to={'/'}  onClick={() => {
+                // document.body.classList.add('overlay')
+                setPopup(true)
+              }} >
+                <li style={selected=="signin" ? selectedStyle : null} className={hoverClass}>
+                  SIGN IN
                 </li>
               </Link>
+            }
 
-              <Link style={{ color: txtCol }} to={'/allapartments'}>
-                <li style={{ color: txtCol }} className={hoverClass}>
-                  APARTMENTS
+            {
+              user
+              &&
+
+              <Link to={'/myaccount'} >
+                <li style={selected=="myaccount" ? selectedStyle : null} className={hoverClass}>
+                  PROFILE
                 </li>
               </Link>
-
-              <Link style={{ color: txtCol }} to={'/allcars'}>
-                <li style={{ color: txtCol }} className={hoverClass}>
-                  CARS
-                </li>
-              </Link>
-
-              <Link style={{ color: txtCol }} to={'/gallery'}>
-                <li style={{ color: txtCol }} className={hoverClass}>
-                  GALLERY
-                </li>
-              </Link>
+            }
 
 
 
-
-
-              {
-                !user
-                &&
-
-                <Link to={'/'} style={{ color: txtCol }} onClick={() => {
-                  // document.body.classList.add('overlay')
-                  setPopup(true)
-                }} >
-                  <li style={{ color: txtCol }} className={hoverClass}>
-                    SIGN IN
-                  </li>
-                </Link>
-              }
-
-              {
-                user
-                &&
-
-                <Link to={'/myaccount'} style={{ color: txtCol }}>
-                  <li style={{ color: txtCol }} className={hoverClass}>
-                    PROFILE
-                  </li>
-                </Link>
-              }
-
-
-
-            </ul>
-          </div>
-
+          </ul>
         </div>
 
       </div>
+
+    </div>
+     
 
       <div className={open ? 'mobile_navbar open' : close ? 'mobile_navbar close' : 'mobile_navbar'} style={open ? { display: 'block' } : { display: 'none' }}>
         <div className="close_button">

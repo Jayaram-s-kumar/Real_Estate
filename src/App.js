@@ -82,6 +82,8 @@ function App() {
           <Route path="/car/:carID" element={ <Carpage/> } ></Route>
           <Route path="uploadcar/car/:carID" element={ <Carpage/> } ></Route>
           <Route path="allcars/car/:carID" element={ <Carpage/> } ></Route>
+          <Route path="/myaccount/car/:carID" element={ <Carpage/> } ></Route>
+
 
           <Route path="/sellnow" element={ <SellNow/> }></Route>
 

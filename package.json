@@ -24,6 +24,7 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "react-select": "^5.7.2",
+    "react-slideshow-image": "^4.2.1",
     "react-spinners": "^0.13.8",
     "sass": "^1.62.0",
     "scss": "^0.2.4",

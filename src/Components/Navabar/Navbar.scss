@@ -43,6 +43,7 @@
                 a {
                     text-decoration: none;
                     color: black;
+                    font-weight: 500;
                 }
             }
         }
@@ -125,6 +126,12 @@
             font-weight: 600;
             letter-spacing: 2px;
             font-size: 26px;
+            
+            span{
+                color: #919191;
+                font-size: 35px;
+                font-weight: 400;
+            }
 
             @media (max-width:800px) {
                 display: none;
@@ -161,10 +168,11 @@
 
                     li {
                         list-style: none;
+                        color: black;
 
                         font-family: 'Montserrat', sans-serif;
                         letter-spacing: 2px;
-                        font-size: 15px;
+                        font-size: 13px;
                         padding: 10px;
                         transition: 0.3s;
                         font-weight: bold;
@@ -174,7 +182,7 @@
                 }
 
                 a:last-child {
-                    width: 102px;
+                    width: fit-content;
                 }
 
 
@@ -182,7 +190,7 @@
                 .DarkHover {
                     &:hover {
                         font-weight: 600;
-                        background: #221baa;
+                        background: rgba(26, 27, 22, 0.05);
                         border-radius: 30px;
                         font-size: 14px;
 
@@ -192,8 +200,8 @@
 
                 .LightHover {
                     &:hover {
-                        font-weight: 600;
-                        background: #e7e5e5;
+                       
+                        background: #e7e5e54e;
                         border-radius: 30px;
                         font-size: 14px;
 

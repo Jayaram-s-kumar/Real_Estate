@@ -39,7 +39,7 @@ const AllHouses = () => {
 
     return (
         <>
-            <Navbar bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+            <Navbar  bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'houses'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
 
             <div className="allhouses_container">
                 <h1>Houses</h1>
@@ -81,7 +81,7 @@ const AllHouses = () => {
                 </div>
             </div>
 
-            <SellNow/>
+            <SellNow hidenavbar={true}/>
         </>
 
     )

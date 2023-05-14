@@ -248,7 +248,7 @@ const UploadCar = () => {
 
     return (
         <>
-            <Navbar bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+            <Navbar bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'sell'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
 
             <div className="carupload_container">
                 <h3>Post your car</h3>

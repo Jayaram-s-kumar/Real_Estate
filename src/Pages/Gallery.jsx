@@ -19,7 +19,7 @@ const Gallery = () => {
 
     return (
         <>
-            <HeroSection heroBottomStyle={{ display: 'none' }} />
+            <Navbar  bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'gallery'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />       
             <div className="gallery_container">
                 <h1>Gallery</h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, doloremque possimus soluta vero unde facere quo amet!</p>

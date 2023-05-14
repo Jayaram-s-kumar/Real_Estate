@@ -9,6 +9,7 @@
         width: 90%;
         margin: auto;
         margin-bottom: 30px;
+        font-weight: 500;
 
         @media (max-width:800px) {
             font-size: 27px;
@@ -26,13 +27,7 @@
             text-decoration: none;
         }
 
-        @media (max-width:800px) {
-            a {
-                margin-bottom: 40px;;
-            }
-    
-        }
-
+      
 
         .card {
             position: relative;
@@ -42,10 +37,12 @@
             border-width: 1px;
             border-color: #bed3e6;
             border-radius: 7px;
+            margin-bottom: 40px;
 
             @media (max-width:800px) {
-                   
+                   scale: 0.8;
                     margin: auto;
+                    margin-bottom: 0;
             
             }
 

@@ -24,6 +24,7 @@ const House_page = () => {
     if (!localStorage.getItem("user")) {
       navigate('/signinup')
     }
+    getProfData()
   }, []);
 
 
@@ -32,6 +33,13 @@ const House_page = () => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [ProfileData, setProfileData] = useState(false)
+
+  const getProfData = async()=>{
+    const response2 = await fetch(api_base+`/getprofimg/${ await (JSON.parse(localStorage.getItem('user'))).loginID}`)
+    const data2  =await response2.json()
+    setProfileData(data2)
+  }
 
   async function handlesubmit(e) {
     e.preventDefault()
@@ -106,7 +114,7 @@ const House_page = () => {
   return (
 
     <>
-      <Navbar bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+      <Navbar bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'houses'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
       <div className="Housepage_container">
         <div className="topsection">
 
@@ -407,12 +415,20 @@ const House_page = () => {
             <h3>Request Info</h3>
             <div className="photo">
               <div>
+              <img src={ProfileData.profimgLink} alt="" style={{"borderRadius":"50%"}} />
               </div>
               <div className="account">
                 <img src="/images/profile.png" alt="" />
                 <p>{houseData.ownName}</p>
               </div>
 
+            </div>
+            <div className="ownaddress">
+              <p><span>Address:</span> {ProfileData.address}</p>
+            </div>
+            <div className="ownphone">
+              <img src="/images/telephone.png" alt="" />
+              <p>{houseData.phone}</p>
             </div>
             <form onSubmit={(e) => {
               handlesubmit(e)
@@ -449,7 +465,7 @@ const House_page = () => {
         <div className="address_section">
           <div>
 
-            <h3>Address</h3>
+            <h3>Property Address</h3>
           </div>
 
           <div className="container">

@@ -44,7 +44,7 @@ function Carpage() {
 
     return (
         <>
-            <Navbar bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+            <Navbar bg='white' bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'cars'} txtCol={'black'} hoverClass={'LightHover'} />
 
             <div className="carpage_container">
                 <div className="topsection">

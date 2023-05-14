@@ -10,11 +10,11 @@ const Homepage = () => {
   return (
     <div>
         <HeroSection bgContent={'/images/bgVideo.mp4'} />
-        <About/>
-        <SellNow/>
+        <SellNow hidenavbar={true}/>
         <Houses/>
         <Apartments/>
         <Cars/>
+        <About/>
     </div>
   )
 }

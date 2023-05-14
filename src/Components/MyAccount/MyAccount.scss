@@ -22,7 +22,7 @@
         }
 
         .profile_wrapper {
-           
+
             width: fit-content;
             padding: 1%;
             width: 200px;
@@ -60,11 +60,14 @@
                     border-style: solid;
                     border-color: #8080801f;
                     border-width: 5px;
+                    object-fit: contain;
+
                     @media (max-width:800px) {
                         width: 100px;
                         height: 100px;
                         border-width: 3px;
                     }
+
                     border-radius: 50%;
                 }
 
@@ -171,6 +174,7 @@
                     }
                 }
 
+
             }
 
             .addressbox {
@@ -259,7 +263,7 @@
                     }
                 }
 
-              
+
                 div {
 
                     display: flex;
@@ -283,15 +287,15 @@
                         border-color: #0baa0b6a;
                         border-width: 1px;
 
-                        &:disabled{
+                        &:disabled {
                             opacity: 0.5;
                             cursor: not-allowed;
 
-                            &:hover{
+                            &:hover {
                                 background: #8080802e;
                             }
                         }
-                        
+
 
                         @media (max-width:800px) {
                             height: 24px;
@@ -356,7 +360,7 @@
 
                 }
 
-              
+
             }
 
 
@@ -400,70 +404,111 @@
 
             .name {
                 display: flex;
-                width: 100%;
+                width: 90%;
                 align-items: center;
                 justify-content: space-between;
-                padding: 3%;
-                background: aliceblue;
-
-                p {
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    font-size: 15px;
-                    margin: 0;
-
-                    @media (max-width:800px) {
-                        font-size: 13px;
-                    }
-
-                }
-            }
-
-            .buttondiv {
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                width: 100%;
-                margin-bottom: 30px;
-                margin-top: 10px;
-
-                @media (max-width:800px) {
-                    margin-top: 0px;
+                padding: 1%;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+                margin-bottom: 50px;
+                max-width: 704px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: #00000012;
+                border-radius: 6px;
 
 
+
+
+                img {
+                    width: 150px;
+                    height: 150px;
+                    object-fit: contain;
                 }
 
-                button {
-                    color: white;
-                    background: black;
-                    border: none;
-                    height: 29px;
-                    width: 100px;
+                .details {
 
-                    border-radius: 7px;
-                    margin-top: 30px;
-                    margin-left: 30px;
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
 
                     @media (max-width:800px) {
-                        height: 22px;
-                        width: 80px;
+                        flex-direction: column;
                     }
 
-                    p {
-                        font-family: "Lato", sans-serif;
-                        letter-spacing: 1px;
-                        font-size: 10px;
-                        margin: 0;
-                        color: white;
+                    div {
+                        width: 100%;
+                        align-items: center;
+                        justify-content: center;
+
+                        p {
+                            font-family: "Lato", sans-serif;
+                            letter-spacing: 1px;
+                            font-size: 17px;
+                            color: black;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+
+                            @media (max-width:800px) {
+                                font-size: 13px;
+                            }
+                        }
+
+                        P:nth-child(2) {
+                            font-weight: 500;
+                        }
+                    }
+
+                    .buttondiv {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        margin-bottom: 30px;
+                        margin-top: 10px;
 
                         @media (max-width:800px) {
-                            font-size: 8px;
+                            margin-top: 0px;
+
+
+                        }
+
+                        button {
+                            color: white;
+                            background: black;
+                            border: none;
+                            height: 29px;
+                            width: 100px;
+
+                            border-radius: 7px;
+                            margin-top: 30px;
+
+
+                            @media (max-width:800px) {
+                                height: 22px;
+                                width: 80px;
+                            }
+
+                            p {
+                                font-family: "Lato", sans-serif;
+                                letter-spacing: 1px;
+                                font-size: 10px;
+                                margin: 0;
+                                color: white;
+
+                                @media (max-width:800px) {
+                                    font-size: 8px;
+                                }
+
+                            }
                         }
 
                     }
-                }
 
+                }
             }
+
+
         }
     }
 
@@ -494,70 +539,117 @@
 
             }
 
-
             .name {
                 display: flex;
-                width: 100%;
+                width: 90%;
                 align-items: center;
                 justify-content: space-between;
-                padding: 3%;
-                background: aliceblue;
+                padding: 1%;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+                margin-bottom: 50px;
+                max-width: 704px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: #00000012;
+                border-radius: 6px;
 
-
-
-                p {
-                    font-family: "Lato", sans-serif;
-                    letter-spacing: 1px;
-                    font-size: 15px;
-                    margin: 0;
-
-                    @media (max-width:800px) {
-                        font-size: 13px;
-                    }
-
+                &:last-child{
+                    margin-bottom: 50px;
                 }
 
 
-            }
 
-            .buttondiv {
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                width: 100%;
-                margin-bottom: 30px;
-                margin-top: 10px;
 
-                button {
-                    color: white;
-                    background: black;
-                    border: none;
-                    height: 29px;
-                    width: 100px;
-                    border-radius: 7px;
-                    margin-top: 30px;
-                    margin-left: 30px;
+                img {
+                    width: 150px;
+                    height: 150px;
+                    object-fit: contain;
+                }
+
+                .details {
+
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
 
                     @media (max-width:800px) {
-                        height: 22px;
-                        width: 80px;
+                        flex-direction: column;
                     }
 
-                    p {
-                        font-family: "Lato", sans-serif;
-                        letter-spacing: 1px;
-                        font-size: 10px;
-                        margin: 0;
-                        color: white;
+                    div {
+                        width: 100%;
+                        align-items: center;
+                        justify-content: center;
+
+                        p {
+                            font-family: "Lato", sans-serif;
+                            letter-spacing: 1px;
+                            font-size: 17px;
+                            color: black;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+
+                            @media (max-width:800px) {
+                                font-size: 13px;
+                            }
+                        }
+
+                        P:nth-child(2) {
+                            font-weight: 500;
+                        }
+                    }
+
+                    .buttondiv {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        margin-bottom: 30px;
+                        margin-top: 10px;
 
                         @media (max-width:800px) {
-                            font-size: 8px;
+                            margin-top: 0px;
+
+
+                        }
+
+                        button {
+                            color: white;
+                            background: black;
+                            border: none;
+                            height: 29px;
+                            width: 100px;
+
+                            border-radius: 7px;
+                            margin-top: 30px;
+
+
+                            @media (max-width:800px) {
+                                height: 22px;
+                                width: 80px;
+                            }
+
+                            p {
+                                font-family: "Lato", sans-serif;
+                                letter-spacing: 1px;
+                                font-size: 10px;
+                                margin: 0;
+                                color: white;
+
+                                @media (max-width:800px) {
+                                    font-size: 8px;
+                                }
+
+                            }
                         }
 
                     }
-                }
 
+                }
             }
+
+
         }
     }
 }

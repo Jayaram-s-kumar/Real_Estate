@@ -19,8 +19,17 @@ const Apartment_page = () => {
     if (!localStorage.getItem('user')) {
       navigate('/signinup')
     }
+    getProfData()
 
   }, [])
+
+  const [ProfileData, setProfileData] = useState('')
+
+  const getProfData = async()=>{
+    const response2 = await fetch(api_base+`/getprofimg/${ await (JSON.parse(localStorage.getItem('user'))).loginID}`)
+    const data2  =await response2.json()
+    setProfileData(data2)
+  }
 
   const { apartmentID } = useParams()
 
@@ -102,7 +111,7 @@ const Apartment_page = () => {
   return (
 
     <>
-      <Navbar bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+      <Navbar bg='white' bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'apartments'} txtCol={'black'} hoverClass={'LightHover'} />
       <div className="Apartmentpage_container">
         <div className="topsection">
 
@@ -477,12 +486,20 @@ const Apartment_page = () => {
             <h3>Request Info</h3>
             <div className="photo">
               <div>
+                <img src={ProfileData.profimgLink} alt="" style={{"borderRadius":"50%"}} />
               </div>
               <div className="account">
                 <img src="/images/profile.png" alt="" />
                 <p>{apartmentData.ownName}</p>
               </div>
 
+            </div>
+            <div className="ownaddress">
+              <p><span>Address:</span> {ProfileData.address}</p>
+            </div>
+            <div className="ownphone">
+              <img src="/images/telephone.png" alt="" />
+              <p>{apartmentData.phone}</p>
             </div>
             <form onSubmit={(e) => {
               handlesubmit(e)
@@ -518,7 +535,7 @@ const Apartment_page = () => {
         <div className="address_section">
           <div>
 
-            <h3>Address</h3>
+            <h3>Property Address</h3>
 
 
           </div>

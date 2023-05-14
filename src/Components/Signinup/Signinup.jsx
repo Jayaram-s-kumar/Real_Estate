@@ -93,7 +93,7 @@ const Signinup = () => {
     }
     return (
         <>
-            <Navbar bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+            <Navbar selected={'signin'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
             <div className="signinup_container">
                 <div className="signinupbox">
                     <div className="topbar">
