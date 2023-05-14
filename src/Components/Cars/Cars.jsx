@@ -53,25 +53,7 @@ const Cars = () => {
 
                 }
 
-                {
-                    backendData.map((obj) => {
-                        return <Link to={`car/${obj._id}`} key={obj._id}>
-                            <div className="card">
-                                <div className="cardimage">
-                                    <img src={obj.image1Link} alt="" />
-                                </div>
-                                <div className="details">
-                                    <p className="title">{obj.title}</p>
-                                    <p className="price">Rs {obj.price}</p>
-                                    <p className="year">{obj.year} model , {obj.kmdriven} km</p>
-
-                                </div>
-                            </div>
-                        </Link>
-
-
-                    })
-                }
+               
 
                 {
 

@@ -25,17 +25,17 @@ const SellnowPage = () => {
 
 
     useEffect(() => {
-     
-        if(!localStorage.getItem('user')){
-          navigate('/signinup')
+
+        if (!localStorage.getItem('user')) {
+            navigate('/signinup')
         }
-       
-      }, [])
+
+    }, [])
 
 
 
 
-   // const api_base = 'http://localhost:3001'
+    // const api_base = 'http://localhost:3001'
 
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
@@ -58,6 +58,8 @@ const SellnowPage = () => {
     const [image5IsLoading, setImage5IsLoading] = useState(false)
     const [doc1IsLoading, setDoc1IsLoading] = useState(false)
     const [doc2IsLoading, setDoc2IsLoading] = useState(false)
+    const [doc1Name, setDoc1Name] = useState('')
+    const [doc2Name, setDoc2Name] = useState('')
 
 
     const [apartment, setApartment] = useState(false)//for changing options when aparatment is selected
@@ -241,7 +243,7 @@ const SellnowPage = () => {
         validationSchema: addPropSchema,
         onSubmit: (values, actions) => {
             sendDetails(values)
-   
+
             actions.resetForm()
         }
     })
@@ -260,28 +262,35 @@ const SellnowPage = () => {
             .then(data => {
                 if (num === 1) {
                     setImage1Link(data.url)
+                    setImage1IsLoading(false)
                 } else if (num === 2) {
                     setImage2Link(data.url)
+                    setImage2IsLoading(false)
                 }
                 else if (num === 3) {
                     setImage3Link(data.url)
+                    setImage3IsLoading(false)
                 }
                 else if (num === 4) {
                     setImage4Link(data.url)
+                    setImage4IsLoading(false)
                 }
                 else if (num === 5) {
                     setImage5Link(data.url)
+                    setImage5IsLoading(false)
                 } else if (num === 6) {
                     setDoc1Link(data.url)
+                    setDoc1IsLoading(false)
                 }
                 else if (num === 7) {
                     setDoc2Link(data.url)
+                    setDoc2IsLoading(false)
                 }
 
-               
+
             })
             .catch((err) => {
-               
+
             })
 
     }
@@ -300,7 +309,7 @@ const SellnowPage = () => {
         formData.doc2Link = doc2Link
 
 
-       
+
         let data = await (await fetch(api_base + "/uploadProp", {
             method: 'POST',
             headers: {
@@ -309,7 +318,7 @@ const SellnowPage = () => {
             body: JSON.stringify(formData)
         })).json()
 
-       
+
 
         if (apartment) {
             navigate(`apartment/${data._id}`)
@@ -330,7 +339,7 @@ const SellnowPage = () => {
             <div className="sellNowContainer">
                 <form onSubmit={(val) => {
                     handleSubmit(val)
-            
+
                 }}>
                     <h3>Upload Your Property Details</h3>
                     <Box sx={{}} style={{ width: '100%' }}>
@@ -669,6 +678,19 @@ const SellnowPage = () => {
 
                         <p className='error'>{errors.image1Link && touched.image1Link ? errors.image1Link : null}</p>
                         <div className="uploadedimage">
+                            {!image1IsLoading && !image1Link && <label htmlFor="file1">
+                                <img src="/images/upload.png" alt="" />
+                            </label>}
+                            {
+                                image1Link && <div className='deleteimage' onClick={() => {
+                                    setImage1Link('')
+                                    document.getElementById("file1").value = '';
+                                    setFieldValue('image1Link', '')
+
+                                }}>
+                                    <img src="/images/delete.png" alt="" />
+                                </div>
+                            }
                             {image1IsLoading && !image1Link ? <ScaleLoader
                                 color="#80808087"
                                 height={20}
@@ -687,7 +709,7 @@ const SellnowPage = () => {
 
 
                     <div className='inputbox'>
-                        <input type="file" id='file1' name='image2Link' onChange={(event) => {
+                        <input type="file" id='file2' name='image2Link' onChange={(event) => {
                             setFieldValue('image2Link', event.currentTarget.files[0])
                             handleImage2Upload()
                             uploadimage(event, 2)
@@ -696,6 +718,19 @@ const SellnowPage = () => {
 
                         <p className='error'>{errors.image2Link && touched.image2Link ? errors.image2Link : null}</p>
                         <div className="uploadedimage">
+                            {!image2IsLoading && !image2Link && <label htmlFor="file2">
+                                <img src="/images/upload.png" alt="" />
+                            </label>}
+                            {
+                                image2Link && <div className='deleteimage' onClick={() => {
+                                    setImage2Link('')
+                                    document.getElementById("file2").value = '';
+                                    setFieldValue('image2Link', '')
+
+                                }}>
+                                    <img src="/images/delete.png" alt="" />
+                                </div>
+                            }
                             {image2IsLoading && !image2Link ? <ScaleLoader
                                 color="#80808087"
                                 height={20}
@@ -716,7 +751,7 @@ const SellnowPage = () => {
 
 
                     <div className='inputbox'>
-                        <input type="file" id='file1' name='image3Link' onChange={(event) => {
+                        <input type="file" id='file3' name='image3Link' onChange={(event) => {
                             setFieldValue('image3Link', event.currentTarget.files[0])
                             handleImage3Upload()
                             uploadimage(event, 3)
@@ -725,6 +760,19 @@ const SellnowPage = () => {
 
                         <p className='error'>{errors.image3Link && touched.image3Link ? errors.image3Link : null}</p>
                         <div className="uploadedimage">
+                            {!image3IsLoading && !image3Link && <label htmlFor="file3">
+                                <img src="/images/upload.png" alt="" />
+                            </label>}
+                            {
+                                image3Link && <div className='deleteimage' onClick={() => {
+                                    setImage3Link('')
+                                    document.getElementById("file3").value = '';
+                                    setFieldValue('image3Link', '')
+
+                                }}>
+                                    <img src="/images/delete.png" alt="" />
+                                </div>
+                            }
                             {image3IsLoading && !image3Link ? <ScaleLoader
                                 color="#80808087"
                                 height={20}
@@ -744,7 +792,7 @@ const SellnowPage = () => {
 
 
                     <div className='inputbox'>
-                        <input type="file" id='file1' name='image4Link' onChange={(event) => {
+                        <input type="file" id='file4' name='image4Link' onChange={(event) => {
                             setFieldValue('image4Link', event.currentTarget.files[0])
                             handleImage4Upload()
                             uploadimage(event, 4)
@@ -753,6 +801,19 @@ const SellnowPage = () => {
 
                         <p className='error'>{errors.image4Link && touched.image4Link ? errors.image4Link : null}</p>
                         <div className="uploadedimage">
+                            {!image4IsLoading && !image4Link && <label htmlFor="file4">
+                                <img src="/images/upload.png" alt="" />
+                            </label>}
+                            {
+                                image4Link && <div className='deleteimage' onClick={() => {
+                                    setImage4Link('')
+                                    document.getElementById("file4").value = '';
+                                    setFieldValue('imageL4ink', '')
+
+                                }}>
+                                    <img src="/images/delete.png" alt="" />
+                                </div>
+                            }
                             {image4IsLoading && !image4Link ? <ScaleLoader
                                 color="#80808087"
                                 height={20}
@@ -772,7 +833,7 @@ const SellnowPage = () => {
 
 
                     <div className='inputbox'>
-                        <input type="file" id='file1' name='image5Link' onChange={(event) => {
+                        <input type="file" id='file5' name='image5Link' onChange={(event) => {
                             setFieldValue('image5Link', event.currentTarget.files[0])
                             handleImage5Upload()
                             uploadimage(event, 5)
@@ -781,6 +842,19 @@ const SellnowPage = () => {
 
                         <p className='error'>{errors.image5Link && touched.image5Link ? errors.image5Link : null}</p>
                         <div className="uploadedimage">
+                            {!image5IsLoading && !image5Link && <label htmlFor="file5">
+                                <img src="/images/upload.png" alt="" />
+                            </label>}
+                            {
+                                image5Link && <div className='deleteimage' onClick={() => {
+                                    setImage5Link('')
+                                    document.getElementById("file5").value = '';
+                                    setFieldValue('image5Link', '')
+
+                                }}>
+                                    <img src="/images/delete.png" alt="" />
+                                </div>
+                            }
                             {image5IsLoading && !image5Link ? <ScaleLoader
                                 color="#80808087"
                                 height={20}
@@ -800,35 +874,89 @@ const SellnowPage = () => {
                     <h3>Upload documents</h3>
 
 
-                    <div className="uploadbox" style={{ width: '100%' }}>
-                        <input type="file" id='file1' name='doc1Link' onChange={(event) => {
-                            setFieldValue('doc1Link', event.currentTarget.files[0])
-                            handleDoc1Upload()
-                            uploadimage(event, 6)
-                        }} />
-                        {doc1IsLoading && !doc1Link ? <ScaleLoader
-                            color="#80808087"
-                            height={20}
-                            loading
-                            width={10}
-                        /> : null}
-                        <p className='error'>{errors.doc1Link && touched.doc1Link ? errors.doc1Link : null}</p>
+                    <div className="uploadbox">
+                        <div className="uploadedfile">
+                            {
+                                !doc1Link && !doc1IsLoading && <label htmlFor="docfile1">
+                                    <img src="/images/upload-file.png" alt="" />
+                                </label>
+                            }
+                            {
+                                doc1Link && <img src="/images/google-docs.png" alt="" />
+
+                            }
+                            {
+                                doc1Link && <p>{doc1Name}</p>
+
+                            }
+
+                            {
+                                doc1Link && <img src="/images/multiply.png" alt="" className='deletebutton' onClick={() => {
+                                    setFieldValue('doc1Link', '')
+                                    setDoc1Name('')
+                                    setDoc1Link('')
+                                    document.getElementById('docfile1').value = ''
+                                }} />
+
+                            }
+                            <input type="file" id='docfile1' name='doc1Link' onChange={(event) => {
+                                setFieldValue('doc1Link', event.currentTarget.files[0])
+                                setDoc1Name(event.currentTarget.files[0].name)
+                                handleDoc1Upload()
+                                uploadimage(event, 6)
+                            }} />
+                            {doc1IsLoading && !doc1Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            <p className='error'>{errors.doc1Link && touched.doc1Link ? errors.doc1Link : null}</p>
+
+                        </div>
+
+                        <div className="uploadedfile">
+                            {
+                                !doc2Link && !doc2IsLoading && <label htmlFor="docfile2">
+                                    <img src="/images/upload-file.png" alt="" />
+                                </label>
+                            }
+                            {
+                                doc2Link && <img src="/images/google-docs.png" alt="" />
+
+                            }
+                            {
+                                doc2Link && <p>{doc2Name}</p>
+
+                            }
+
+                            {
+                                doc2Link && <img src="/images/multiply.png" alt="" className='deletebutton' onClick={() => {
+                                    setFieldValue('doc2Link', '')
+                                    setDoc2Name('')
+                                    setDoc2Link('')
+                                    document.getElementById('docfile2').value = ''
+                                }} />
+
+                            }
+
+                            <input type="file" id='docfile2' name='doc2Link' onChange={(event) => {
+                                setFieldValue('doc2Link', event.currentTarget.files[0])
+                                setDoc2Name(event.currentTarget.files[0].name)
+                                handleDoc2Upload()
+                                uploadimage(event, 7)
+                            }} onBlur={handleBlur} />
+                            {doc2IsLoading && !doc2Link ? <ScaleLoader
+                                color="#80808087"
+                                height={20}
+                                loading
+                                width={10}
+                            /> : null}
+                            <p className='error'>{errors.doc2Link && touched.doc2Link ? errors.doc2Link : null}</p>
+
+                        </div>
 
                     </div>
-
-                    <input type="file" id='file1' name='doc2Link' onChange={(event) => {
-                        setFieldValue('doc2Link', event.currentTarget.files[0])
-                        handleDoc2Upload()
-                        uploadimage(event, 7)
-                    }} onBlur={handleBlur} />
-                    {doc2IsLoading && !doc2Link ? <ScaleLoader
-                        color="#80808087"
-                        height={20}
-                        loading
-                        width={10}
-                    /> : null}
-                    <p className='error'>{errors.doc2Link && touched.doc2Link ? errors.doc2Link : null}</p>
-
 
                     <div className="button_div">
 

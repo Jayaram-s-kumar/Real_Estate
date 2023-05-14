@@ -22,7 +22,7 @@ const Gallery = () => {
             <Navbar  bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'gallery'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />       
             <div className="gallery_container">
                 <h1>Gallery</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, doloremque possimus soluta vero unde facere quo amet!</p>
+                <p>Explore our extensive gallery of premium cars and properties, each hand-picked for their quality and value, and find your dream investment today.</p>
                 <div className="photos">
                     <img src="/images/gallery1.jpg" alt="" />
                     <img src="/images/gallery2.jpg" alt="" />

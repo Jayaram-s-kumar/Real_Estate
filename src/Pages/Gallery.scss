@@ -16,7 +16,8 @@
         margin-bottom: 30px;
         margin-top: 30px;
         text-align: center;
-        font-weight: bold;
+        font-weight: 500;
+        color: red;
 
         @media (max-width:800px) {
             font-size: 27px;
@@ -28,10 +29,11 @@
         margin-left: 10px;
         font-family: 'Lato', sans-serif;
         margin-bottom: 50px;
-        font-size: 22px;
+        font-size: 19px;
+        color: #ff000094;
 
         @media (max-width:700px) {
-            font-size: 18px;
+            font-size: 15px;
         }
 
 

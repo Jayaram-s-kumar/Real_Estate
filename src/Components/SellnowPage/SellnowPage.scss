@@ -51,7 +51,7 @@
     }
 
 
-   
+
 
     .suboptions {
         display: flex;
@@ -67,7 +67,7 @@
             width: 90%;
             padding: 0%;
         }
-      
+
         p {
             margin: 0;
             font-family: "Lato", sans-serif;
@@ -141,7 +141,7 @@
         @media (min-width:800px) {
             flex-direction: row !important;
             align-items: flex-start !important;
-    
+
         }
     }
 
@@ -159,6 +159,7 @@
         }
 
         .inputfile {
+            display: none;
 
             margin-left: 100px;
             margin-bottom: 30px;
@@ -192,6 +193,25 @@
                 width: 100%;
                 height: 100%;
             }
+
+            .deleteimage {
+                position: absolute;
+                top: 9px;
+                left: 7px;
+                background: white;
+                padding: 3px;
+                border-radius: 4px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: #00000066;
+
+                img {
+
+                    width: 25px;
+                }
+
+            }
+
 
             div {
                 div {
@@ -242,6 +262,54 @@
 
             }
         }
+    }
+
+    .uploadbox {
+
+        display: flex;
+        gap: 20px;
+
+
+        .uploadedfile {
+            width: 150px;
+            height: 150px;
+            background: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+            padding-top: 36px;
+            box-sizing: border-box;
+            position: relative;
+
+            p {
+                color: rgb(75, 72, 72);
+                font-family: "Lato", sans-serif;
+                font-size: 12px;
+            }
+
+            input[type="file"] {
+                display: none;
+            }
+
+
+            .error {
+                font-family: "Lato", sans-serif;
+                font-size: 13px;
+                color: red;
+            }
+
+            .deletebutton {
+                position: absolute;
+                top: 16px;
+                right: 15px;
+                width: 23px;
+            }
+
+        }
+
+
     }
 
 
