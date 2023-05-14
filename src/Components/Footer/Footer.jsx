@@ -18,8 +18,8 @@ const Footer = () => {
           <p>twitter</p>
         </div>
       </div>
-      <h2>Nest Homes</h2>
-      <p><span>&copy; </span>2023 Nest Homes - All Rights Reserved</p>
+      <h2>Wheels & Walls</h2>
+      <p><span>&copy; </span>2023 Wheels & Walls - All Rights Reserved</p>
     </div>
   )
 }
