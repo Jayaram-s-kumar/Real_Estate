@@ -27,10 +27,21 @@ const SellnowPage = () => {
     useEffect(() => {
 
         if (!localStorage.getItem('user')) {
-            navigate('/signinup')
+            navigate('/signinup', { replace: true })//This will replace the /sell rouote in history stack to /signinup.
+            //so when pressing back button the previous page will be home page      
         }
 
     }, [])
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', window.scrollTo(0, 0))
+
+        return () => {
+            window.removeEventListener('beforeunload', window.scrollTo(0, 0))
+        }
+    }, [])
+
+
 
 
 

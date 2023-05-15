@@ -12,18 +12,26 @@ import Navbar from '../Navabar/Navbar'
 
 const UploadCar = () => {
 
-    const api_base = 'http://localhost:3001'
+    //const api_base = 'http://localhost:3001'
 
-    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const navigate = useNavigate()
 
     useEffect(() => {
 
         if (!localStorage.getItem('user')) {
-            navigate('/signinup')
+            navigate('/signinup', { replace: true })
         }
 
+    }, [])
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', window.scrollTo(0, 0))
+
+        return () => {
+            window.removeEventListener('beforeunload', window.scrollTo(0, 0))
+        }
     }, [])
 
 

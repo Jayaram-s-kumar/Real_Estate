@@ -14,7 +14,7 @@ const Allcars = () => {
     const navigate = useNavigate()
 
     //const api_base = 'http://localhost:3001'
-     const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const fetchData = async () => {
         console.log("function called")
@@ -28,18 +28,26 @@ const Allcars = () => {
     }, [])
 
     useEffect(() => {
-     
-        if(!localStorage.getItem('user')){
-          navigate('/signinup')
+
+        if (!localStorage.getItem('user')) {
+            navigate('/signinup', { replace: true })
         }
-       
-      }, [])
+
+    }, [])
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', window.scrollTo(0, 0))
+
+        return () => {
+            window.removeEventListener('beforeunload', window.scrollTo(0, 0))
+        }
+    }, [])
 
     return (
         <>
-            <Navbar  bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'cars'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />       
+            <Navbar bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'cars'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
             <div className="allcarcontainer">
-            <h1>Cars</h1>
+                <h1>Cars</h1>
                 <div className="cards_container">
                     {
                         carData.map((obj) => {
@@ -62,7 +70,7 @@ const Allcars = () => {
                     }
                 </div>
             </div>
-            <SellNow hidenavbar={true}/>
+            <SellNow hidenavbar={true} />
         </>
     )
 }

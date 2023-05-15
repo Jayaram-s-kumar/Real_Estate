@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './AllApartments.scss'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navabar/Navbar'
@@ -12,12 +12,20 @@ const AllApartments = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-     
-        if(!localStorage.getItem('user')){
-          navigate('/signinup')
+
+        if (!localStorage.getItem('user')) {
+            navigate('/signinup', { replace: true })
         }
-       
-      }, [])
+
+    }, [])
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', window.scrollTo(0, 0))
+
+        return () => {
+            window.removeEventListener('beforeunload', window.scrollTo(0, 0))
+        }
+    }, [])
 
     //const api_base = 'http://localhost:3001'
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
@@ -35,7 +43,7 @@ const AllApartments = () => {
 
     return (
         <>
-            <Navbar  bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'apartments'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
+            <Navbar bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'apartments'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
 
             <div className="AllApartments_container">
                 <h1>Apartments</h1>
@@ -168,7 +176,7 @@ const AllApartments = () => {
 
 
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </Link>
@@ -180,7 +188,7 @@ const AllApartments = () => {
                 </div>
             </div>
 
-            <SellNow hidenavbar={true}/>
+            <SellNow hidenavbar={true} />
         </>
     )
 }

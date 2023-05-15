@@ -28,9 +28,17 @@ const MyAccount = () => {
     useEffect(() => {
 
         if (!localStorage.getItem('user')) {
-            navigate('/signinup')
+            navigate('/signinup', { replace: true })
         }
 
+    }, [])
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', window.scrollTo(0, 0))
+
+        return () => {
+            window.removeEventListener('beforeunload', window.scrollTo(0, 0))
+        }
     }, [])
 
     const fetchData = async () => {
@@ -261,8 +269,8 @@ const MyAccount = () => {
                                     return <div>
                                         <div className="name" >
                                             <div className="image" onClick={() => {
-                                            navigate(`car/${obj._id}`)
-                                        }}>
+                                                navigate(`car/${obj._id}`)
+                                            }}>
                                                 <img src={obj.image1Link} alt="" />
                                             </div>
                                             <div className="details">
@@ -272,7 +280,7 @@ const MyAccount = () => {
                                                 </div>
                                                 <div className="buttondiv">
                                                     <button onClick={() => {
-                                                        deleteProp(obj._id)
+                                                        deleteCar(obj._id)
                                                         fetchData()
 
                                                     }}>

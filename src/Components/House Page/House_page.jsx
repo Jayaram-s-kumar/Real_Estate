@@ -22,10 +22,18 @@ const House_page = () => {
 
   useEffect(() => {
     if (!localStorage.getItem("user")) {
-      navigate('/signinup')
+      navigate('/signinup', { replace: true })
     }
     getProfData()
   }, []);
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', window.scrollTo(0, 0))
+
+    return () => {
+      window.removeEventListener('beforeunload', window.scrollTo(0, 0))
+    }
+  }, [])
 
 
 
@@ -35,9 +43,9 @@ const House_page = () => {
   const [message, setMessage] = useState('')
   const [ProfileData, setProfileData] = useState(false)
 
-  const getProfData = async()=>{
-    const response2 = await fetch(api_base+`/getprofimg/${ await (JSON.parse(localStorage.getItem('user'))).loginID}`)
-    const data2  =await response2.json()
+  const getProfData = async () => {
+    const response2 = await fetch(api_base + `/getprofimg/${await (JSON.parse(localStorage.getItem('user'))).loginID}`)
+    const data2 = await response2.json()
     setProfileData(data2)
   }
 
@@ -415,7 +423,7 @@ const House_page = () => {
             <h3>Request Info</h3>
             <div className="photo">
               <div>
-              <img src={ProfileData.profimgLink} alt="" style={{"borderRadius":"50%"}} />
+                <img src={ProfileData.profimgLink} alt="" style={{ "borderRadius": "50%" }} />
               </div>
               <div className="account">
                 <img src="/images/profile.png" alt="" />
