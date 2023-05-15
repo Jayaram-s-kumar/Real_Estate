@@ -76,11 +76,7 @@
     z-index: 999;
     width: 100%;
 
-    // display: none;
-
-    // border-bottom: #000000;
-    // border-bottom-style: solid;
-    // border-bottom-width: 2px;
+  
 
 
 
@@ -91,7 +87,7 @@
             display: none;
         }
 
-        margin-left: 1%;
+        margin-left: 4%;
 
         img {
             width: 27px;
@@ -108,8 +104,23 @@
 
         position: absolute;
         top: 16px;
-        margin-left: 90%;
+        margin-left: 83%;
         width: fit-content;
+
+        a{
+            text-decoration: none;
+        }
+
+        p {
+            margin: 0;
+            font-size: 13px;
+            margin-top: 7px;
+            color: red;
+            font-weight: 600;
+            font-family: "Montserrat", sans-serif;
+            letter-spacing: 1px;
+
+        }
 
 
         img {
@@ -126,8 +137,8 @@
             font-weight: 600;
             letter-spacing: 2px;
             font-size: 26px;
-            
-            span{
+
+            span {
                 color: #919191;
                 font-size: 35px;
                 font-weight: 400;
@@ -200,7 +211,7 @@
 
                 .LightHover {
                     &:hover {
-                       
+
                         background: #e7e5e54e;
                         border-radius: 30px;
                         font-size: 14px;
@@ -416,7 +427,7 @@
                 cursor: not-allowed;
             }
 
-            span{
+            span {
                 position: absolute;
                 top: 25%;
                 left: 70%;
@@ -431,7 +442,7 @@
 
             }
 
-           
+
 
 
         }

@@ -37,18 +37,26 @@ function Carpage() {
     }, [])
 
 
-    // const api_base = 'http://localhost:3001'
+     //const api_base = 'http://localhost:3001'
     const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const fetchData = async () => {
-        const response = await fetch(api_base + `/getcardata/${carID}`)
-
-        const data = await response.json()
-
-        setData(data)
-
-
-    }
+        try {
+          console.log("fetchdata called")
+          const response = await fetch(api_base + `/getcardata/${carID}`);
+          const data = await response.json().then((data)=>{
+            console.log("data is", data);
+            if (data.error) {
+              navigate('/', { replace: true });
+            } else {
+              setData(data);
+            }
+          })
+        } catch (error) {
+          console.error('Error fetching house data:', error);
+          // Handle the error if needed
+        }
+      };
 
     return (
         <>

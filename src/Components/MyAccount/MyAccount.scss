@@ -425,12 +425,13 @@
                     object-fit: contain;
                 }
 
-                .details {
+                .detailssmall {
 
                     display: flex;
                     width: 100%;
                     align-items: center;
                     justify-content: center;
+                    height: 150px;
 
                     @media (max-width:800px) {
                         flex-direction: column;
@@ -438,6 +439,11 @@
 
                     div {
                         width: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        height: 120px;
+                        display: flex;
+                        flex-direction: column;
                         align-items: center;
                         justify-content: center;
 
@@ -464,8 +470,7 @@
                         align-items: center;
                         justify-content: center;
                         width: 100%;
-                        margin-bottom: 30px;
-                        margin-top: 10px;
+                 
 
                         @media (max-width:800px) {
                             margin-top: 0px;
@@ -481,7 +486,6 @@
                             width: 100px;
 
                             border-radius: 7px;
-                            margin-top: 30px;
 
 
                             @media (max-width:800px) {
@@ -553,8 +557,8 @@
                 border-color: #00000012;
                 border-radius: 6px;
 
-                &:last-child{
-                    margin-bottom: 50px;
+                &:last-child {
+                    margin-bottom: 90px;
                 }
 
 
@@ -566,12 +570,13 @@
                     object-fit: contain;
                 }
 
-                .details {
+                .detailssmall {
 
                     display: flex;
                     width: 100%;
                     align-items: center;
                     justify-content: center;
+                    height: 150px;
 
                     @media (max-width:800px) {
                         flex-direction: column;
@@ -581,6 +586,12 @@
                         width: 100%;
                         align-items: center;
                         justify-content: center;
+                        height: 120px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+
 
                         p {
                             font-family: "Lato", sans-serif;
@@ -605,8 +616,7 @@
                         align-items: center;
                         justify-content: center;
                         width: 100%;
-                        margin-bottom: 30px;
-                        margin-top: 10px;
+                      
 
                         @media (max-width:800px) {
                             margin-top: 0px;
@@ -622,7 +632,7 @@
                             width: 100px;
 
                             border-radius: 7px;
-                            margin-top: 30px;
+                        
 
 
                             @media (max-width:800px) {

@@ -230,7 +230,7 @@ const MyAccount = () => {
                                             }}>
                                                 <img src={obj.image1Link} alt="" />
                                             </div>
-                                            <div className="details">
+                                            <div className="detailssmall">
                                                 <div>
                                                     <p>{obj.propName}</p>
                                                     <p>Rs {obj.price}</p>
@@ -273,9 +273,9 @@ const MyAccount = () => {
                                             }}>
                                                 <img src={obj.image1Link} alt="" />
                                             </div>
-                                            <div className="details">
+                                            <div className="detailssmall">
                                                 <div>
-                                                    <p>{obj.propName}</p>
+                                                    <p>{obj.title}</p>
                                                     <p>Rs {obj.price}</p>
                                                 </div>
                                                 <div className="buttondiv">

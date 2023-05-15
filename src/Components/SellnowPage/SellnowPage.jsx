@@ -272,22 +272,22 @@ const SellnowPage = () => {
             .then(response => response.json())
             .then(data => {
                 if (num === 1) {
-                    setImage1Link(data.url)
+                    setImage1Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage1IsLoading(false)
                 } else if (num === 2) {
-                    setImage2Link(data.url)
+                    setImage2Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage2IsLoading(false)
                 }
                 else if (num === 3) {
-                    setImage3Link(data.url)
+                    setImage3Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage3IsLoading(false)
                 }
                 else if (num === 4) {
-                    setImage4Link(data.url)
+                    setImage4Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage4IsLoading(false)
                 }
                 else if (num === 5) {
-                    setImage5Link(data.url)
+                    setImage5Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage5IsLoading(false)
                 } else if (num === 6) {
                     setDoc1Link(data.url)
@@ -318,8 +318,9 @@ const SellnowPage = () => {
         formData.image5Link = image5Link
         formData.doc1Link = doc1Link
         formData.doc2Link = doc2Link
-
-
+        
+        
+       
 
         let data = await (await fetch(api_base + "/uploadProp", {
             method: 'POST',

@@ -87,22 +87,22 @@ const UploadCar = () => {
             .then(response => response.json())
             .then(data => {
                 if (num === 1) {
-                    setImage1Link(data.url)
+                    setImage1Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage1IsLoading(false)
                 } else if (num === 2) {
-                    setImage2Link(data.url)
+                    setImage2Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage2IsLoading(false)
                 }
                 else if (num === 3) {
-                    setImage3Link(data.url)
+                    setImage3Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage3IsLoading(false)
                 }
                 else if (num === 4) {
-                    setImage4Link(data.url)
+                    setImage4Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage4IsLoading(false)
                 }
                 else if (num === 5) {
-                    setImage5Link(data.url)
+                    setImage5Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage5IsLoading(false)
                 }
 
@@ -415,7 +415,7 @@ const UploadCar = () => {
                                         </div>
                                         <div style={noofowners == '3+' ? { background: '#d5ebff', borderWidth: '2px' } : {}} onClick={() => {
                                             setNoofowners('3+')
-                                            setFieldValue('noofowneres', '3+')
+                                            setFieldValue('noofowners', '3+')
                                         }}>
                                             <p>3 +</p>
                                         </div>

@@ -99,9 +99,26 @@ const Apartment_page = () => {
 
 
   const fetchData = async () => {
-    const response = await fetch(api_base + `/getPropData/${apartmentID}`);
-    const data = await response.json();
-    setApartmentData(data);
+    
+     
+
+      try {
+        console.log("fetchdata called")
+        const response = await fetch(api_base + `/getPropData/${apartmentID}`);
+        const data = await response.json().then((data)=>{
+          console.log("data is",data)
+          if(data.error){
+            navigate('/',{replace:true})
+
+          }else{
+            setApartmentData(data)
+          }
+        })
+      } catch (error) {
+        console.error('Error fetching house data:', error);
+
+      }
+  
   }
 
   useEffect(() => {

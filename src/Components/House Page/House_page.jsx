@@ -77,15 +77,27 @@ const House_page = () => {
 
 
   const fetchData = async () => {
-    const response = await fetch(api_base + `/getPropData/${houseID}`);
-    const data = await response.json();
-    setHouseData(data);
-  }
-
+    try {
+      console.log("fetchdata called")
+      const response = await fetch(api_base + `/getPropData/${houseID}`);
+      const data = await response.json().then((data)=>{
+        console.log("data is", data);
+        if (data.error) {
+          navigate('/', { replace: true });
+        } else {
+          setHouseData(data);
+        }
+      })
+    } catch (error) {
+      console.error('Error fetching house data:', error);
+      // Handle the error if needed
+    }
+  };
+  
   useEffect(() => {
-    fetchData()
-  }, [])
-
+    fetchData();
+  }, []);
+  
 
   const date = new Date()
   const [selectedDate, setSelectedDate] = useState();
