@@ -290,11 +290,11 @@ const SellnowPage = () => {
                     setImage5Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setImage5IsLoading(false)
                 } else if (num === 6) {
-                    setDoc1Link(data.url)
+                    setDoc1Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setDoc1IsLoading(false)
                 }
                 else if (num === 7) {
-                    setDoc2Link(data.url)
+                    setDoc2Link(data.url.replace(/^http:\/\//i, 'https://'))
                     setDoc2IsLoading(false)
                 }
 
@@ -375,8 +375,8 @@ const SellnowPage = () => {
                                     onBlur={handleBlur}
                                 >
                                     <MenuItem value={"House"}>Houses</MenuItem>
-                                    <MenuItem value={"Townhomes"}>Townhomes</MenuItem>
-                                    <MenuItem value={"Multifamily"}>Multifamily</MenuItem>
+                                    {/* <MenuItem value={"Townhomes"}>Townhomes</MenuItem>
+                                    <MenuItem value={"Multifamily"}>Multifamily</MenuItem> */}
                                     <MenuItem value={"Apartments"}>Apartments</MenuItem>
                                 </Select>
                                 <p className='error'>{errors.propType && touched.propType ? errors.propType : null}</p>

@@ -136,10 +136,15 @@ const Navbar = ({ bg, bs, txtCol, selected, hoverClass, display }) => {
               <img src={txtCol === 'white' ? '/images/user_white.png' : '/images/user_black.png'} alt="" />
             </Link>
 
-          </div> : <div className="profile">
-            <Link to={'signinup'}>
+          </div> : <div className="profile" onClick={()=>{
+            
+             document.body.classList.add('overlay')
+             document.body.style.overflow = 'unset'
+             setPopup(true)
+          }}>
+          
               <p>LOGIN</p>
-            </Link>
+          
           </div>
 
         }

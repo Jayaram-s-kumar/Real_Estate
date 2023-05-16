@@ -65,6 +65,7 @@
         color: black;
         background-color: white;
         width: 88%;
+        margin-right: 8%;
 
 
         @media (max-width:800px) {
@@ -137,8 +138,10 @@
         }
 
         .mobileimages{
-            width: 90%;
+            width: 104%;
             margin: auto;
+            height: fit-content;
+            background: white;
 
             @media (min-width: 800px) {
                 display: none;
