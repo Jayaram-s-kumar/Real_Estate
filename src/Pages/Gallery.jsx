@@ -24,15 +24,15 @@ const Gallery = () => {
                 <h1>Gallery</h1>
                 <p>Explore our extensive gallery of premium cars and properties, each hand-picked for their quality and value, and find your dream investment today.</p>
                 <div className="photos">
-                    <img src="/images/gallery1.jpg" alt="" />
-                    <img src="/images/gallery2.jpg" alt="" />
-                    <img src="/images/gallery3.jpg" alt="" />
-                    <img src="/images/gallery4.jpg" alt="" />
-                    <img src="/images/gallery5.jpg" alt="" />
-                    <img src="/images/gallery6.jpg" alt="" />
-                    <img src="/images/gallery7.jpg" alt="" />
-                    <img src="/images/heroimage1.jpg" alt="" />
-                    <img src="/images/heroimage2.jpg" alt="" />
+                    <img src="/images/gallerycar1.jpg" alt="" />
+                    <img src="/images/galleryhouse1.jpg" alt="" />
+                    <img src="/images/gallerycar2.avif" alt="" />
+                    <img src="/images/galleryhouse2.png" alt="" />
+                    <img src="/images/gallerycar3.jpg" alt="" />
+                    <img src="/images/galleryhouse3.jpg" alt="" />
+                    <img src="/images/gallerycar4.jpg" alt="" />
+                    <img src="/images/galleryhouse4.jpg" alt="" />
+                    <img src="/images/galleryhouse5.jpg" alt="" />
                 </div>
             </div>
         </>
