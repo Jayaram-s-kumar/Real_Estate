@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 //import {Link} from 'react-scroll'
 import { ClipLoader } from 'react-spinners'
 
-const Navbar = ({ bg, bs, txtCol, selected, hoverClass, display }) => {
+const Navbar = ({ bg, bs, txtCol, selected, hoverClass,login }) => {
 
   useEffect(() => {
     setExist(false)
@@ -126,7 +126,7 @@ const Navbar = ({ bg, bs, txtCol, selected, hoverClass, display }) => {
             document.body.style.overflow = 'hidden'
             document.body.style.background = 'ash'
             if (open) {
-              setClose(true)
+              setClose(true) 
             }
           }} />
         </div>
@@ -136,7 +136,7 @@ const Navbar = ({ bg, bs, txtCol, selected, hoverClass, display }) => {
               <img src={txtCol === 'white' ? '/images/user_white.png' : '/images/user_black.png'} alt="" />
             </Link>
 
-          </div> : <div className="profile" onClick={()=>{
+          </div> : login && <div className="profile" onClick={()=>{
             
              document.body.classList.add('overlay')
              document.body.style.overflow = 'unset'

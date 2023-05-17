@@ -18,7 +18,7 @@ const HeroSection = ({ heroBottomStyle, closeMobLogin }) => {
 
         <>
 
-            <Navbar selected={'home'} bg='white' bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} txtCol={'rgb(26 27 22)'} hoverClass={'DarkHover'} />
+            <Navbar selected={'home'} bg='white' bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} txtCol={'rgb(26 27 22)'} hoverClass={'DarkHover'} login={true}/>
             <div className={'container'}>
               <div className="leftcirclecontainer">
 
