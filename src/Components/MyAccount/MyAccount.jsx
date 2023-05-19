@@ -48,6 +48,8 @@ const MyAccount = () => {
 
         setAddAnim(true)
 
+        console.log("fetchdata is called")
+
         const response = await fetch(api_base + `/getmyproperties/${(await JSON.parse(localStorage.getItem('user'))).loginID}`);
         const data = await response.json();
         setPropertyData(data);
@@ -64,7 +66,6 @@ const MyAccount = () => {
         if (data2.profimgLink) {
             setProfileimglink(data2.profimgLink)
         }
-        console.log("fetched link is", profileimglink)
         if (data2.address) {
             setAddress(data2.address)
 
@@ -88,17 +89,23 @@ const MyAccount = () => {
     const deleteCar = async (ID) => {
         await fetch(api_base + `/deletecar/${ID}`)
 
+        console.log("delete car funcion called")
+
     }
 
 
     const DeleteCarButton = ({ object }) => {
         const [carbuttonloading, setCarbuttonloading] = useState(false)
+
+        const handleClick = async () => {
+            await deleteCar(object._id);
+            fetchData()
+        };
+
         return <>
             <button onClick={() => {
-                deleteCar(object._id)
-                fetchData()
-                setCarbuttonloading(true)
-
+                setCarbuttonloading(true);
+                handleClick()
             }} disabled={carbuttonloading}>
                 <p>{!carbuttonloading && "Delete post"}</p>
                 <ClipLoader color="#ffffff" className='loading' size={10} loading={carbuttonloading} />
@@ -108,14 +115,16 @@ const MyAccount = () => {
 
     }
 
-    const DeletePropButton = ({object})=>{
-        const [propbuttonloading,setPropbuttonloading] = useState(false)
-        return <>
-        <button onClick={() => {
-
-            deleteProp(object._id)
+    const DeletePropButton = ({ object }) => {
+        const [propbuttonloading, setPropbuttonloading] = useState(false)
+        const handleClick = async () => {
+            await deleteProp(object._id);
             fetchData()
-            setPropbuttonloading(true)
+        };
+        return <>
+            <button onClick={() => {
+                setPropbuttonloading(true);
+                handleClick()
             }} disabled={propbuttonloading}>
                 <p>{!propbuttonloading && "Delete post"}</p>
                 <ClipLoader color="#ffffff" className='loading' size={10} loading={propbuttonloading} />
@@ -279,7 +288,7 @@ const MyAccount = () => {
                                                     <p>Rs {obj.price}</p>
                                                 </div>
                                                 <div className="buttondiv">
-                                                   <DeletePropButton object={obj}/>
+                                                    <DeletePropButton object={obj} />
                                                 </div>
 
 
