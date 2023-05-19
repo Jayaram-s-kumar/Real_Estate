@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import SellNow from '../SellNow/SellNow'
 import { BeatLoader } from 'react-spinners'
 import { CloudinaryContext, Image, } from 'cloudinary-react'
+import { ClipLoader } from 'react-spinners'
 
 const MyAccount = () => {
 
@@ -41,7 +42,11 @@ const MyAccount = () => {
         }
     }, [])
 
+    const [addAnim, setAddAnim] = useState(false)
+
     const fetchData = async () => {
+
+        setAddAnim(true)
 
         const response = await fetch(api_base + `/getmyproperties/${(await JSON.parse(localStorage.getItem('user'))).loginID}`);
         const data = await response.json();
@@ -55,12 +60,14 @@ const MyAccount = () => {
         const response2 = await fetch(api_base + `/getprofimg/${await (JSON.parse(localStorage.getItem('user'))).loginID}`)
         const data2 = await response2.json()
         setProfileData(data2)
+        setAddAnim(false)
         if (data2.profimgLink) {
             setProfileimglink(data2.profimgLink)
         }
         console.log("fetched link is", profileimglink)
         if (data2.address) {
             setAddress(data2.address)
+
         }
 
     }
@@ -83,12 +90,47 @@ const MyAccount = () => {
 
     }
 
+
+    const DeleteCarButton = ({ object }) => {
+        const [carbuttonloading, setCarbuttonloading] = useState(false)
+        return <>
+            <button onClick={() => {
+                deleteCar(object._id)
+                fetchData()
+                setCarbuttonloading(true)
+
+            }} disabled={carbuttonloading}>
+                <p>{!carbuttonloading && "Delete post"}</p>
+                <ClipLoader color="#ffffff" className='loading' size={10} loading={carbuttonloading} />
+
+            </button>
+        </>
+
+    }
+
+    const DeletePropButton = ({object})=>{
+        const [propbuttonloading,setPropbuttonloading] = useState(false)
+        return <>
+        <button onClick={() => {
+
+            deleteProp(object._id)
+            fetchData()
+            setPropbuttonloading(true)
+            }} disabled={propbuttonloading}>
+                <p>{!propbuttonloading && "Delete post"}</p>
+                <ClipLoader color="#ffffff" className='loading' size={10} loading={propbuttonloading} />
+            </button>
+        </>
+    }
+
     const cloudName = 'dfs1badkm'
     const uploadPreset = 'zomato'
     const apiKey = '994475553562163'
 
     const [profileimgload, setProfileimgload] = useState(false)
     const [profileimglink, setProfileimglink] = useState('')
+
+
 
     const uploadiamge = async (event) => {
         const file = event.target.files[0]
@@ -184,7 +226,8 @@ const MyAccount = () => {
                         {
                             profileData.address && !editAddresss && <div className="addressbox">
                                 <label htmlFor="address">Address</label>
-                                <p>{profileData.address}</p>
+                                <p>{addAnim && "Updating . . ."}</p>
+                                <p>{!addAnim && profileData.address}</p>
                                 <div onClick={() => {
                                     setEditAddresss(true)
                                 }}>
@@ -236,13 +279,7 @@ const MyAccount = () => {
                                                     <p>Rs {obj.price}</p>
                                                 </div>
                                                 <div className="buttondiv">
-                                                    <button onClick={() => {
-                                                        deleteProp(obj._id)
-                                                        fetchData()
-
-                                                    }}>
-                                                        <p>DELETE POST</p>
-                                                    </button>
+                                                   <DeletePropButton object={obj}/>
                                                 </div>
 
 
@@ -279,13 +316,7 @@ const MyAccount = () => {
                                                     <p>Rs {obj.price}</p>
                                                 </div>
                                                 <div className="buttondiv">
-                                                    <button onClick={() => {
-                                                        deleteCar(obj._id)
-                                                        fetchData()
-
-                                                    }}>
-                                                        <p>DELETE POST</p>
-                                                    </button>
+                                                    <DeleteCarButton object={obj} />
                                                 </div>
 
 

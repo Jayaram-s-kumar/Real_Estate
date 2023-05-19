@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../Navabar/Navbar'
+import {ClipLoader} from 'react-spinners'
 
 
 
@@ -33,6 +34,8 @@ const UploadCar = () => {
             window.removeEventListener('beforeunload', window.scrollTo(0, 0))
         }
     }, [])
+
+    const [makeButtonLoading, setMakeButtonLoading] = useState(false)
 
 
     const [fueltype, setFueltype] = useState('')
@@ -135,6 +138,9 @@ const UploadCar = () => {
 
 
     const sendDetails = async (formData) => {
+
+        setMakeButtonLoading(true)
+
         formData.ownerID = (JSON.parse(localStorage.getItem('user'))).loginID
         formData.image1Link = image1Link
         formData.image2Link = image2Link
@@ -863,6 +869,9 @@ const UploadCar = () => {
                                 )
                                     ? true : false}>
                                 <p>POST</p>
+                                <div className="loading">
+                                    <ClipLoader color="#ffffff" className='loading' size={15} loading={makeButtonLoading} />
+                                </div>
                             </button>
 
                         </div>

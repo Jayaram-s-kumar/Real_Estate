@@ -235,15 +235,32 @@
         align-items: center;
         justify-content: center;
 
+
         button {
             color: white;
-            background: green;
+            background:#008000c7;
             border: none;
             height: 38px;
             width: 200px;
             border-radius: 7px;
             margin-top: 60px;
             margin-left: 30px;
+            position: relative;
+
+            &:disabled{
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+
+
+
+
+            .loading {
+                position: absolute;
+                right: 18px;
+
+            }
+
 
             @media (max-width:800px) {
                 margin-top: 20px;

@@ -16,12 +16,14 @@ import { CloudinaryContext, Image, } from 'cloudinary-react'
 
 import { ScaleLoader } from 'react-spinners'
 import { useFormik } from 'formik'
-
+import { ClipLoader } from 'react-spinners';
 
 
 const SellnowPage = () => {
 
     const navigate = useNavigate()
+
+    const [makeButtonLoading, setMakeButtonLoading] = useState(false)
 
 
     useEffect(() => {
@@ -46,9 +48,9 @@ const SellnowPage = () => {
 
 
 
-    // const api_base = 'http://localhost:3001'
+     const api_base = 'http://localhost:3001'
 
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
 
     const cloudName = 'dfs1badkm'
@@ -169,7 +171,7 @@ const SellnowPage = () => {
             .required('Phone number is required'),
         email: Yup.string().email().required("please provide your email"),
         sqfeet: Yup.number().positive().required("please enter sqfeet"),
-        lotsize: Yup.number().positive().required("please enter lotsize"),
+        lotsize:apartment ? Yup.number() : Yup.number().positive().required("please enter Lotsize"),
         year: Yup.number().required("please enter built year").min(1900, 'Year must be greater than or equal to 1900').max(new Date().getFullYear(), `Year can't be greater than current year`),
         streetAddress: Yup.string().required('Street address is required'),
         city: Yup.string().required('City is required'),
@@ -310,6 +312,7 @@ const SellnowPage = () => {
 
 
     const sendDetails = async (formData) => {
+        setMakeButtonLoading(true)
         formData.ownerID = JSON.parse(localStorage.getItem('user')).loginID
         formData.image1Link = image1Link
         formData.image2Link = image2Link
@@ -318,9 +321,9 @@ const SellnowPage = () => {
         formData.image5Link = image5Link
         formData.doc1Link = doc1Link
         formData.doc2Link = doc2Link
-        
-        
-       
+
+
+
 
         let data = await (await fetch(api_base + "/uploadProp", {
             method: 'POST',
@@ -349,6 +352,9 @@ const SellnowPage = () => {
             <Navbar bs={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} selected={'sell'} bg='white' txtCol={'black'} hoverClass={'LightHover'} />
 
             <div className="sellNowContainer">
+                <div className="animation">
+
+                </div>
                 <form onSubmit={(val) => {
                     handleSubmit(val)
 
@@ -429,13 +435,15 @@ const SellnowPage = () => {
                             <p>{errors.sqfeet && touched.sqfeet ? errors.sqfeet : null}</p>
                         </div>
                     </div>
-                    <div className="suboptions">
-                        <p>Lot size</p>
-                        <div>
-                            <input type="number" name='lotsize' onChange={handleChange} onBlur={handleBlur} />
-                            <p>{errors.lotsize && touched.lotsize ? errors.lotsize : null}</p>
+                    {
+                        !apartment && <div className="suboptions">
+                            <p>Lot size</p>
+                            <div>
+                                <input type="number" name='lotsize' onChange={handleChange} onBlur={handleBlur} />
+                                <p>{errors.lotsize && touched.lotsize ? errors.lotsize : null}</p>
+                            </div>
                         </div>
-                    </div>
+                    }
                     <div className="suboptions">
                         <p>Year built</p>
                         <div>
@@ -972,7 +980,8 @@ const SellnowPage = () => {
 
                     <div className="button_div">
 
-                        <button type='submit'>
+                        <button type='submit' disabled={makeButtonLoading}>
+                            <ClipLoader color="#ffffff" className='loading' size={15} loading={makeButtonLoading} />
                             <p>POST</p>
                         </button>
 
