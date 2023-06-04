@@ -25,14 +25,19 @@ const AllApartments = () => {
         return () => {
             window.removeEventListener('beforeunload', window.scrollTo(0, 0))
         }
+        
     }, [])
 
-    //const api_base = 'http://localhost:3001'
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    const api_base = process.env.REACT_APP_API_URL
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const fetchData = async () => {
         console.log("function called")
-        const response = await fetch(api_base + "/getallapartments");
+        const response = await fetch(api_base + "/getallapartments",{
+            headers:{
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
+            }
+        });
         const data = await response.json();
         setApartmentsdata(data);
     }

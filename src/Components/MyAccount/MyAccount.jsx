@@ -10,8 +10,8 @@ import { ClipLoader } from 'react-spinners'
 
 const MyAccount = () => {
 
-    //const api_base = 'http://localhost:3001'
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    const api_base = process.env.REACT_APP_API_URL
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const navigate = useNavigate()
 
@@ -50,16 +50,28 @@ const MyAccount = () => {
 
         console.log("fetchdata is called")
 
-        const response = await fetch(api_base + `/getmyproperties/${(await JSON.parse(localStorage.getItem('user'))).loginID}`);
+        const response = await fetch(api_base + `/getmyproperties/${(await JSON.parse(localStorage.getItem('user'))).loginID}`, {
+            headers: {
+                Authorization: (JSON.parse(localStorage.getItem('user'))).token
+            }
+        });
         const data = await response.json();
         setPropertyData(data);
 
-        const response1 = await fetch(api_base + `/getmycars/${(await JSON.parse(localStorage.getItem('user'))).loginID}`);
+        const response1 = await fetch(api_base + `/getmycars/${(await JSON.parse(localStorage.getItem('user'))).loginID}`, {
+            headers: {
+                Authorization: (JSON.parse(localStorage.getItem('user'))).token
+            }
+        });
         const data1 = await response1.json();
         setCardata(data1)
 
 
-        const response2 = await fetch(api_base + `/getprofimg/${await (JSON.parse(localStorage.getItem('user'))).loginID}`)
+        const response2 = await fetch(api_base + `/getprofimg/${await (JSON.parse(localStorage.getItem('user'))).loginID}`, {
+            headers: {
+                Authorization: (JSON.parse(localStorage.getItem('user'))).token
+            }
+        })
         const data2 = await response2.json()
         setProfileData(data2)
         setAddAnim(false)
@@ -80,14 +92,22 @@ const MyAccount = () => {
     };
 
     const deleteProp = async (ID) => {
-        await fetch(api_base + `/deleteprop/${ID}`)
+        await fetch(api_base + `/deleteprop/${ID}`,{
+            headers:{
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
+            }
+        })
 
 
     }
 
 
     const deleteCar = async (ID) => {
-        await fetch(api_base + `/deletecar/${ID}`)
+        await fetch(api_base + `/deletecar/${ID}`,{
+            headers:{
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
+            }
+        })
 
         console.log("delete car funcion called")
 
@@ -164,7 +184,8 @@ const MyAccount = () => {
         await fetch(`${api_base}/upprofimg`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
             },
             body: JSON.stringify({
                 profileimg: url,
@@ -177,7 +198,8 @@ const MyAccount = () => {
         await fetch(`${api_base}/addaddress`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
             },
             body: JSON.stringify({
                 address,

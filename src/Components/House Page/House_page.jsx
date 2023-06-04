@@ -44,7 +44,11 @@ const House_page = () => {
   const [ProfileData, setProfileData] = useState(false)
 
   const getProfData = async () => {
-    const response2 = await fetch(api_base + `/getprofimg/${await (JSON.parse(localStorage.getItem('user'))).loginID}`)
+    const response2 = await fetch(api_base + `/getprofimg/${await (JSON.parse(localStorage.getItem('user'))).loginID}`,{
+      headers:{
+        Authorization:(JSON.parse(localStorage.getItem('user'))).token
+      }
+    })
     const data2 = await response2.json()
     setProfileData(data2)
   }
@@ -62,7 +66,8 @@ const House_page = () => {
     await (await fetch(api_base + "/sendinforeq", {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization:(JSON.parse(localStorage.getItem('user'))).token
       },
       body: JSON.stringify(formData)
     })).json()
@@ -72,15 +77,19 @@ const House_page = () => {
 
   const [houseData, setHouseData] = useState([])
 
-  //const api_base = 'http://localhost:3001'
-  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+  const api_base = process.env.REACT_APP_API_URL
+  //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
 
   const fetchData = async () => {
     try {
       console.log("fetchdata called")
-      const response = await fetch(api_base + `/getPropData/${houseID}`);
-      const data = await response.json().then((data)=>{
+      const response = await fetch(api_base + `/getPropData/${houseID}`, {
+        headers: {
+          Authorization: (JSON.parse(localStorage.getItem('user'))).token
+        }
+      });
+      const data = await response.json().then((data) => {
         console.log("data is", data);
         if (data.error) {
           navigate('/', { replace: true });
@@ -93,11 +102,11 @@ const House_page = () => {
       // Handle the error if needed
     }
   };
-  
+
   useEffect(() => {
     fetchData();
   }, []);
-  
+
 
   const date = new Date()
   const [selectedDate, setSelectedDate] = useState();

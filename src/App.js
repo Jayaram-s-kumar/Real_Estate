@@ -19,6 +19,8 @@ import SendOtp from "./Components/SendOtp/SendOtp";
 import PassReset from "./Components/PassReset/PassReset";
 import { useEffect, useState } from "react";
 
+//import {DotenvConfigOptions} from 'dotenv'
+
 function App() {
 
 

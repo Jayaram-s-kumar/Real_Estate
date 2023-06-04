@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 
-  //const api_base = 'http://127.0.0.1:3001'
-  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+  const api_base = process.env.REACT_APP_API_URL
+  //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
 
 const SendRegEmail = () => {

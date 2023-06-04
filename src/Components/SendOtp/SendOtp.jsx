@@ -16,8 +16,8 @@ const SendOtp = () => {
   const [otp, setOtp] = useState("")
   const [error, setError] = useState(false)
   const navigate = useNavigate()
-   //const api_base = 'http://localhost:3001'
-   const api_base = 'https://real-estate-backend-yuae.onrender.com'
+   const api_base = process.env.REACT_APP_API_URL
+   //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
 
 

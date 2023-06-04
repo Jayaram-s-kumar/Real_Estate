@@ -48,9 +48,9 @@ const SellnowPage = () => {
 
 
 
-     //const api_base = 'http://localhost:3001'
+    const api_base = process.env.REACT_APP_API_URL
 
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
 
     const cloudName = 'dfs1badkm'
@@ -171,7 +171,7 @@ const SellnowPage = () => {
             .required('Phone number is required'),
         email: Yup.string().email().required("please provide your email"),
         sqfeet: Yup.number().positive().required("please enter sqfeet"),
-        lotsize:apartment ? Yup.number() : Yup.number().positive().required("please enter Lotsize"),
+        lotsize: apartment ? Yup.number() : Yup.number().positive().required("please enter Lotsize"),
         year: Yup.number().required("please enter built year").min(1900, 'Year must be greater than or equal to 1900').max(new Date().getFullYear(), `Year can't be greater than current year`),
         streetAddress: Yup.string().required('Street address is required'),
         city: Yup.string().required('City is required'),
@@ -328,7 +328,9 @@ const SellnowPage = () => {
         let data = await (await fetch(api_base + "/uploadProp", {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: (JSON.parse(localStorage.getItem('user'))).token
+
             },
             body: JSON.stringify(formData)
         })).json()

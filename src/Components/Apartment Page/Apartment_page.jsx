@@ -94,31 +94,35 @@ const Apartment_page = () => {
 
   const [apartmentData, setApartmentData] = useState([])
 
-  //const api_base = 'http://localhost:3001'
-  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+  const api_base = process.env.REACT_APP_API_URL
+  //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
 
   const fetchData = async () => {
-    
-     
 
-      try {
-        console.log("fetchdata called")
-        const response = await fetch(api_base + `/getPropData/${apartmentID}`);
-        const data = await response.json().then((data)=>{
-          console.log("data is",data)
-          if(data.error){
-            navigate('/',{replace:true})
 
-          }else{
-            setApartmentData(data)
-          }
-        })
-      } catch (error) {
-        console.error('Error fetching house data:', error);
 
-      }
-  
+    try {
+      console.log("fetchdata called")
+      const response = await fetch(api_base + `/getPropData/${apartmentID}`, {
+        headers: {
+          Authorization: (JSON.parse(localStorage.getItem('user'))).token
+        }
+      });
+      const data = await response.json().then((data) => {
+        console.log("data is", data)
+        if (data.error) {
+          navigate('/', { replace: true })
+
+        } else {
+          setApartmentData(data)
+        }
+      })
+    } catch (error) {
+      console.error('Error fetching house data:', error);
+
+    }
+
   }
 
   useEffect(() => {

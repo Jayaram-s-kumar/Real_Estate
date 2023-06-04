@@ -53,8 +53,8 @@ const Navbar = ({ bg, bs, txtCol, selected, hoverClass,login }) => {
     }
   })
 
-  //const api_base = 'http://127.0.0.1:3001'
-  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+  const api_base = process.env.REACT_APP_API_URL
+  //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
   const sendDetails = async (formData) => {
     // setPopup(false)
@@ -62,7 +62,7 @@ const Navbar = ({ bg, bs, txtCol, selected, hoverClass,login }) => {
     let data = await (await fetch(`${api_base}${route}`, {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
 
@@ -77,7 +77,8 @@ const Navbar = ({ bg, bs, txtCol, selected, hoverClass,login }) => {
       // window.location.reload()
       localStorage.setItem("user", JSON.stringify({
         email: data.email,
-        loginID: data.loginID
+        loginID: data.loginID,
+        token:data.token
       }))
       setLoading(false)
       document.body.classList.remove('overlay')

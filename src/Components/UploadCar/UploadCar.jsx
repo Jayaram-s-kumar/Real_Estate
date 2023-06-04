@@ -13,9 +13,9 @@ import {ClipLoader} from 'react-spinners'
 
 const UploadCar = () => {
 
-    //const api_base = 'http://localhost:3001'
+    const api_base = process.env.REACT_APP_API_URL
 
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const navigate = useNavigate()
 
@@ -153,7 +153,9 @@ const UploadCar = () => {
         let data = await (await fetch(api_base + "/uploadCar", {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
+                
             },
             body: JSON.stringify(formData)
         })).json()

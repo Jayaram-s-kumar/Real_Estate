@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 const AllHouses = () => {
 
-  //const api_base = 'http://localhost:3001'
-  const api_base = 'https://real-estate-backend-yuae.onrender.com'
+  const api_base = process.env.REACT_APP_API_URL
+  //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
   const navigate = useNavigate()
 
@@ -18,7 +18,11 @@ const AllHouses = () => {
 
   const fetchData = async () => {
     console.log("function called")
-    const response = await fetch(api_base + "/getallhouses");
+    const response = await fetch(api_base + "/getallhouses",{
+      headers:{
+        Authorization:(JSON.parse(localStorage.getItem('user'))).token
+    }
+    });
     const data = await response.json();
 
     setHouseData(data);

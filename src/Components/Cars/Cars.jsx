@@ -11,15 +11,19 @@ const Cars = () => {
 
     const [backendData, setBackendData] = useState([])
 
-    //const api_base = 'http://localhost:3001'
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    const api_base = process.env.REACT_APP_API_URL
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     useEffect(() => {
         fetchData()
     }, [])
 
     const fetchData = async () => {
-        const response = await fetch(api_base + "/first3cars");
+        const response = await fetch(api_base + "/first3cars",{
+            headers:{
+                Authorization:(JSON.parse(localStorage.getItem('user'))).token
+            }
+        });
         const data = await response.json();
         setBackendData(data);
 

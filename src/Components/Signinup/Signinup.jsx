@@ -21,8 +21,8 @@ const Signinup = () => {
 
     const navigate = useNavigate()
 
-    //const api_base = 'http://127.0.0.1:3001'
-    const api_base = 'https://real-estate-backend-yuae.onrender.com'
+    const api_base = process.env.REACT_APP_API_URL
+    //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
   
 
@@ -61,6 +61,7 @@ const Signinup = () => {
 
     const sendDetails = async (formData) => {
         // setPopup(false)
+        //console.log(api_base)
         let data = await (await fetch(`${api_base}${route}`, {
             method: 'POST',
             headers: {
@@ -85,7 +86,8 @@ const Signinup = () => {
             navigate('/')
             localStorage.setItem("user", JSON.stringify({
                 email: data.email,
-                loginID: data.loginID
+                loginID: data.loginID,
+                token:data.token
             }))
             document.body.classList.remove('overlay')
         } else if (data.message === "password error") {
