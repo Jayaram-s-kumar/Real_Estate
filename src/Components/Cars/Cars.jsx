@@ -19,11 +19,7 @@ const Cars = () => {
     }, [])
 
     const fetchData = async () => {
-        const response = await fetch(api_base + "/first3cars",{
-            headers:{
-                Authorization:(JSON.parse(localStorage.getItem('user'))).token
-            }
-        });
+        const response = await fetch(api_base + "/first3cars");
         const data = await response.json();
         setBackendData(data);
 

@@ -17,6 +17,21 @@
         }
     }
 
+    .bhk {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    .bhkclose {
+        width: 21px;
+        opacity: 0.4;
+        margin-right: 9px;
+        margin-top: 2px;
+
+    }
+
     .cards-container {
         display: flex;
         align-items: center;
@@ -94,7 +109,7 @@
                     object-fit: cover;
                 }
 
-                
+
             }
 
             .card-details {

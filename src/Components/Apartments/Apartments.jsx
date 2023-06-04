@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const Apartments = () => {
     const [apartmentsdata, setApartmentsdata] = useState([])
 
+   
+
     const navigate = useNavigate()
 
 
@@ -15,11 +17,7 @@ const Apartments = () => {
 
 
     const fetchData = async () => {
-        const response = await fetch(api_base + "/first3apartments",{
-            headers:{
-                Authorization:(JSON.parse(localStorage.getItem('user'))).token
-            }
-        });
+        const response = await fetch(api_base + "/first3apartments");
         const data = await response.json();
         setApartmentsdata(data);
     }
@@ -43,6 +41,7 @@ const Apartments = () => {
     return (
         <div className="Apartment_container" id='apartments'>
             <h1>Apartments</h1>
+           
             <div className="cards-container">
 
                 {

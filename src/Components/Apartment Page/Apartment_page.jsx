@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Apartment_page = () => {
 
+ 
+
   const navigate = useNavigate()
 
   useEffect(() => {

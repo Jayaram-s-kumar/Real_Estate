@@ -4,9 +4,32 @@ import { Link } from 'react-router-dom'
 import Navbar from '../Navabar/Navbar'
 import SellNow from '../SellNow/SellNow'
 import { useNavigate } from 'react-router-dom'
+import { Radio, Select } from 'antd';
+
 
 const AllApartments = () => {
 
+
+    const [copy, setcopy] = useState([])
+    const [placement, setPlacement] = useState('')
+    const placementChange = async (e) => {
+
+        setApartmentsdata(copy)
+
+        if (e === "clear") {
+            setApartmentsdata(copy)
+            setPlacement('')
+        } else {
+            const filteredData = copy.filter((item) => {
+                return item.bhk === e.target.value;
+            });
+            setApartmentsdata(filteredData);
+            setPlacement(e.target.value)
+        }
+
+
+
+    };
     const [apartmentsdata, setApartmentsdata] = useState([])
 
     const navigate = useNavigate()
@@ -25,21 +48,23 @@ const AllApartments = () => {
         return () => {
             window.removeEventListener('beforeunload', window.scrollTo(0, 0))
         }
-        
+
     }, [])
 
     const api_base = process.env.REACT_APP_API_URL
     //const api_base = 'https://real-estate-backend-yuae.onrender.com'
 
     const fetchData = async () => {
-        console.log("function called")
-        const response = await fetch(api_base + "/getallapartments",{
-            headers:{
-                Authorization:(JSON.parse(localStorage.getItem('user'))).token
+        // console.log("function called")
+        const response = await fetch(api_base + "/getallapartments", {
+            headers: {
+                Authorization: (JSON.parse(localStorage.getItem('user'))).token
             }
         });
         const data = await response.json();
         setApartmentsdata(data);
+        setcopy(data)
+
     }
 
     useEffect(() => {
@@ -52,8 +77,27 @@ const AllApartments = () => {
 
             <div className="AllApartments_container">
                 <h1>Apartments</h1>
+                <div className='bhk'>
+
+                    {
+                        placement !== '' && <div onClick={() => { placementChange("clear") }} >
+                            <img className='bhkclose' src="/images/cancel.png" alt="" />
+                        </div>
+                    }
+
+                    <Radio.Group onChange={placementChange} value={placement}>
+                        <Radio.Button value="1">1 BHK</Radio.Button>
+                        <Radio.Button value="2">2 BHK</Radio.Button>
+                        <Radio.Button value="3">3 BHK</Radio.Button>
+                        <Radio.Button value="3+">3+ BHK</Radio.Button>
+                    </Radio.Group>
+                    <br />
+                    <br />
+
+                </div>
                 <div className="cards-container">
                     {
+                        apartmentsdata.length ? 
                         apartmentsdata.map((obj) => {
 
                             const excludedKeys = ['Tv', 'storage', 'gate', 'camera']
@@ -63,7 +107,6 @@ const AllApartments = () => {
                                 .map(([key, _]) => key)
                                 .slice(0, 3);
 
-                            console.log(trueFeatures);
 
                             return <Link to={`apartment/${obj._id}`}>
 
@@ -186,7 +229,7 @@ const AllApartments = () => {
                                 </div>
                             </Link>
 
-                        })
+                        }) : <p>No apartments</p>
                     }
 
 

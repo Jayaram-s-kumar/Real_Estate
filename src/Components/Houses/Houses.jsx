@@ -23,11 +23,7 @@ const Houses = () => {
 
 
   const fetchData = async () => {
-    const response = await fetch(api_base + "/first3houses",{
-      headers:{
-        Authorization:(JSON.parse(localStorage.getItem('user'))).token
-    }
-    });
+    const response = await fetch(api_base + "/first3houses");
     const data = await response.json();
 
     setHouseData(data);

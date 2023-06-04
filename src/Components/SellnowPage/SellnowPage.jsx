@@ -135,6 +135,7 @@ const SellnowPage = () => {
         ownName: '',
         bedrooms: "",
         bathrooms: "",
+        bhk:"",
         internet,
         pool,
         seaview,
@@ -185,6 +186,7 @@ const SellnowPage = () => {
         ownName: Yup.string().required('please enter owner name'),
         bedrooms: Yup.number().positive().required("please enter number of bedrooms"),
         bathrooms: Yup.number().positive().required("please select number of bathrooms"),
+        bhk:Yup.string().required("Please select BHK"),
         description: Yup.string().required("Please enter property description").min(5),
         internet: Yup.boolean(),
         pool: Yup.boolean(),
@@ -394,6 +396,8 @@ const SellnowPage = () => {
                     </Box>
 
 
+
+
                     <div className='suboptions'>
                         <p>Property name</p>
                         <div>
@@ -415,6 +419,8 @@ const SellnowPage = () => {
                             <p className='error'>{errors.price && touched.price ? errors.price : null}</p>
                         </div>
                     </div>
+
+
                     <div className="suboptions">
                         <p>Contact Phone</p>
                         <div>
@@ -422,6 +428,33 @@ const SellnowPage = () => {
                             <p className='error'>{errors.phone && touched.phone ? errors.phone : null}</p>
                         </div>
                     </div>
+
+                    <Box sx={{}} style={{ width: '100%' }}>
+                        <div className="proptype" >
+                            <p className='labelclass'>BHK</p>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Select</InputLabel>
+                                <Select
+                                    value={values.bhk}
+                                    label="fdgfdghdf"
+                                    name='bhk'
+                                    onChange={(e) => {
+                                        
+                                        handleChange(e)
+                                    }}
+                                    onBlur={handleBlur}
+                                >
+                                    <MenuItem value={"1"}>1 BHK</MenuItem>
+                                    <MenuItem value={"2"}>2 BHK</MenuItem>
+                                    <MenuItem value={"3"}>3 BHK</MenuItem>
+                                    <MenuItem value={"3+"}>3+ BHK</MenuItem>
+                                </Select>
+                                <p className='error'>{errors.bhk && touched.bhk ? errors.bhk : null}</p>
+                            </FormControl>
+                        </div>
+
+                    </Box>
+
                     <div className="suboptions">
                         <p>Contact Email</p>
                         <div>
@@ -446,6 +479,7 @@ const SellnowPage = () => {
                             </div>
                         </div>
                     }
+
                     <div className="suboptions">
                         <p>Year built</p>
                         <div>
@@ -502,7 +536,7 @@ const SellnowPage = () => {
                                     label="fdgfdghdf"
                                     name='furnishType'
                                     onChange={(e) => {
-                                        //// setFurnishType(e.target.value)
+                                       
                                         handleChange(e)
                                     }}
                                     onBlur={handleBlur}
